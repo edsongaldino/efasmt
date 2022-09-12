@@ -11,4 +11,4 @@ RewriteCond %{HTTP_HOST} ^efasmt.com.br [NC]
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-RewriteRule ^(.*)$ https://www.efasmt.com.br/$1 [L,R=301]
+RewriteRule ^(.*)$ https://efas.euripedesbarsanulfo.org.br/$1 [L,R=301]

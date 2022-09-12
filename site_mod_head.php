@@ -1,5 +1,5 @@
 <title>Encontro Fraterno Auta de Souza - Inscrição Online</title>
-<base href="https://www.efasmt.com.br/" />
+<base href="https://efas.euripedesbarsanulfo.org.br/" />
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -22,12 +22,12 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/icon" />
 
 <!-- Meta Keyword -->
-<meta name="twitter:image" content="https://www.efasmt.com.br/images/logo_efas.jpg">
+<meta name="twitter:image" content="https://efas.euripedesbarsanulfo.org.br/images/logo_efas.jpg">
 
-<meta property="og:url" content="https://www.efasmt.com.br/inscricao.php" />
+<meta property="og:url" content="https://efas.euripedesbarsanulfo.org.br/inscricao.php" />
 <meta property="og:title" content="Encontro Fraterno Auta de Souza - Inscrição Online" />
 <meta property="og:description" content="Encontro Fraterno Auta de Souza é um evento espírita que proporciona aos seus participantes a troca de experiências, estudo da Doutrina Espírta e trabalho no campo do bem" />
-<meta property="og:image" content="https://www.efasmt.com.br/images/logo_efas.jpg" />
+<meta property="og:image" content="https://efas.euripedesbarsanulfo.org.br/images/logo_efas.jpg" />
 
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1067">

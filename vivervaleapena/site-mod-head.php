@@ -14,12 +14,12 @@
 	<title>Campanha de Prevenção so Suicídio - Camilo Castelo Branco - Viver Vale a Pena</title>
 
 	
-	<meta name="twitter:image" content="https://www.efasmt.com.br/vivervaleapena/img/banner.jpg">
+	<meta name="twitter:image" content="https://efas.euripedesbarsanulfo.org.br/vivervaleapena/img/banner.jpg">
 
-	<meta property="og:url" content="https://www.efasmt.com.br/vivervaleapena" />
+	<meta property="og:url" content="https://efas.euripedesbarsanulfo.org.br/vivervaleapena" />
 	<meta property="og:title" content="Campanha de Prevenção so Suicídio - Camilo Castelo Branco - Viver Vale a Pena" />
 	<meta property="og:description" content="A Campanha realiza várias atividades que objetivam evidenciar a alegria de viver, trazendo a compreensão de que as provas da vida são sublimes lições que bem suportadas nos conduzem a paz interior." />
-	<meta property="og:image" content="https://www.efasmt.com.br/vivervaleapena/img/banner.jpg" />
+	<meta property="og:image" content="https://efas.euripedesbarsanulfo.org.br/vivervaleapena/img/banner.jpg" />
 
 	<meta property="og:image:type" content="image/jpeg">
 	<meta property="og:image:width" content="600">

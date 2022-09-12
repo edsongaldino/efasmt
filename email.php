@@ -17,12 +17,12 @@
                 </tr>
                 <tr>
                     <td align="center" valign="top" bgcolor="#fff" style="background-color:#fff">
-                    <img width="110" src="http://www.efasmt.com.br/images/logo_autadesouza.jpg" style="display:inline-block; vertical-align:bottom">
+                    <img width="110" src="http://efas.euripedesbarsanulfo.org.br/images/logo_autadesouza.jpg" style="display:inline-block; vertical-align:bottom">
                     </td>
                 </tr>
                 <tr>
                     <td height="60" align="center" valign="top" bgcolor="#e4e4e4" style="background-color:#e4e4e4; font-family:Arial, Helvetica, sans-serif; font-size:19px; color:#3b3b3b;">
-                    <img src="http://www.efasmt.com.br/images/border_red.jpg" style="padding-top:10px">
+                    <img src="http://efas.euripedesbarsanulfo.org.br/images/border_red.jpg" style="padding-top:10px">
                     <h3 style="width:430px; text-align:left; font-weight:normal; font-size:18px"> 
 
                         Ol&aacute;, '.utf8_decode($nome_participante).'! <br> <br>
@@ -37,7 +37,7 @@
                     <table width="300" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                             <td align="center" valign="middle">
-                            <img src="http://www.efasmt.com.br/images/icon-person.png"> <br>
+                            <img src="http://efas.euripedesbarsanulfo.org.br/images/icon-person.png"> <br>
                             <h3 style="font-family:calibri;margin-top:0; margin-bottom:0; color:#525252; font-size:16px">'.utf8_decode($nome_participante).'</h3>
                             <h3 style="font-family:calibri;margin-top:0; margin-bottom:0; color:#525252; font-size:16px">'.$email_participante.'</h3>
                             <h3 style="font-family:calibri;margin-top:0; margin-bottom:0; color:#525252; font-size:25px; font-weight: bold;">'.$codigo_inscricao_evento.'</h3>
@@ -50,13 +50,13 @@
                     <td align="center" valign="top">
                     <h3 style="margin:20px 0;font-family:calibri;color:#525252; font-size:16px"> Clique no link para acompanhar sua inscri&ccedil;&atilde;o </h3>
                     <a href="'.$link_redirect.'">
-                        <img src="http://www.efasmt.com.br/images/btn-confirmar.jpg" style="padding-bottom:10px">
+                        <img src="http://efas.euripedesbarsanulfo.org.br/images/btn-confirmar.jpg" style="padding-bottom:10px">
                     </a>
                     </td>
                 </tr>
                 <tr bgcolor="#e4e4e4" style="background:e4e4e4">
                     <td align="center" valign="middle">
-                    <img src="http://www.efasmt.com.br/images/border_gray.jpg">
+                    <img src="http://efas.euripedesbarsanulfo.org.br/images/border_gray.jpg">
                     </td>
                 </tr>
                 <tr bgcolor="#e4e4e4" style="background:e4e4e4">

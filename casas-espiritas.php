@@ -38,13 +38,13 @@
 				-->
 			</script>
 			<!-- CUIABÁ  --> 
-			<a onclick="javascript:abrirJanela('https://www.efasmt.com.br/ce/cuiaba.php', 1700, 800);"><img src="ce/img/cuiaba.png" alt="Smiley face" width="300" height="300" style="vertical-align:middle;margin:0px 10px"></a>
+			<a onclick="javascript:abrirJanela('https://efas.euripedesbarsanulfo.org.br/ce/cuiaba.php', 1700, 800);"><img src="ce/img/cuiaba.png" alt="Smiley face" width="300" height="300" style="vertical-align:middle;margin:0px 10px"></a>
 			
 			<!-- VARZEA GRANDE  --> 
-			<a onclick="javascript:abrirJanela('https://www.efasmt.com.br/ce/vg.php', 1700, 800);"><img src="ce/img/vg.png" alt="Smiley face" width="300" height="300" style="vertical-align:middle;margin:0px 10px"></a>
+			<a onclick="javascript:abrirJanela('https://efas.euripedesbarsanulfo.org.br/ce/vg.php', 1700, 800);"><img src="ce/img/vg.png" alt="Smiley face" width="300" height="300" style="vertical-align:middle;margin:0px 10px"></a>
 			
 			<!-- INTERIOR  --> 
-			<a onclick="javascript:abrirJanela('https://www.efasmt.com.br/ce/interior.php', 1700, 800);"><img src="ce/img/interior.png" alt="Smiley face" width="300" height="300" style="vertical-align:middle;margin:0px 10px"></a>
+			<a onclick="javascript:abrirJanela('https://efas.euripedesbarsanulfo.org.br/ce/interior.php', 1700, 800);"><img src="ce/img/interior.png" alt="Smiley face" width="300" height="300" style="vertical-align:middle;margin:0px 10px"></a>
 		
 		
 		</center>
