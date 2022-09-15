@@ -89,7 +89,7 @@ $resultado_consulta_inscricao = mysql_fetch_assoc($query_consulta_inscricao);
 			<tbody>
 			<form method="post" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
 				<!-- Campos obrigatórios -->  
-				<input name="receiverEmail" type="hidden" value="contato@wantuildefreitas.com.br">  
+				<input name="receiverEmail" type="hidden" value="secretaria@euripedesbarsanulfo.org.br">  
 				<input name="currency" type="hidden" value="BRL">  
 		
 				<!-- Itens do pagamento (ao menos um item é obrigatório) -->  
