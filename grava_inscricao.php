@@ -2,7 +2,7 @@
 <?php
 
 // Inclui o arquivo class.phpmailer.php localizado na pasta class
-require_once("ferramenta/PHPmailer/class.phpmailer.php");
+require_once("ferramenta/PHPMailer/class.phpmailer.php");
 
 if($_POST['acao']){
 
