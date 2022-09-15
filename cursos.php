@@ -144,7 +144,6 @@ $query_consulta_tema_atual_adulto = mysql_query($sql_consulta_tema_atual_adulto)
             </div>
         
             <div class="clearfix"> </div>
-
     </div>
 </div>
 <!--//content-->
