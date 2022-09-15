@@ -64,17 +64,16 @@ $query_consulta_tema_atual_adulto = mysql_query($sql_consulta_tema_atual_adulto)
 			<div class="banner-main">
                 <?php include "site_mod_banner.php";?>
 	        </div>
-            </div>
+    </div>
 </div>
 <!--//header-->
 <!--content-->
-<div id="">
+
     <div class="container_cursos">
         <h3>Cursos - EFAS 2021 Associação Espírita Wantuil de Freitas | Cuiabá - MT</h3>
-            <div class="">
-            <div class="">
+            <div class="row">
 
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="grid-categories">
                         <div class="cate-top">
                         <h4>Temas Específicos para crianças - (0 à 11 anos)</h4>
@@ -87,7 +86,7 @@ $query_consulta_tema_atual_adulto = mysql_query($sql_consulta_tema_atual_adulto)
                     </div>
                 </div>
                 
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="grid-categories">
                         <div class="cate-top">
                         <h4 class="adulto">Temas Atuais Adultos (Jovens acima de 14 anos)</h4>
@@ -97,10 +96,10 @@ $query_consulta_tema_atual_adulto = mysql_query($sql_consulta_tema_atual_adulto)
                             <?php }?>
                         </ul>
                         </div>              
-                    </div>
+                </div>
                 
 
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="grid-categories">
                         <div class="cate-top">
                         <h4 class="jovem">Temas Específicos para jovens (12 e 13 anos)</h4>
@@ -119,34 +118,32 @@ $query_consulta_tema_atual_adulto = mysql_query($sql_consulta_tema_atual_adulto)
             <div class="col-md-6">
                 <div class="grid-categories">
                     <div class="cate-top">
-                    <h4 class="jovem">Temas Atuais para jovens (12 e 13 anos)</h4>
-                    <ul class="popular">
-                        <?php while($resultado_consulta_cursos_atual_jovem = mysql_fetch_assoc($query_consulta_tema_atual_jovem)) {?>
-                        <li><a href="#"><i class="glyphicon glyphicon-chevron-right"> </i><?php echo $resultado_consulta_cursos_atual_jovem["referencia"];?> - <?php echo utf8_encode($resultado_consulta_cursos_atual_jovem["nome_curso"]);?> </a></li>
-                        <?php }?>
-                    </ul>
-                </div>              
-            </div>
-            
+                        <h4 class="jovem">Temas Atuais para jovens (12 e 13 anos)</h4>
+                        <ul class="popular">
+                            <?php while($resultado_consulta_cursos_atual_jovem = mysql_fetch_assoc($query_consulta_tema_atual_jovem)) {?>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"> </i><?php echo $resultado_consulta_cursos_atual_jovem["referencia"];?> - <?php echo utf8_encode($resultado_consulta_cursos_atual_jovem["nome_curso"]);?> </a></li>
+                            <?php }?>
+                        </ul>
+                    </div>              
+                </div>
             </div>
            
 
              <div class="col-md-6">
                 <div class="grid-categories">
                     <div class="cate-top">
-                    <h4 class="adulto">Temas Específicos Adultos (Jovens acima de 14 anos)</h4>
-                    <ul class="popular">
-                        <?php while($resultado_consulta_especifico_adulto = mysql_fetch_assoc($query_consulta_tema_especifico_adulto)) {?>
-                        <li><a href="#"><i class="glyphicon glyphicon-chevron-right"> </i><?php echo $resultado_consulta_especifico_adulto["referencia"];?> - <?php echo utf8_encode($resultado_consulta_especifico_adulto["nome_curso"]);?> </a></li>
-                        <?php }?>
-                    </ul>
-                </div>              
-            </div>
+                        <h4 class="adulto">Temas Específicos Adultos (Jovens acima de 14 anos)</h4>
+                        <ul class="popular">
+                            <?php while($resultado_consulta_especifico_adulto = mysql_fetch_assoc($query_consulta_tema_especifico_adulto)) {?>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"> </i><?php echo $resultado_consulta_especifico_adulto["referencia"];?> - <?php echo utf8_encode($resultado_consulta_especifico_adulto["nome_curso"]);?> </a></li>
+                            <?php }?>
+                        </ul>
+                    </div>              
+                </div>
             </div>
 
             <div class="clearfix"> </div>
         </div>
-    </div>
 </div>
 <!--//content-->
 <!--footer-->
