@@ -69,7 +69,7 @@ $query_consulta_tema_atual_adulto = mysql_query($sql_consulta_tema_atual_adulto)
 <!--//header-->
 <!--content-->
     <div class="container_cursos">
-        <h3>Cursos - EFAS 2021 Associação Espírita Wantuil de Freitas | Cuiabá - MT</h3>
+        <h3>Cursos - EFAS 2022 | Várzea Grande - MT</h3>
             <div class="row">
 
                 <div class="col-md-6">
