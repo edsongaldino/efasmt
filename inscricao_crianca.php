@@ -177,19 +177,19 @@ for ($i = 0; $i < $num; $i++) {
                             </select>
                         </div>
 
-                        <div class="col-md-3 in-contact" id="load_cidades">
+                        <div class="col-md-4 in-contact" id="load_cidades">
                             <span>Cidade :</span>
                             <select name="cidade_participante" id="cidade_participante" required>
                             <option value="">Selecione o estado</option>
                             </select>
                         </div>
 
-                        <div class="col-md-4 in-contact">
+                        <div class="col-md-5 in-contact">
                             <span>Centro Espírita:</span>
                             <input type="text" name="centro_espirita_participante" id="centro_espirita_participante" class="text" value="">
                         </div>
 
-                        <div class="col-md-4 in-contact">
+                        <div class="col-md-7 in-contact">
                             <span>E-mail para confirmação da inscrição:</span>
                             <input type="text" name="email_participante" id="email_participante" class="text" value="" required>
                         </div>
