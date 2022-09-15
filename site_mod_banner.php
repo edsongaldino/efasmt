@@ -1,7 +1,7 @@
 <section class="slider">
     <div class="flexslider">
         <ul class="slides">
-
+            <!--
             <li>
                 <img src="images/banner1.jpg" draggable="false">
                 
@@ -10,6 +10,7 @@
                 <li>
                     <img src="images/banner_Principal.jpg" draggable="false">
             </li>
+            -->
 
             <li>
                 <img src="images/banner3.jpg" draggable="false">
