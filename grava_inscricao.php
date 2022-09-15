@@ -37,7 +37,7 @@ if($_POST['acao']){
 		
 		$data_atual = date("Y-m-d");
 		// inclui participante ao evento
-		$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('9', '".$codigo_participante."', '1', '5,00', '".$data_atual."', 'C')";
+		$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('9', '".$codigo_participante."', '1', '12,50', '".$data_atual."', 'C')";
 		$query_inclui_usuario_participante = mysql_query($sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
 		$codigo_inscricao_evento = mysql_insert_id();
 		
@@ -105,7 +105,7 @@ if($_POST['acao']){
 		$data_atual = date("Y-m-d");
 		
 		// inclui participante ao evento
-		$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('9', '".$codigo_participante."', '1', '10,00', '".$data_atual."', 'A')";
+		$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('9', '".$codigo_participante."', '1', '25,00', '".$data_atual."', 'A')";
 		$query_inclui_usuario_participante = mysql_query($sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
 		$codigo_inscricao_evento = mysql_insert_id();
 		
@@ -171,7 +171,7 @@ if($_POST['acao']){
 		$data_atual = date("Y-m-d");
 		
 		// inclui participante ao evento
-		$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('9', '".$codigo_participante."', '1', '10,00', '".$data_atual."', 'J')";
+		$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('9', '".$codigo_participante."', '1', '12,50', '".$data_atual."', 'J')";
 		$query_inclui_usuario_participante = mysql_query($sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
 		$codigo_inscricao_evento = mysql_insert_id();
 		
@@ -238,7 +238,7 @@ if($_POST['acao']){
 		$data_atual = date("Y-m-d");
 		
 		// inclui participante ao evento
-		$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('9', '".$codigo_participante."', '1', '10,00', '".$data_atual."', 'T')";
+		$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('9', '".$codigo_participante."', '1', '25,00', '".$data_atual."', 'T')";
 		$query_inclui_usuario_participante = mysql_query($sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
 		$codigo_inscricao_evento = mysql_insert_id();
 		
