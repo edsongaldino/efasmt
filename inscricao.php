@@ -22,18 +22,19 @@
     <div class="container">
 	
         <div class="contact-top ">
-            <h3>INSCRIÇÕES ABERTAS ATÉ 27 DE OUTUBRO APÓS SOMENTE PRESENCIAL</h3>
+            <h3>INSCRIÇÕES ABERTAS ATÉ 05 DE OUTUBRO. APÓS ESSA DATA, SOMENTE PRESENCIAL</h3>
         </div>
 
-		<!--
+		
 		 <div class="info-inscricao">
             Já fez sua inscrição mas ainda não pagou? Clique abaixo para fazer o pagamento:
-        </div>-->
+        </div>
 		
-		
+		<!--
 		<div class="info-inscricao">
 			Novas inscrições poderão ser feitas no dia do evento pelo valor de 10,00 (Adulto) e 5,00 (Criança)
         </div>
+		-->
        
 
 		<!--content-mid-->
@@ -53,8 +54,8 @@
 
 		
         <div class="info-inscricao">
-            As inscrições pela internet estarão abertas até o dia 27/10/2021. Faça sua inscrição antecipada e evite filas e aglomerações!<br/>
-            O pagamento deverá ser feito via PAGSEGURO - UOL, após o pagamento envie o comprovante para <b>secretaria@wantuildefreitas.com.br</b>, juntamente com o número de sua inscrição.<br/><br/>
+            As inscrições pela internet estarão abertas até o dia 05/10/2022. Faça sua inscrição antecipada e evite filas e aglomerações!<br/>
+            O pagamento deverá ser feito via PAGSEGURO - UOL, após o pagamento envie o comprovante para <b>secretaria@euripedesbarsanulfo.org.br</b>, juntamente com o número de sua inscrição.<br/><br/>
             Escolha uma das opções abaixo para realizar sua inscrição:
         </div>
         
