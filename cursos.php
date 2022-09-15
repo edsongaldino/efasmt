@@ -64,15 +64,14 @@ $query_consulta_tema_atual_adulto = mysql_query($sql_consulta_tema_atual_adulto)
 			<div class="banner-main">
                 <?php include "site_mod_banner.php";?>
 	        </div>
-            </div>
+    </div>
 </div>
 <!--//header-->
 <!--content-->
 <div id="">
     <div class="container_cursos">
         <h3>Cursos - EFAS 2021 Associação Espírita Wantuil de Freitas | Cuiabá - MT</h3>
-            <div class="">
-            <div class="">
+            <div class="row">
 
                 <div class="col-md-12">
                     <div class="grid-categories">
@@ -128,7 +127,6 @@ $query_consulta_tema_atual_adulto = mysql_query($sql_consulta_tema_atual_adulto)
                 </div>              
             </div>
             
-            </div>
            
 
              <div class="col-md-6">
@@ -142,7 +140,7 @@ $query_consulta_tema_atual_adulto = mysql_query($sql_consulta_tema_atual_adulto)
                     </ul>
                 </div>              
             </div>
-            </div>
+
 
             <div class="clearfix"> </div>
         </div>

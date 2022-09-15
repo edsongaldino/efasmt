@@ -32,7 +32,7 @@
 		
 		
 		<div class="info-inscricao">
-		Novas inscrições poderão ser feitas no dia do evento pelo valor de 10,00 (Adulto) e 5,00 (Criança)
+			Novas inscrições poderão ser feitas no dia do evento pelo valor de 10,00 (Adulto) e 5,00 (Criança)
         </div>
        
 
