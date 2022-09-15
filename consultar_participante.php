@@ -46,7 +46,7 @@
 /* só se for enviado o parâmetro, que devolve os dados */
 if( isset($_GET['nome']) )
 {
-  $db = new mysqli('efasmt.com.br', 'efasmtco_sistema', 'efa259864', 'efasmtco_sistema');
+  $db = new mysqli('efasmt.mysql.dbaas.com.br', 'efasmt', 'Web@259864', 'efasmt');
   echo retorna( filter ($_GET['nome'] ), $db );
 }
 
