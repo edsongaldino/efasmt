@@ -110,7 +110,7 @@ if(isset($_GET['acao'])){
         </div>
 
 		<div class="alert alert-info" role="alert">
-			<strong>À partir do dia 28/10 o pagamento só poderá ser feito no dia do evento! Agradecemos pela sua inscrição antecipada.</strong>
+			<strong>À partir do dia 05/10 o pagamento só poderá ser feito no dia do evento! Agradecemos pela sua inscrição antecipada.</strong>
 		</div>
 
 		
