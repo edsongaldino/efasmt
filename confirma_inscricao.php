@@ -73,20 +73,16 @@ $resultado_consulta_inscricao = mysql_fetch_assoc($query_consulta_inscricao);
 		</div>
 
 		
-		<div class="table-responsive">
+		<div class="row lista-inscricao">
 
-		<table class="table ls-table" id="tabela1">
-			<thead>
-				<tr>
-					<th class="txt-center">Inscrição</th>
-					<th class="hidden-xs">Data da Inscrição</th>
-					<th>Nome completo</th>
-					<th>Status</th>
-					<th>Valor R$</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
+			<div class="col-md-12 titulo-confirma">
+				<div class="col-md-1">Nº Insc.</div>
+				<div class="col-md-2">Data da Inscrição</div>
+				<div class="col-md-5">Nome completo</div>
+				<div class="col-md-2">Status</div>
+				<div class="col-md-2">Valor R$</div>
+			</div>
+
 			<form method="post" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
 				<!-- Campos obrigatórios -->  
 				<input name="receiverEmail" type="hidden" value="secretaria@euripedesbarsanulfo.org.br">  
@@ -108,17 +104,18 @@ $resultado_consulta_inscricao = mysql_fetch_assoc($query_consulta_inscricao);
 				<!-- Código de referência do pagamento no seu sistema (opcional) -->  
 				<input name="reference" type="hidden" value="EFAS2019 - <?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?>">  		
 						
-				<tr>
-					<td class="txt-center"><?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?></td>
-					<td class="hidden-xs"><?php echo converte_data_portugues($resultado_consulta_inscricao["data_inscricao_evento"]);?></td>
-					<td><?php echo $resultado_consulta_inscricao["nome_participante"];?></td>
-					<td><?php echo $resultado_consulta_inscricao["descricao_situacao_inscricao"];?></td>
-					<td>R$ <?php echo converte_valor_real($resultado_consulta_inscricao["valor_inscricao_evento"]);?></td>
-					<td><input alt="Pague com PagSeguro" name="submit"  type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif"/></td>
-				</tr>
+				<div class="col-md-12 linha-confirma">
+					<div class="col-md-1"><?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?></div>
+					<div class="col-md-2"><?php echo converte_data_portugues($resultado_consulta_inscricao["data_inscricao_evento"]);?></div>
+					<div class="col-md-4"><?php echo $resultado_consulta_inscricao["nome_participante"];?></div>
+					<div class="col-md-2"><?php echo $resultado_consulta_inscricao["descricao_situacao_inscricao"];?></div>
+					<div class="col-md-2">R$ <?php echo converte_valor_real($resultado_consulta_inscricao["valor_inscricao_evento"]);?></div>
+				</div>
+
+				<div class="col-md-12 pagar-inscricao margin-15"><input alt="Pague com PagSeguro" class="pagseguro" name="submit"  type="image" src="/images/pagseguro.png"/></div>
+
 			</form>
-			</tbody>
-		</table>
+		</div>
 	</div>
         
 

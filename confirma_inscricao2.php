@@ -92,6 +92,10 @@ if(isset($_GET['acao'])){
 <div class="contact">
     <div class="container">
 
+		<div class="alert alert-info margin-15" role="alert">
+			<strong>À partir do dia 05/10 o pagamento só poderá ser feito no dia do evento! Agradecemos pela sua inscrição antecipada.</strong>
+		</div>
+
 		<div class="box-consultar-inscricao">
             <div class="contact-form">
                 <form name="gravar_participante_trabalhador" id="gravar_participante_trabalhador" class="form-horizontal" method="get" action="confirma_inscricao2.php">
@@ -107,29 +111,19 @@ if(isset($_GET['acao'])){
                     
                 </form>
             </div>
-        </div>
+        </div>		
 
-		<div class="alert alert-info" role="alert">
-			<strong>À partir do dia 05/10 o pagamento só poderá ser feito no dia do evento! Agradecemos pela sua inscrição antecipada.</strong>
-		</div>
+		<div class="row lista-inscricao">
 
-		
-		
+			<div class="col-md-12 titulo-confirma">
+				<div class="col-md-1">Nº Insc.</div>
+				<div class="col-md-2">Data da Inscrição</div>
+				<div class="col-md-4">Nome completo</div>
+				<div class="col-md-2">Status</div>
+				<div class="col-md-2">Valor R$</div>
+				<div class="col-md-1"></div>
+			</div>
 
-		<div class="table-responsive">
-
-		<table class="table ls-table" id="tabela1">
-			<thead>
-				<tr>
-					<th class="txt-center">Inscrição</th>
-					<th class="hidden-xs">Data da Inscrição</th>
-					<th>Nome completo</th>
-					<th>Status</th>
-					<th>Valor R$</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
 			<form method="post" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
 				<!-- Campos obrigatórios -->  
 				<input name="receiverEmail" type="hidden" value="secretaria@euripedesbarsanulfo.org.br">  
@@ -169,29 +163,24 @@ if(isset($_GET['acao'])){
 				<!-- Código de referência do pagamento no seu sistema (opcional) -->  
 				<input name="reference" type="hidden" value="EFAS2021">  		
 						
-				<tr>
-					<td class="txt-center"><?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?></td>
-					<td class="hidden-xs"><?php echo converte_data_portugues($resultado_consulta_inscricao["data_inscricao_evento"]);?></td>
-					<td><?php echo $resultado_consulta_inscricao["nome_participante"];?></td>
-					<td><?php echo $resultado_consulta_inscricao["descricao_situacao_inscricao"];?></td>
-					<td>R$ <?php echo converte_valor_real($resultado_consulta_inscricao["valor_inscricao_evento"]);?></td>
-					<td><a href="confirma_inscricao2.php?acao=del&id=<?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?>">Remover</a></td>
-				</tr>
+				<div class="col-md-12 linha-confirma">
+					<div class="col-md-1"><?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?></div>
+					<div class="col-md-2"><?php echo converte_data_portugues($resultado_consulta_inscricao["data_inscricao_evento"]);?></div>
+					<div class="col-md-4"><?php echo $resultado_consulta_inscricao["nome_participante"];?></div>
+					<div class="col-md-2"><?php echo $resultado_consulta_inscricao["descricao_situacao_inscricao"];?></div>
+					<div class="col-md-1">R$ <?php echo converte_valor_real($resultado_consulta_inscricao["valor_inscricao_evento"]);?></div>
+					<div class="col-md-1 remover-inscricao"><a href="confirma_inscricao2.php?acao=del&id=<?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?>">Remover</a></div>
+				</div>
 				<?php endforeach;?>
 				<?php endif;?>
 
-				<tr>
-					<td class="txt-center"></td>
-					<td class="hidden-xs"></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td><input alt="Pague com PagSeguro" name="submit"  type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif"/></td>
-				</tr>
+				
+
+				
+				<div class="col-md-12 pagar-inscricao margin-15"><input alt="Pague com PagSeguro" class="pagseguro" name="submit"  type="image" src="/images/pagseguro.png"/></div>
+				
 
 			</form>
-			</tbody>
-		</table>
 	</div>
         
 

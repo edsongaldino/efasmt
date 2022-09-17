@@ -1519,7 +1519,47 @@ h3.typo1 {
 
 .box-consultar-inscricao{
   width: 100%;
-  height: 80px;
+  height: auto;
   margin-bottom: 30px;
+  float: left;
+}
+
+.titulo-confirma{
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.linha-confirma{
+  font-size: 14px;
+  text-align: center;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+
+.remover-inscricao{
+  background-color: #d32d10;
+  color: #FFF;
+  border-radius: 5px;
+}
+
+.margin-15{
+  margin: 0 15px !important;
+}
+
+.remover-inscricao a{
+  color: #FFF !important;
+}
+
+.pagar-inscricao input{
+  width: 40%;
+  float: right;
+  margin: 20px 30px 20px 0;
+}
+
+@media(max-width: 500px){
+  .pagar-inscricao input{
+    width: 90% !important;
+  }
 }
 
