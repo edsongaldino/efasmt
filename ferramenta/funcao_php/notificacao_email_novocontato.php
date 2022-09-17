@@ -12,23 +12,23 @@ function envia_email($destino, $nome_participante, $assunto, $corpo_mensagem)
 	
 		try {
 		$mail->SMTPSecure = "ssl"; // tbm já tentei tls
-		$mail->Host = "mail.efasmt.com.br"; // Endereço do servidor SMTP (Autenticação, utilize o host smtp.seudomínio.com.br)
+		$mail->Host = "mail.datapix.com.br"; // Endereço do servidor SMTP (Autenticação, utilize o host smtp.seudomínio.com.br)
 		$mail->SMTPAuth   = false;  // Usar autenticação SMTP (obrigatório para smtp.seudomínio.com.br)
 		$mail->Port       = 465; //  Usar 587 porta SMTP
-		$mail->Username = 'secretaria@efasmt.com.br'; // Usuário do servidor SMTP (endereço de email)
+		$mail->Username = 'smtp@datapix.com.br'; // Usuário do servidor SMTP (endereço de email)
 		$mail->Password = 'DKf61g0SMu!xQe'; // Senha do servidor SMTP (senha do email usado)
 	
 		//Define o remetente
 		// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=    
-		$mail->SetFrom('secretaria@efasmt.com.br', 'Secretaria - EFAS'); //Seu e-mail
-		$mail->AddReplyTo('secretaria@efasmt.com.br', 'Secretaria - EFAS'); //Seu e-mail
+		$mail->SetFrom('secretaria@euripedesbarsanulfo.org.br', 'Secretaria - EFAS'); //Seu e-mail
+		$mail->AddReplyTo('secretaria@euripedesbarsanulfo.org.br', 'Secretaria - EFAS'); //Seu e-mail
 		$mail->Subject = $assunto;//Assunto do e-mail
 	
 	
 		//Define os destinatário(s)
 		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 		$mail->AddAddress($destino, $nome_participante);
-		$mail->AddCC('secretaria@efasmt.com.br', 'Secretaria - EFAS'); // Copia
+		$mail->AddCC('secretaria@euripedesbarsanulfo.org.br', 'Secretaria - EFAS'); // Copia
 		//Campos abaixo são opcionais 
 		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 		//$mail->AddCC('destinarario@dominio.com.br', 'Destinatario'); // Copia
