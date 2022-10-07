@@ -114,7 +114,7 @@ $resultado_consulta_inscricao = mysql_fetch_assoc($query_consulta_inscricao);
 					<td><?php echo $resultado_consulta_inscricao["nome_participante"];?></td>
 					<td><?php echo $resultado_consulta_inscricao["descricao_situacao_inscricao"];?></td>
 					<td>R$ <?php echo converte_valor_real($resultado_consulta_inscricao["valor_inscricao_evento"]);?></td>
-					<td><input alt="Pague com PagSeguro" name="submit"  type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif"/></td>
+					<!--<td><input alt="Pague com PagSeguro" name="submit"  type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif"/></td>-->
 				</tr>
 			</form>
 			</tbody>
