@@ -16,12 +16,12 @@
 <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
 <script src="ferramenta/mascaras.js"></script>
 
-<meta name="twitter:image" content="https://efas.euripedesbarsanulfo.org.br/images/logo_efas.jpg">
+<meta name="twitter:image" content="https://secretaria.efasmt.com.br/images/logo_efas.jpg">
 
-<meta property="og:url" content="https://efas.euripedesbarsanulfo.org.br/inscricao.php" />
+<meta property="og:url" content="https://secretaria.efasmt.com.br/inscricao.php" />
 <meta property="og:title" content="EFAS Secretaria - Gerenciamento de Inscrições" />
 <meta property="og:description" content="Encontro Fraterno Auta de Souza é um evento espírita que proporciona aos seus participantes a troca de experiências, estudo da Doutrina Espírta e trabalho no campo do bem" />
-<meta property="og:image" content="https://efas.euripedesbarsanulfo.org.br/images/logo_efas.jpg" />
+<meta property="og:image" content="https://secretaria.efasmt.com.br/images/logo_efas.jpg" />
 
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1067">

@@ -115,7 +115,7 @@ if($_POST['acao']){
 
 			$destino = $email_participante;
 			$assunto = utf8_decode("Inscrição Realizada com Sucesso (EFAS 2022) Várzea Grande");
-			$link_redirect = "https://efas.euripedesbarsanulfo.org.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
+			$link_redirect = "https://secretaria.efasmt.com.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
 			require_once("email.php");
 
 			envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
@@ -182,7 +182,7 @@ if($_POST['acao']){
 
 			$destino = $email_participante;
 			$assunto = utf8_decode("inscrição realizada (EFAS 2022)");
-			$link_redirect = "https://efas.euripedesbarsanulfo.org.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
+			$link_redirect = "https://secretaria.efasmt.com.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
 			require_once("email.php");
 
 			envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
@@ -248,7 +248,7 @@ if($_POST['acao']){
 
 			$destino = $email_participante;
 			$assunto = utf8_decode("inscrição realizada (EFAS VG 2019)");
-			$link_redirect = "https://efas.euripedesbarsanulfo.org.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
+			$link_redirect = "https://secretaria.efasmt.com.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
 			require_once("email.php");
 
 			envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
