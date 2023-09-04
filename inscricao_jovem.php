@@ -1,6 +1,6 @@
 <?php include "sistema_mod_include.php";?>
 <?php
-conecta_mysql();
+$conexao = conecta_mysql();
 // consulta tema específico 12 e 13 anos
 $sql_consulta_tema_especifico_jovem = "SELECT curso.codigo_curso, curso.nome_curso, instituto.nome_instituto, evento.nome_evento, tema_curso.descricao_tema_curso, evento_curso.quantidade_vagas FROM evento_curso 
 											JOIN evento ON (evento_curso.codigo_evento = evento.codigo_evento)
@@ -8,7 +8,7 @@ $sql_consulta_tema_especifico_jovem = "SELECT curso.codigo_curso, curso.nome_cur
 											JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 											JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
 										 WHERE curso.codigo_tema_curso = '3' AND evento_curso.codigo_evento = '9' ORDER BY curso.codigo_tema_curso ASC";
-$query_consulta_tema_especifico_jovem = mysql_query($sql_consulta_tema_especifico_jovem) or mascara_erro_mysql($sql_consulta_tema_especifico_jovem);
+$query_consulta_tema_especifico_jovem = mysqli_query($conexao,$sql_consulta_tema_especifico_jovem) or mascara_erro_mysql($sql_consulta_tema_especifico_jovem);
 
 // consulta tema atual 12 e 13 anos
 $sql_consulta_tema_atual_jovem = "SELECT curso.codigo_curso, curso.nome_curso, instituto.nome_instituto, evento.nome_evento, tema_curso.descricao_tema_curso, evento_curso.quantidade_vagas FROM evento_curso 
@@ -17,16 +17,16 @@ $sql_consulta_tema_atual_jovem = "SELECT curso.codigo_curso, curso.nome_curso, i
 											JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 											JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
 										 WHERE curso.codigo_tema_curso = '5' AND evento_curso.codigo_evento = '9' ORDER BY curso.codigo_tema_curso ASC";
-$query_consulta_tema_atual_jovem = mysql_query($sql_consulta_tema_atual_jovem) or mascara_erro_mysql($sql_consulta_tema_atual_jovem);
+$query_consulta_tema_atual_jovem = mysqli_query($conexao,$sql_consulta_tema_atual_jovem) or mascara_erro_mysql($sql_consulta_tema_atual_jovem);
 
 $mensagem = campo_form_decodifica($_GET["mm"]);
 
 // consulta estados
 $sql_consulta_estado = "SELECT codigo_estado, uf_estado, nome_estado FROM estado ORDER BY nome_estado ASC";
-$query_consulta_estado = mysql_query($sql_consulta_estado) or mascara_erro_mysql($sql_consulta_estado);
-$num = mysql_num_rows($query_consulta_estado);
+$query_consulta_estado = mysqli_query($conexao,$sql_consulta_estado) or mascara_erro_mysql($sql_consulta_estado);
+$num = mysqli_num_rows($query_consulta_estado);
 for ($i = 0; $i < $num; $i++) {
-  $dados = mysql_fetch_array($query_consulta_estado);
+  $dados = mysqli_fetch_array($query_consulta_estado);
   $arrEstados[$dados['codigo_estado']] = $dados['uf_estado'];
 }
 
@@ -213,7 +213,7 @@ for ($i = 0; $i < $num; $i++) {
                             <span>Tema Específico (Jovem):</span>
                             <select id="curso_participante[]" name="curso_participante[]" required>
                                 <option value="">Selecione o Tema Específico</option>
-                                <?php while($resultado_consulta_tema_especifico_jovem = mysql_fetch_assoc($query_consulta_tema_especifico_jovem)) {?>
+                                <?php while($resultado_consulta_tema_especifico_jovem = mysqli_fetch_assoc($query_consulta_tema_especifico_jovem)) {?>
                                 <option value="<?php echo $resultado_consulta_tema_especifico_jovem["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_tema_especifico_jovem["codigo_curso"]) >= $resultado_consulta_tema_especifico_jovem["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><strong><?php echo utf8_encode($resultado_consulta_tema_especifico_jovem["nome_curso"]).$mensagem;?></strong></option>
                                 <?php $mensagem = '';}?>
                             </select>
@@ -224,7 +224,7 @@ for ($i = 0; $i < $num; $i++) {
                             <span>Tema Atual (Jovem):</span>
                             <select id="curso_participante[]" name="curso_participante[]" required>
                                 <option value="">Selecione o Tema Atual</option>
-                                <?php while($resultado_consulta_tema_atual_jovem = mysql_fetch_assoc($query_consulta_tema_atual_jovem)) {?>
+                                <?php while($resultado_consulta_tema_atual_jovem = mysqli_fetch_assoc($query_consulta_tema_atual_jovem)) {?>
                                 <option value="<?php echo $resultado_consulta_tema_atual_jovem["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_tema_atual_jovem["codigo_curso"]) >= $resultado_consulta_tema_atual_jovem["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><strong><?php echo utf8_encode($resultado_consulta_tema_atual_jovem["nome_curso"]).$mensagem;?></strong></option>
                                 <?php $mensagem = '';}?>
                             </select>
