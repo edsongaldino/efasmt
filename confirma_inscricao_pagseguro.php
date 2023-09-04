@@ -1,13 +1,12 @@
 <?php include("sistema_mod_include.php"); ?>
 <?php
-
+$conexao = conecta_mysql();
 if($_GET["codigo_inscricao_evento"]){
 $tipo_inscricao_evento = campo_form_decodifica($_GET["tipo"],true);
 
 $codigo_inscricao_evento = campo_form_decodifica($_GET["codigo_inscricao_evento"],true);
 //$codigo_inscricao_evento = $_GET["codigo_inscricao_evento"];
 
-conecta_mysql();
 // consulta inscrições de participantes vinculados ao usuário
 $sql_consulta_inscricao = "SELECT 
 									inscricao_evento.codigo_inscricao_evento, inscricao_evento.codigo_situacao_inscricao, inscricao_evento.valor_inscricao_evento, inscricao_evento.data_inscricao_evento,  inscricao_evento.tipo_inscricao,
@@ -19,14 +18,13 @@ $sql_consulta_inscricao = "SELECT
 									JOIN situacao_inscricao ON (situacao_inscricao.codigo_situacao_inscricao = inscricao_evento.codigo_situacao_inscricao)
 									JOIN participante ON (inscricao_evento.codigo_participante = participante.codigo_participante)
 								  WHERE inscricao_evento.codigo_inscricao_evento = '".$codigo_inscricao_evento."'";
-$query_consulta_inscricao = mysql_query($sql_consulta_inscricao) or mascara_erro_mysql($sql_consulta_inscricao);
-$resultado_consulta_inscricao = mysql_fetch_assoc($query_consulta_inscricao);
+$query_consulta_inscricao = mysqli_query($conexao,$sql_consulta_inscricao) or mascara_erro_mysql($sql_consulta_inscricao);
+$resultado_consulta_inscricao = mysqli_fetch_assoc($query_consulta_inscricao);
 
 }else{
 
 $codigo_inscricao_evento = $_POST["codigo_inscricao_evento"];
 
-conecta_mysql();
 // consulta inscrições de participantes vinculados ao usuário
 $sql_consulta_inscricao = "SELECT 
 									inscricao_evento.codigo_inscricao_evento, inscricao_evento.codigo_situacao_inscricao, inscricao_evento.valor_inscricao_evento, inscricao_evento.data_inscricao_evento, inscricao_evento.tipo_inscricao,
@@ -38,8 +36,8 @@ $sql_consulta_inscricao = "SELECT
 									JOIN situacao_inscricao ON (situacao_inscricao.codigo_situacao_inscricao = inscricao_evento.codigo_situacao_inscricao)
 									JOIN participante ON (inscricao_evento.codigo_participante = participante.codigo_participante)
 								  WHERE inscricao_evento.codigo_inscricao_evento = '".$codigo_inscricao_evento."'";
-$query_consulta_inscricao = mysql_query($sql_consulta_inscricao) or mascara_erro_mysql($sql_consulta_inscricao);
-$resultado_consulta_inscricao = mysql_fetch_assoc($query_consulta_inscricao);
+$query_consulta_inscricao = mysqli_query($conexao,$sql_consulta_inscricao) or mascara_erro_mysql($sql_consulta_inscricao);
+$resultado_consulta_inscricao = mysqli_fetch_assoc($query_consulta_inscricao);
 
 }
 ?>

@@ -4,15 +4,15 @@
     //get search term
     $estado = $_GET['estado'];
     
-    conecta_mysql();
+    $conexao = conecta_mysql();
 
     $sql = "SELECT codigo_cidade, nome_cidade FROM cidade WHERE codigo_estado = '".$estado."' ORDER BY nome_cidade ASC";  //busco todos os estados e ordeno pela sigla
-    $res = mysql_query($sql);
-    $num = mysql_num_rows($res);  //numero de estados encontrados
+    $res = mysqli_query($conexao,$sql);
+    $num = mysqli_num_rows($res);  //numero de estados encontrados
 
     for ($i = 0; $i < $num; $i++) {
-        $dados = mysql_fetch_array($res);
-        $arrCidades[$dados['codigo_cidade']] = utf8_encode($dados['nome_cidade']);
+        $dados = mysqli_fetch_array($res);
+        $arrCidades[$dados['codigo_cidade']] = mb_convert_encoding($dados['nome_cidade'],"UTF-8");
     }
 
     fecha_mysql();
