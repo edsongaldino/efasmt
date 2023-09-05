@@ -1,5 +1,5 @@
 <?php
-function fecha_mysql() {
-	mysql_close();
+function fecha_mysql($conexao) {
+	mysqli_close($conexao);
 }
 ?>

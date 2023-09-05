@@ -80,6 +80,6 @@ for ($i = 0; $i < $num; $i++) {
 	<?php include "site_mod_rodape.php";?>
 </div>
 <!--//footer-->
-<?php fecha_mysql();?>
+<?php fecha_mysql($conexao);?>
 </body>
 </html>

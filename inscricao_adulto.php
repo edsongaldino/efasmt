@@ -249,6 +249,6 @@ for ($i = 0; $i < $num; $i++) {
     <script type='text/javascript' src='consultar_participante.js'></script>
 </div>
 <!--//footer-->
-<?php fecha_mysql();?>
+<?php fecha_mysql($conexao);?>
 </body>
 </html>

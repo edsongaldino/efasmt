@@ -36,6 +36,6 @@
 
 	echo "[".implode(",",$opcoes_pes_rap)."]";
 	
-	fecha_mysql();
+	fecha_mysql($conexao);
 
 ?>

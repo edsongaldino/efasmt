@@ -15,7 +15,7 @@
         $arrCidades[$dados['codigo_cidade']] = mb_convert_encoding($dados['nome_cidade'],"UTF-8");
     }
 
-    fecha_mysql();
+    fecha_mysql($conexao);
 
     
 ?>

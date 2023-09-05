@@ -51,13 +51,13 @@ if($_POST['acao']){
 		if($query_inclui_participante && $query_inclui_dados_complementares && $query_inclui_usuario_participante && $query_inclui_curso_participante){
 
 			mysqli_query($conexao,"COMMIT");
-			fecha_mysql();
+			fecha_mysql($conexao);
 			redireciona("confirma_inscricao.php?tipo=".campo_form_codifica(1,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));
 			
 		} else {
 
 			mysqli_query($conexao,"ROLLBACK");	
-			fecha_mysql();
+			fecha_mysql($conexao);
 			redireciona("inscricao_crianca.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e a inscrição não foi realizada. Tente novamente!"));
 
 		}
@@ -111,18 +111,18 @@ if($_POST['acao']){
 			mysqli_query($conexao,"COMMIT");
 
 			$destino = $email_participante;
-			$assunto = utf8_decode("Inscrição Realizada com Sucesso (EFAS 2022) Várzea Grande");
+			$assunto = mb_convert_encoding("Inscrição Realizada com Sucesso (EFAS 2022) Várzea Grande",'UTF-8');
 			$link_redirect = "https://secretaria.efasmt.com.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
 			require_once("email.php");
 
 			envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
 
-			fecha_mysql();
+			fecha_mysql($conexao);
 			redireciona("confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));
 			
 		} else {	
 			mysqli_query($conexao,"ROLLBACK");
-			fecha_mysql();
+			fecha_mysql($conexao);
 			redireciona("inscricao_adulto.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e a inscrição não foi realizada. Tente novamente!"));
 		}
 	}
@@ -175,18 +175,18 @@ if($_POST['acao']){
 			mysqli_query($conexao,"COMMIT");
 
 			$destino = $email_participante;
-			$assunto = utf8_decode("inscrição realizada (EFAS 2022)");
+			$assunto = mb_convert_encoding("inscrição realizada (EFAS 2022)",'UTF-8');
 			$link_redirect = "https://secretaria.efasmt.com.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
 			require_once("email.php");
 
 			envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
 
-			fecha_mysql();
+			fecha_mysql($conexao);
 			redireciona("confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));
 			
 		} else {	
 			mysqli_query($conexao,"ROLLBACK");
-			fecha_mysql();
+			fecha_mysql($conexao);
 			redireciona("inscricao_jovem.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e a inscrição não foi realizada. Tente novamente!"));
 		}
 	}
@@ -238,18 +238,18 @@ if($_POST['acao']){
 			mysqli_query($conexao,"COMMIT");
 
 			$destino = $email_participante;
-			$assunto = utf8_decode("inscrição realizada (EFAS VG 2019)");
+			$assunto = mb_convert_encoding("inscrição realizada (EFAS VG 2019)",'UTF-8');
 			$link_redirect = "https://secretaria.efasmt.com.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
 			require_once("email.php");
 
 			envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
 
-			fecha_mysql();
+			fecha_mysql($conexao);
 			redireciona("confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));
 			
 		} else {	
 			mysqli_query($conexao,"ROLLBACK");
-			fecha_mysql();
+			fecha_mysql($conexao);
 			redireciona("inscricao_trabalhador.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e a inscrição não foi realizada. Tente novamente!"));
 		}
 	}
