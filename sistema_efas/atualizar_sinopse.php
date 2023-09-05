@@ -1,7 +1,7 @@
 <?php include("../sistema_mod_include.php"); ?>
 <link href="/sistema/css/style.css" rel="stylesheet">
 <?php
-conecta_mysql();
+$conexao = conecta_mysql();
 $mensagem_ok = null;
 $mensagem_erro = null;
 
@@ -9,8 +9,8 @@ $codigo_curso = campo_form_decodifica($_GET["codigo_curso"]);
 
 // consulta usuários cadastrados no sistema
 $sql_consulta_cursos = "SELECT curso.codigo_curso, curso.nome_curso, curso.sinopse_curso FROM curso WHERE curso.codigo_curso = '".$codigo_curso."'";
-$query_consulta_cursos = mysql_query($sql_consulta_cursos) or mascara_erro_mysql($sql_consulta_cursos);
-$resultado_consulta_curso = mysql_fetch_assoc($query_consulta_cursos);
+$query_consulta_cursos = mysqli_query($conexao,$sql_consulta_cursos) or mascara_erro_mysql($sql_consulta_cursos);
+$resultado_consulta_curso = mysqli_fetch_assoc($query_consulta_cursos);
 
 if(campo_form_decodifica($_POST["acao"]) == "atualizar-sinopse"){
 
@@ -19,7 +19,7 @@ if(campo_form_decodifica($_POST["acao"]) == "atualizar-sinopse"){
 
     // Atualiza curso
     $sql_atualiza_curso = "UPDATE curso SET sinopse_curso = '".$sinopse_curso."' WHERE curso.codigo_curso = '".$codigo_curso."'";
-    $query_atualiza_curso = mysql_query($sql_atualiza_curso) or mascara_erro_mysql($sql_atualiza_curso);
+    $query_atualiza_curso = mysqli_query($conexao,$sql_atualiza_curso) or mascara_erro_mysql($sql_atualiza_curso);
 
     if($query_atualiza_curso){
         $mensagem_ok = ";) O curso foi atualizado!";

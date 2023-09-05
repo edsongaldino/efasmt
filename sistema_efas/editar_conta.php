@@ -1,7 +1,7 @@
 <?php include("sistema_mod_include.php"); ?>
 <?php
 
-conecta_mysql();
+$conexao = conecta_mysql();
 
 $codigo_usuario = campo_form_decodifica($_GET["codigo_usuario"]);
 
@@ -16,8 +16,8 @@ JOIN participante ON usuario.codigo_participante = participante.codigo_participa
 LEFT JOIN telefone_participante ON telefone_participante.codigo_participante = participante.codigo_participante
 LEFT JOIN email_participante ON email_participante.codigo_participante = participante.codigo_participante
 WHERE usuario.codigo_usuario = '".$codigo_usuario."'";
-$query_consulta_usuario = mysql_query($sql_consulta_usuario) or mascara_erro_mysql($sql_consulta_usuario);
-$resultado_consulta_usuario = mysql_fetch_assoc($query_consulta_usuario);
+$query_consulta_usuario = mysqli_query($conexao,$sql_consulta_usuario) or mascara_erro_mysql($sql_consulta_usuario);
+$resultado_consulta_usuario = mysqli_fetch_assoc($query_consulta_usuario);
 
 
 
@@ -45,32 +45,32 @@ if(campo_form_decodifica($_POST['acao']) == "alterar_participante_adulto") {
 		
 	endif;
 	
-	mysql_query("BEGIN");
+	mysqli_query($conexao,"BEGIN");
 	
 	// altera participante
 	$sql_altera_participante = "UPDATE participante SET data_nascimento_participante = '".$data_nascimento_participante."', nome_participante = '".$nome_participante."', centro_espirita_participante = '".$centro_espirita_participante."' WHERE codigo_participante = '".$codigo_participante."'";
-	$query_altera_participante = mysql_query($sql_altera_participante) or mascara_erro_mysql($sql_altera_participante,"index.php");
+	$query_altera_participante = mysqli_query($conexao,$sql_altera_participante) or mascara_erro_mysql($sql_altera_participante,"index.php");
 
 	// altera telefone
 	$sql_altera_telefone_participante = "UPDATE telefone_participante SET numero_telefone_participante = '".$telefone_participante."' WHERE codigo_participante = '".$codigo_participante."'";
-	$query_altera_telefone_participante = mysql_query($sql_altera_telefone_participante) or mascara_erro_mysql($sql_altera_telefone_participante,"index.php");
+	$query_altera_telefone_participante = mysqli_query($conexao,$sql_altera_telefone_participante) or mascara_erro_mysql($sql_altera_telefone_participante,"index.php");
 	
 	// altera email
 	$sql_altera_email_participante = "UPDATE email_participante SET descricao_email_participante = '".$email_participante."' WHERE codigo_participante = '".$codigo_participante."'";
-	$query_altera_email_participante = mysql_query($sql_altera_email_participante) or mascara_erro_mysql($sql_altera_email_participante,"index.php");
+	$query_altera_email_participante = mysqli_query($conexao,$sql_altera_email_participante) or mascara_erro_mysql($sql_altera_email_participante,"index.php");
 
 	// altera usuario
 	$sql_altera_usuario = "UPDATE usuario SET email_usuario = '".$email_participante."', senha_usuario = '".$senha_usuario."' WHERE codigo_usuario = '".$codigo_usuario."'";
-	$query_altera_usuario = mysql_query($sql_altera_usuario) or mascara_erro_mysql($sql_altera_usuario,"index.php");
+	$query_altera_usuario = mysqli_query($conexao,$sql_altera_usuario) or mascara_erro_mysql($sql_altera_usuario,"index.php");
 	
 		
 	if($query_altera_participante && $query_altera_telefone_participante && $query_altera_email_participante && $query_altera_usuario){
-		mysql_query("COMMIT");
+		mysqli_query($conexao,"COMMIT");
 		fecha_mysql();
 		redireciona("editar_conta.php?codigo_usuario=".campo_form_codifica($codigo_usuario)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Usuário atualizado com sucesso!"));
 		
 	} else {	
-		mysql_query("ROLLBACK");
+		mysqli_query($conexao,"ROLLBACK");
 		fecha_mysql();
 		redireciona("editar_conta.php?codigo_usuario=".campo_form_codifica($codigo_usuario)."&me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e os dados não foram alterados. Tente novamente!"));
 	}
@@ -216,7 +216,7 @@ if(campo_form_decodifica($_POST['acao']) == "alterar_participante_adulto") {
 </div>
 <!-- /extra -->
 <?php
-fecha_mysql();
+fecha_mysql($conexao);
 ?>
 <div class="footer">
   <div class="footer-inner">

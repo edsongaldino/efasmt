@@ -18,7 +18,7 @@ if(campo_form_decodifica($_POST['acao']) == "gravar_participante") {
 	$email_usuario	 		= protege_campo($_POST['email_usuario']);
 	$senha_usuario 			= md5(protege_campo($_POST['senha_usuario']));
 	
-	conecta_mysql();
+	$conexao = conecta_mysql();
 	
 	if(verifica_duplicidade('usuario','email_usuario',$email_usuario) == true){
 		
@@ -37,27 +37,27 @@ if(campo_form_decodifica($_POST['acao']) == "gravar_participante") {
 		
 	}
 	
-	mysql_query("BEGIN");
+	mysqli_query($conexao,"BEGIN");
 	
 	// inclui participante
 	$sql_inclui_participante = "INSERT INTO participante (codigo_cidade, nome_participante, centro_espirita_participante, data_nascimento_participante) VALUES ('".$cidade_participante."', '".$nome_participante."', '".$centro_espirita_participante."', '".$data_nascimento_participante."')";
-	$query_inclui_participante = mysql_query($sql_inclui_participante) or mascara_erro_mysql($sql_inclui_participante,"index.php");
-	$codigo_participante = mysql_insert_id();
+	$query_inclui_participante = mysqli_query($conexao,$sql_inclui_participante) or mascara_erro_mysql($sql_inclui_participante,"index.php");
+	$codigo_participante = mysqli_insert_id($conexao);
 	
 	// inclui usuario
 	$sql_inclui_usuario = "INSERT INTO usuario (codigo_participante,codigo_tipo_usuario,email_usuario,senha_usuario,situacao_usuario) VALUES ('".$codigo_participante."','2','".$email_usuario."','".$senha_usuario."','A')";
-	$query_inclui_usuario = mysql_query($sql_inclui_usuario) or mascara_erro_mysql($sql_inclui_usuario,"index.php");
-	$codigo_usuario = mysql_insert_id();
+	$query_inclui_usuario = mysqli_query($conexao,$sql_inclui_usuario) or mascara_erro_mysql($sql_inclui_usuario,"index.php");
+	$codigo_usuario = mysqli_insert_id($conexao);
 	
 	// inclui telefones
 	for($i=0;$i<count($_POST['telefone_participante']);$i++){
 		
 	$sql_inclui_telefone = "INSERT INTO telefone_participante (codigo_participante,numero_telefone_participante) VALUES ('".$codigo_participante."','".protege_campo(limpa_campo($_POST['telefone_participante'][$i]))."')";
-	$query_inclui_telefone = mysql_query($sql_inclui_telefone) or mascara_erro_mysql($sql_inclui_telefone,"index.php");
+	$query_inclui_telefone = mysqli_query($conexao,$sql_inclui_telefone) or mascara_erro_mysql($sql_inclui_telefone,"index.php");
 	
 	}
 	
-	mysql_query("COMMIT");
+	mysqli_query($conexao,"COMMIT");
 	
 	if($query_inclui_participante){
 			

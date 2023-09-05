@@ -1,7 +1,7 @@
 <?php include("../sistema_mod_include.php"); ?>
 <link href="/sistema/css/style.css" rel="stylesheet">
 <?php
-conecta_mysql();
+$conexao = conecta_mysql();
 $mensagem_ok = null;
 $mensagem_erro = null;
 
@@ -11,8 +11,8 @@ $codigo_curso = campo_form_decodifica($_GET["codigo_curso"]);
 $sql_consulta_cursos = "SELECT curso.codigo_curso, curso.nome_curso, evento_curso.quantidade_vagas FROM curso 
                             JOIN evento_curso ON evento_curso.codigo_curso = curso.codigo_curso 
                             WHERE curso.codigo_curso = '".$codigo_curso."' AND evento_curso.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."'";
-$query_consulta_cursos = mysql_query($sql_consulta_cursos) or mascara_erro_mysql($sql_consulta_cursos);
-$resultado_consulta_curso = mysql_fetch_assoc($query_consulta_cursos);
+$query_consulta_cursos = mysqli_query($conexao,$sql_consulta_cursos) or mascara_erro_mysql($sql_consulta_cursos);
+$resultado_consulta_curso = mysqli_fetch_assoc($query_consulta_cursos);
 
 if(campo_form_decodifica($_POST["acao"]) == "atualizar-vagas"){
 
@@ -21,7 +21,7 @@ if(campo_form_decodifica($_POST["acao"]) == "atualizar-vagas"){
 
     // Atualiza curso
     $sql_atualiza_curso = "UPDATE evento_curso SET quantidade_vagas = '".$vagas_curso."' WHERE codigo_curso = '".$codigo_curso."' AND codigo_evento = '".$_SESSION["codigo_evento_acesso"]."'";
-    $query_atualiza_curso = mysql_query($sql_atualiza_curso) or mascara_erro_mysql($sql_atualiza_curso);
+    $query_atualiza_curso = mysqli_query($conexao,$sql_atualiza_curso) or mascara_erro_mysql($sql_atualiza_curso);
 
     if($query_atualiza_curso){
         $mensagem_ok = ";) O curso foi atualizado!";
@@ -142,7 +142,7 @@ if(campo_form_decodifica($_POST["acao"]) == "atualizar-vagas"){
 <?php }else{?>
 <form action="atualizar_vagas.php" method="post" enctype="multipart/form-data">
         
-    <div class="mensagem-transferir-atendimento">Insira Abaixo o novo número de vagas do Curso: <b><?php echo utf8_encode($resultado_consulta_curso["nome_curso"]);?></b></div>
+    <div class="mensagem-transferir-atendimento">Insira Abaixo o novo número de vagas do Curso: <b><?php echo $resultado_consulta_curso["nome_curso"];?></b></div>
     <input type="hidden" name="acao" value="<?php echo campo_form_codifica("atualizar-vagas"); ?>">
     <input type="hidden" name="codigo_curso" id="codigo_curso" class="codigo_curso" value="<?php echo $codigo_curso;?>">
     <input type="text" class="vagas-curso" name="vagas_curso" id="vagas_curso" value="<?php echo $resultado_consulta_curso["quantidade_vagas"];?>">
@@ -152,4 +152,4 @@ if(campo_form_decodifica($_POST["acao"]) == "atualizar-vagas"){
 
 </form>
 <?php }?>
-<?php fecha_mysql(); ?>
+<?php fecha_mysql($conexao); ?>

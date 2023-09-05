@@ -1,7 +1,7 @@
 <?php include("sistema_mod_include.php"); ?>
 <?php
 $mensagem = campo_form_decodifica($_GET["mm"]);
-conecta_mysql();
+$conexao = conecta_mysql();
 
 $codigo_participante = campo_form_decodifica($_GET["codigo_participante"]);
 if($codigo_participante){
@@ -60,12 +60,12 @@ $sql_consulta_inscricoes = "SELECT
                   LEFT JOIN email_participante ON (participante.codigo_participante = email_participante.codigo_participante)
 								  WHERE inscricao_evento.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."'".$sql_where_consulta." 
                   ORDER BY participante.nome_participante ASC";
-$query_consulta_inscricoes = mysql_query($sql_consulta_inscricoes) or mascara_erro_mysql($sql_consulta_inscricoes);
-$total_inscricoes = mysql_num_rows($query_consulta_inscricoes);
+$query_consulta_inscricoes = mysqli_query($conexao,$sql_consulta_inscricoes) or mascara_erro_mysql($sql_consulta_inscricoes);
+$total_inscricoes = mysqli_num_rows($query_consulta_inscricoes);
 
 // consulta situacaos
 $sql_consulta_situacao_inscricao = "SELECT codigo_situacao_inscricao, descricao_situacao_inscricao FROM situacao_inscricao";
-$query_consulta_situacao_inscricao = mysql_query($sql_consulta_situacao_inscricao) or mascara_erro_mysql($sql_consulta_situacao_inscricao);
+$query_consulta_situacao_inscricao = mysqli_query($conexao,$sql_consulta_situacao_inscricao) or mascara_erro_mysql($sql_consulta_situacao_inscricao);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -119,7 +119,7 @@ $query_consulta_situacao_inscricao = mysql_query($sql_consulta_situacao_inscrica
 
 								<select name="situacao" id="situacao" class="span2" placeholder="Situação">
 									<option value="">Filtrar pela situação</option>
-									<?php while($resultado_consulta_situacao = mysql_fetch_assoc($query_consulta_situacao_inscricao)) {?>
+									<?php while($resultado_consulta_situacao = mysqli_fetch_assoc($query_consulta_situacao_inscricao)) {?>
 									<option value="<?php echo $resultado_consulta_situacao["codigo_situacao_inscricao"];?>"><?php echo utf8_encode($resultado_consulta_situacao["descricao_situacao_inscricao"]);?></option>
 									<?php }?>
 								</select>
@@ -162,7 +162,7 @@ $query_consulta_situacao_inscricao = mysql_query($sql_consulta_situacao_inscrica
                 </thead>
                 <tbody>
                 
-                  <?php while($resultado_consulta_inscricoes = mysql_fetch_assoc($query_consulta_inscricoes)) {?>
+                  <?php while($resultado_consulta_inscricoes = mysqli_fetch_assoc($query_consulta_inscricoes)) {?>
                   <tr>
                     <?php if($resultado_consulta_inscricoes["validacao_cracha"] == "S"){?>
                     <td> <a href="javascript: confirma_acao('Remover a validação do crachá deste participante?','validar_cracha.php?acao=<?php echo campo_form_codifica("N");?>&codigo_inscricao_evento=<?php echo campo_form_codifica($resultado_consulta_inscricoes["codigo_inscricao_evento"]);?>');" class="btn btn-small btn-success" title="Validar Crachá"><i class="btn-icon-only icon-thumbs-up"> </i></a></td>
@@ -207,9 +207,9 @@ $query_consulta_situacao_inscricao = mysql_query($sql_consulta_situacao_inscrica
   <!-- /extra-inner --> 
 </div>
 <?php
-mysql_free_result($query_consulta_inscricoes);
+mysqli_free_result($query_consulta_inscricoes);
 
-fecha_mysql();
+fecha_mysql($conexao);
 ?>
 <!-- /extra -->
 <div class="footer">

@@ -9,7 +9,7 @@ if(campo_form_decodifica($_POST["acao"]) == "entrar") {
 	$email_usuario = protege_campo($_POST['email_usuario']);
 	$senha_usuario = md5(protege_campo($_POST['senha_usuario']));
 	
-	conecta_mysql();
+	$conexao = conecta_mysql();
 	
 	// autenticacao
 	$sql_autentica = "
@@ -21,11 +21,11 @@ if(campo_form_decodifica($_POST["acao"]) == "entrar") {
 				  WHERE usuario.email_usuario = '".$email_usuario."' AND usuario.senha_usuario = '".$senha_usuario."'
 				  LIMIT 1
 				  ";
-	$query_autentica = mysql_query($sql_autentica); //or mascara_erro_mysql($sql_autentica)
-	$resultado_autentica = mysql_fetch_assoc($query_autentica);
-	$total_autentica = mysql_num_rows($query_autentica);
+	$query_autentica = mysqli_query($conexao,$sql_autentica); //or mascara_erro_mysql($sql_autentica)
+	$resultado_autentica = mysqli_fetch_assoc($query_autentica);
+	$total_autentica = mysqli_num_rows($query_autentica);
 	
-	mysql_free_result($query_autentica);
+	mysqli_free_result($query_autentica);
 
 	if($total_autentica) {
 			
@@ -39,11 +39,11 @@ if(campo_form_decodifica($_POST["acao"]) == "entrar") {
 		$_SESSION["nome_usuario_acesso"] = $resultado_autentica['nome_participante'];
 		$_SESSION["codigo_evento_acesso"] = $resultado_autentica['codigo_evento'];
 	
-		fecha_mysql();
+		fecha_mysql($conexao);
 
 		redireciona("relatorios.php");
 	} else {
-		fecha_mysql();
+		fecha_mysql($conexao);
 		redireciona("index.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Usuário ou senha informados estão incorretos!"));
 	}
 

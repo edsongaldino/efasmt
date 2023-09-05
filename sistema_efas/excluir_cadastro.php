@@ -4,7 +4,7 @@
 // codigo
 $codigo = campo_form_decodifica($_GET["codigo"]);
 
-conecta_mysql();
+$conexao = conecta_mysql();
 
 if($codigo == $_SESSION["codigo_participante"]){
 	
@@ -13,11 +13,11 @@ if($codigo == $_SESSION["codigo_participante"]){
 }
 // inicio da transacao
 $begin_transacao = true;
-$query_begin = mysql_query("BEGIN");
+$query_begin = mysqli_query($conexao,"BEGIN");
 
 // excluir (usuário participante)
 $sql_excluir_usuario_participante = "DELETE FROM usuario_participante WHERE codigo_participante = '".$codigo."'";
-$query_excluir_usuario_participante = mysql_query($sql_excluir_usuario_participante) or mascara_erro_mysql($sql_excluir_usuario_participante);
+$query_excluir_usuario_participante = mysqli_query($conexao,$sql_excluir_usuario_participante) or mascara_erro_mysql($sql_excluir_usuario_participante);
 
 if($query_excluir_usuario_participante) {
 	$sql_log[] = $sql_excluir_usuario_participante;
@@ -27,7 +27,7 @@ if($query_excluir_usuario_participante) {
 
 // excluir (Telefone participante)
 $sql_excluir_telefone_participante = "DELETE FROM telefone_participante WHERE codigo_participante = '".$codigo."'";
-$query_excluir_telefone_participante = mysql_query($sql_excluir_telefone_participante) or mascara_erro_mysql($sql_excluir_telefone_participante);
+$query_excluir_telefone_participante = mysqli_query($conexao,$sql_excluir_telefone_participante) or mascara_erro_mysql($sql_excluir_telefone_participante);
 
 if($query_excluir_telefone_participante) {
 	$sql_log[] = $sql_excluir_telefone_participante;
@@ -37,7 +37,7 @@ if($query_excluir_telefone_participante) {
 
 // excluir (E-mail participante)
 $sql_excluir_email_participante = "DELETE FROM email_participante WHERE codigo_participante = '".$codigo."'";
-$query_excluir_email_participante = mysql_query($sql_excluir_email_participante) or mascara_erro_mysql($sql_excluir_email_participante);
+$query_excluir_email_participante = mysqli_query($conexao,$sql_excluir_email_participante) or mascara_erro_mysql($sql_excluir_email_participante);
 
 if($query_excluir_email_participante) {
 	$sql_log[] = $sql_excluir_email_participante;
@@ -47,7 +47,7 @@ if($query_excluir_email_participante) {
 
 // excluir (Comissão trabalho participante)
 $sql_excluir_comissao_trabalho_participante = "DELETE FROM comissao_trabalho_participante WHERE codigo_participante = '".$codigo."'";
-$query_excluir_comissao_trabalho_participante = mysql_query($sql_excluir_comissao_trabalho_participante) or mascara_erro_mysql($sql_excluir_comissao_trabalho_participante);
+$query_excluir_comissao_trabalho_participante = mysqli_query($conexao,$sql_excluir_comissao_trabalho_participante) or mascara_erro_mysql($sql_excluir_comissao_trabalho_participante);
 
 if($query_excluir_comissao_trabalho_participante) {
 	$sql_log[] = $sql_excluir_comissao_trabalho_participante;
@@ -57,7 +57,7 @@ if($query_excluir_comissao_trabalho_participante) {
 
 // excluir (Dados complementares)
 $sql_excluir_dados_complementares = "DELETE FROM dados_complementares WHERE codigo_participante = '".$codigo."'";
-$query_excluir_dados_complementares = mysql_query($sql_excluir_dados_complementares) or mascara_erro_mysql($sql_excluir_dados_complementares);
+$query_excluir_dados_complementares = mysqli_query($conexao,$sql_excluir_dados_complementares) or mascara_erro_mysql($sql_excluir_dados_complementares);
 
 if($query_excluir_dados_complementares) {
 	$sql_log[] = $sql_excluir_dados_complementares;
@@ -67,7 +67,7 @@ if($query_excluir_dados_complementares) {
 
 // excluir (Participante Curso)
 $sql_excluir_participante_evento_curso = "DELETE FROM participante_evento_curso WHERE codigo_participante = '".$codigo."'";
-$query_excluir_participante_evento_curso = mysql_query($sql_excluir_participante_evento_curso) or mascara_erro_mysql($sql_excluir_participante_evento_curso);
+$query_excluir_participante_evento_curso = mysqli_query($conexao,$sql_excluir_participante_evento_curso) or mascara_erro_mysql($sql_excluir_participante_evento_curso);
 
 if($query_excluir_participante_evento_curso) {
 	$sql_log[] = $sql_excluir_participante_evento_curso;
@@ -77,7 +77,7 @@ if($query_excluir_participante_evento_curso) {
 
 // excluir (participante)
 $sql_excluir_participante = "DELETE FROM participante WHERE codigo_participante = '".$codigo."'";
-$query_excluir_participante = mysql_query($sql_excluir_participante) or mascara_erro_mysql($sql_excluir_participante);
+$query_excluir_participante = mysqli_query($conexao,$sql_excluir_participante) or mascara_erro_mysql($sql_excluir_participante);
 
 if($query_excluir_participante) {
 	$sql_log[] = $sql_excluir_participante;
@@ -88,16 +88,16 @@ if($query_excluir_participante) {
 	
 if(!$flag_erro_sql) {
 	// fim da transacao
-	$query_rollback = mysql_query("COMMIT");
+	$query_rollback = mysqli_query($conexao,"COMMIT");
 	
-	fecha_mysql();
+	fecha_mysql($conexao);
 		
 	redireciona("meus_cadastros.php?me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição removida com sucesso"));
 } else {
 	// fim da transacao
-	$query_rollback = mysql_query("ROLLBACK");
+	$query_rollback = mysqli_query($conexao,"ROLLBACK");
 	
-	fecha_mysql();
+	fecha_mysql($conexao);
 	
 	redireciona("meus_cadastros.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Não foi possível excluir a inscrição"));
 }

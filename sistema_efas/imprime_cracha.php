@@ -2,7 +2,7 @@
 <?php
 //require_once("ferramenta/phpqrcode/qrlib.php");
 $codigo_participante = $_GET["codigo_participante"];
-conecta_mysql();
+$conexao = conecta_mysql();
 // consulta inscrições de participantes vinculados ao usuário
 $sql_consulta_dados_cracha = "
 							SELECT 
@@ -17,8 +17,8 @@ $sql_consulta_dados_cracha = "
 							LEFT JOIN dados_complementares ON (participante.codigo_participante = dados_complementares.codigo_participante)
 							WHERE inscricao_evento.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."' AND participante.codigo_participante = '".$codigo_participante."'
 							";
-$query_consulta_dados_cracha = mysql_query($sql_consulta_dados_cracha) or mascara_erro_mysql($sql_consulta_dados_cracha);
-$resultado_consulta_dados_cracha = mysql_fetch_assoc($query_consulta_dados_cracha);
+$query_consulta_dados_cracha = mysqli_query($conexao,$sql_consulta_dados_cracha) or mascara_erro_mysql($sql_consulta_dados_cracha);
+$resultado_consulta_dados_cracha = mysqli_fetch_assoc($query_consulta_dados_cracha);
 
 $idade = calcula_idade($resultado_consulta_dados_cracha["data_nascimento_participante"]);
 
@@ -29,7 +29,7 @@ $sql_consulta_curso = "SELECT
 							JOIN curso ON (participante_evento_curso.codigo_curso = curso.codigo_curso)
 							JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso) 
 						WHERE participante_evento_curso.codigo_participante = '".$codigo_participante."' AND participante_evento_curso.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."' ORDER BY curso.codigo_tema_curso DESC";
-$query_consulta_curso = mysql_query($sql_consulta_curso) or mascara_erro_mysql($sql_consulta_curso);	
+$query_consulta_curso = mysqli_query($conexao,$sql_consulta_curso) or mascara_erro_mysql($sql_consulta_curso);	
 
 if($resultado_consulta_dados_cracha["nome_comissao_trabalho"]){
 	
@@ -48,7 +48,7 @@ if($resultado_consulta_dados_cracha["nome_comissao_trabalho"]){
 	$cracha.= '<div class="nome_participante_cracha">'.$resultado_consulta_dados_cracha["nome_participante_cracha"].'</div>';
 	$cracha.= '<div class="nome_participante">'.$resultado_consulta_dados_cracha["nome_participante"].'</div>';
 	$cracha.= '<div class="nome_responsavel">'.$resultado_consulta_dados_cracha["nome_responsavel"]." - ".masc_tel($resultado_consulta_dados_cracha["telefone_responsavel"]).'</div>';
-	while($resultado_consulta_curso = mysql_fetch_assoc($query_consulta_curso)){
+	while($resultado_consulta_curso = mysqli_fetch_assoc($query_consulta_curso)){
 	$cracha.= '<div class="nome_curso_crianca">'.utf8_encode($resultado_consulta_curso["nome_tema_curso"])." - <strong>".utf8_encode($resultado_consulta_curso["nome_curso"]).'</strong></div>';
 	}
 	$cracha.= '</div>';
@@ -59,7 +59,7 @@ if($resultado_consulta_dados_cracha["nome_comissao_trabalho"]){
 	$cracha.= '<div class="dados_participante">';
 	$cracha.= '<div class="nome_participante_cracha">'.$resultado_consulta_dados_cracha["nome_participante_cracha"].'</div>';
 	$cracha.= '<div class="nome_participante">'.$resultado_consulta_dados_cracha["nome_participante"].'</div>';
-	while($resultado_consulta_curso = mysql_fetch_assoc($query_consulta_curso)){
+	while($resultado_consulta_curso = mysqli_fetch_assoc($query_consulta_curso)){
 	$cracha.= '<div class="nome_curso">'.utf8_encode($resultado_consulta_curso["nome_tema_curso"])." - ".utf8_encode($resultado_consulta_curso["nome_curso"]).'</div>';
 	}
 	$cracha.= '</div>';

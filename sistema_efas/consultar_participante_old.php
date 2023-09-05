@@ -2,10 +2,10 @@
 <?php
  
 $nome_participante = $_POST['nome_participante'];
-conecta_mysql();
+$conexao = conecta_mysql();
 $sql_participante = "SELECT nome_participante FROM participante WHERE nome_participante LIKE '%".$nome_participante."%' LIMIT 1";
-$query_participante = mysql_query($sql_participante);
-$resultado_participante = mysql_fetch_assoc($query_participante);
+$query_participante = mysqli_query($conexao,$sql_participante);
+$resultado_participante = mysqli_fetch_assoc($query_participante);
  
 $dados['nome_participante_cracha'] = (string) $resultado_participante["nome_participante_cracha"];
 $dados['data_nascimento_participante']     = (string) $resultado_participante["data_nascimento_participante"];
@@ -15,5 +15,5 @@ $dados['centro_espirita_participante']  = (string) $resultado_participante["cent
  
 echo json_encode($dados);
 
-fecha_mysql();
+fecha_mysql($conexao);
 ?>

@@ -1,7 +1,7 @@
 <?php include("../sistema_mod_include.php"); ?>
 <link href="/sistema/css/style.css" rel="stylesheet">
 <?php
-conecta_mysql();
+$conexao = conecta_mysql();
 $mensagem_ok = null;
 $mensagem_erro = null;
 
@@ -9,8 +9,8 @@ $codigo_curso = campo_form_decodifica($_GET["codigo_curso"]);
 
 // consulta usuários cadastrados no sistema
 $sql_consulta_cursos = "SELECT curso.codigo_curso, curso.nome_curso, curso.sinopse_curso FROM curso WHERE curso.codigo_curso = '".$codigo_curso."'";
-$query_consulta_cursos = mysql_query($sql_consulta_cursos) or mascara_erro_mysql($sql_consulta_cursos);
-$resultado_consulta_curso = mysql_fetch_assoc($query_consulta_cursos);
+$query_consulta_cursos = mysqli_query($conexao,$sql_consulta_cursos) or mascara_erro_mysql($sql_consulta_cursos);
+$resultado_consulta_curso = mysqli_fetch_assoc($query_consulta_cursos);
 ?>
 <style>
 
@@ -128,4 +128,4 @@ $resultado_consulta_curso = mysql_fetch_assoc($query_consulta_cursos);
 <div class="nome-curso"><?php echo utf8_encode($resultado_consulta_curso["nome_curso"]);?></div>
 <div class="sinopse-curso"><?php if($resultado_consulta_curso["sinopse_curso"]): echo $resultado_consulta_curso["sinopse_curso"]; else: echo ":( A sinopse deste curso ainda não foi cadastrada!"; endif;?></div>
 
-<?php fecha_mysql(); ?>
+<?php fecha_mysql($conexao); ?>

@@ -1,7 +1,7 @@
 <?php include("sistema_mod_include.php"); ?>
 <?php
 
-conecta_mysql();
+$conexao = conecta_mysql();
 
 $codigo_curso = campo_form_decodifica($_GET["codigo_curso"]);
 
@@ -13,8 +13,8 @@ JOIN participante_evento_curso ON (participante_evento_curso.codigo_curso = curs
 JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
 JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 WHERE evento_curso.codigo_evento = '".$codigo_curso."' GROUP BY curso.codigo_curso";
-$query_consulta_curso = mysql_query($sql_consulta_curso) or mascara_erro_mysql($sql_consulta_curso);
-$resultado_consulta_curso = mysql_fetch_assoc($query_consulta_curso);
+$query_consulta_curso = mysqli_query($conexao,$sql_consulta_curso) or mascara_erro_mysql($sql_consulta_curso);
+$resultado_consulta_curso = mysqli_fetch_assoc($query_consulta_curso);
 
 
 
@@ -34,32 +34,32 @@ if(campo_form_decodifica($_POST['acao']) == "alterar_curso") {
 	$codigo_curso			 						= protege_campo($_POST['codigo_curso']);
 	
 	conecta_mysql();
-	mysql_query("BEGIN");
+	mysqli_query($conexao,"BEGIN");
 	
 	// altera participante
 	$sql_altera_participante = "UPDATE participante SET data_nascimento_participante = '".$data_nascimento_participante."', nome_participante = '".$nome_participante."', centro_espirita_participante = '".$centro_espirita_participante."' WHERE codigo_participante = '".$codigo_participante."'";
-	$query_altera_participante = mysql_query($sql_altera_participante) or mascara_erro_mysql($sql_altera_participante,"index.php");
+	$query_altera_participante = mysqli_query($conexao,$sql_altera_participante) or mascara_erro_mysql($sql_altera_participante,"index.php");
 
 	// altera telefone
 	$sql_altera_telefone_participante = "UPDATE telefone_participante SET numero_telefone_participante = '".$telefone_participante."' WHERE codigo_participante = '".$codigo_participante."'";
-	$query_altera_telefone_participante = mysql_query($sql_altera_telefone_participante) or mascara_erro_mysql($sql_altera_telefone_participante,"index.php");
+	$query_altera_telefone_participante = mysqli_query($conexao,$sql_altera_telefone_participante) or mascara_erro_mysql($sql_altera_telefone_participante,"index.php");
 	
 	// altera email
 	$sql_altera_email_participante = "UPDATE email_participante SET descricao_email_participante = '".$email_participante."' WHERE codigo_participante = '".$codigo_participante."'";
-	$query_altera_email_participante = mysql_query($sql_altera_email_participante) or mascara_erro_mysql($sql_altera_email_participante,"index.php");
+	$query_altera_email_participante = mysqli_query($conexao,$sql_altera_email_participante) or mascara_erro_mysql($sql_altera_email_participante,"index.php");
 
 	// altera curso
 	$sql_altera_curso = "UPDATE curso SET email_curso = '".$email_participante."', senha_curso = '".$senha_curso."' WHERE codigo_curso = '".$codigo_curso."'";
-	$query_altera_curso = mysql_query($sql_altera_curso) or mascara_erro_mysql($sql_altera_curso,"index.php");
+	$query_altera_curso = mysqli_query($conexao,$sql_altera_curso) or mascara_erro_mysql($sql_altera_curso,"index.php");
 	
 		
 	if($query_altera_participante && $query_altera_telefone_participante && $query_altera_email_participante && $query_altera_curso){
-		mysql_query("COMMIT");
+		mysqli_query($conexao,"COMMIT");
 		fecha_mysql();
 		redireciona("editar_conta.php?codigo_curso=".campo_form_codifica($codigo_curso)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Usuário atualizado com sucesso!"));
 		
 	} else {	
-		mysql_query("ROLLBACK");
+		mysqli_query($conexao,"ROLLBACK");
 		fecha_mysql();
 		redireciona("editar_conta.php?codigo_curso=".campo_form_codifica($codigo_curso)."&me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e os dados não foram alterados. Tente novamente!"));
 	}
@@ -205,7 +205,7 @@ if(campo_form_decodifica($_POST['acao']) == "alterar_curso") {
 </div>
 <!-- /extra -->
 <?php
-fecha_mysql();
+fecha_mysql($conexao);
 ?>
 <div class="footer">
   <div class="footer-inner">

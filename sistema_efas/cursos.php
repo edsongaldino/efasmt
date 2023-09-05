@@ -1,6 +1,6 @@
 <?php include("sistema_mod_include.php"); ?>
 <?php
-conecta_mysql();
+$conexao = conecta_mysql();
 
 // processamento da ação
 if(campo_form_decodifica($_POST["acao"]) == "buscar_curso") {
@@ -41,17 +41,17 @@ $sql_consulta = "
 					JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 				 WHERE evento_curso.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."' ".$sql_where_consulta." GROUP BY curso.codigo_curso ORDER BY curso.codigo_curso ASC 
 ";
-$query_consulta = mysql_query($sql_consulta) or mascara_erro_mysql($sql_consulta);
-$total_consulta = mysql_num_rows($query_consulta);
+$query_consulta = mysqli_query($conexao,$sql_consulta) or mascara_erro_mysql($sql_consulta);
+$total_consulta = mysqli_num_rows($query_consulta);
 
 
 // consulta temas
 $sql_consulta_tema = "SELECT codigo_tema_curso, descricao_tema_curso FROM tema_curso";
-$query_consulta_tema = mysql_query($sql_consulta_tema) or mascara_erro_mysql($sql_consulta_tema);
+$query_consulta_tema = mysqli_query($conexao,$sql_consulta_tema) or mascara_erro_mysql($sql_consulta_tema);
 
 // consulta institutos
 $sql_consulta_institutos = "SELECT codigo_instituto, nome_instituto FROM instituto";
-$query_consulta_institutos = mysql_query($sql_consulta_institutos) or mascara_erro_mysql($sql_consulta_institutos);
+$query_consulta_institutos = mysqli_query($conexao,$sql_consulta_institutos) or mascara_erro_mysql($sql_consulta_institutos);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -121,14 +121,14 @@ $query_consulta_institutos = mysql_query($sql_consulta_institutos) or mascara_er
 
 								<select name="codigo_instituto" id="codigo_instituto" class="span3" placeholder="Instituto">
 									<option value="">Filtrar pela Instituto</option>
-									<?php while($resultado_consulta_instituto = mysql_fetch_assoc($query_consulta_institutos)) {?>
+									<?php while($resultado_consulta_instituto = mysqli_fetch_assoc($query_consulta_institutos)) {?>
 									<option value="<?php echo $resultado_consulta_instituto["codigo_instituto"];?>"><?php echo utf8_encode($resultado_consulta_instituto["nome_instituto"]);?></option>
 									<?php }?>
 								</select>
 
                 <select name="codigo_tema_curso" id="codigo_tema_curso" class="span3" placeholder="Tema">
 									<option value="">Filtrar por Tema</option>
-									<?php while($resultado_consulta_situacao = mysql_fetch_assoc($query_consulta_tema)) {?>
+									<?php while($resultado_consulta_situacao = mysqli_fetch_assoc($query_consulta_tema)) {?>
 									<option value="<?php echo $resultado_consulta_situacao["codigo_tema_curso"];?>"><?php echo utf8_encode($resultado_consulta_situacao["descricao_tema_curso"]);?></option>
 									<?php }?>
 								</select>
@@ -161,12 +161,12 @@ $query_consulta_institutos = mysql_query($sql_consulta_institutos) or mascara_er
                   </tr>
                 </thead>
                 <tbody>
-                  <?php while($resultado_consulta_cursos = mysql_fetch_assoc($query_consulta)) {?>
+                  <?php while($resultado_consulta_cursos = mysqli_fetch_assoc($query_consulta)) {?>
                   <tr>
-                  	<td> <?php echo utf8_encode($resultado_consulta_cursos["referencia"]);?> </td>
-                    <td> <?php echo utf8_encode($resultado_consulta_cursos["nome_curso"]);?> </td>
-                    <td> <?php echo utf8_encode($resultado_consulta_cursos["descricao_tema_curso"]);?> </td>
-                    <td> <?php echo utf8_encode($resultado_consulta_cursos["nome_instituto"]);?> </td>
+                  	<td> <?php echo $resultado_consulta_cursos["referencia"];?> </td>
+                    <td> <?php echo $resultado_consulta_cursos["nome_curso"];?> </td>
+                    <td> <?php echo $resultado_consulta_cursos["descricao_tema_curso"];?> </td>
+                    <td> <?php echo $resultado_consulta_cursos["nome_instituto"];?> </td>
                     <td> <?php echo $resultado_consulta_cursos["quantidade_vagas"];?> </td>
                     <td> <?php echo calcula_total_inscritos_curso($resultado_consulta_cursos["codigo_curso"]);?> </td>
                     <td class="td-actions">
@@ -188,9 +188,9 @@ $query_consulta_institutos = mysql_query($sql_consulta_institutos) or mascara_er
   <!-- /extra-inner --> 
 </div>
 <?php
-mysql_free_result($query_consulta);
+mysqli_free_result($query_consulta);
 
-fecha_mysql();
+fecha_mysql($conexao);
 ?>
 <!-- /extra -->
 <div class="footer">
