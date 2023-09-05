@@ -1,5 +1,5 @@
 <?php
-# este conteúdo é gerado automaticamente pelo execução do arquivo funcao_php_auto.php
+# este conteï¿½do ï¿½ gerado automaticamente pelo execuï¿½ï¿½o do arquivo funcao_php_auto.php
 
 include("funcao_php/mascara_cpf.php");
 include("funcao_php/valida_cnpj.php");
@@ -51,8 +51,6 @@ include("funcao_php/converte_valor_decimal.php");
 include("funcao_php/verifica_quantidade.php");
 include("funcao_php/gera_senha.php");
 include("funcao_php/verifica_pendencias.php");
-include("funcao_php/atualiza_situacao_imovel.php");
-include("funcao_php/atualiza_processo_imovel.php");
 include("funcao_php/calcula_idade.php");
 include("funcao_php/calcula_total_inscritos.php");
 include("funcao_php/verifica_inscricao_trabalhador.php");

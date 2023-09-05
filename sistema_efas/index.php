@@ -70,7 +70,7 @@ if(campo_form_decodifica($_POST["acao"]) == "entrar") {
 
 <div class="container">
 <?php if($mensagem){?>
-<div class="alert alert-success"><?php echo utf8_encode($mensagem);?></div>
+<div class="alert alert-success"><?php echo $mensagem;?></div>
 <?php }?>
 </div>
 <div class="logo_sistema"></div>
