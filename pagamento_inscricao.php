@@ -58,6 +58,8 @@ curl_close($curl);
 
 $xml = simplexml_load_string($xml);
 
+var_dump($xml);
+
 if(count($xml->error) > 0){
   echo "XML ERRO";
   exit();
@@ -67,4 +69,4 @@ if(count($xml->error) > 0){
 //$db->query("UPDATE pedido SET token = '{$xml->code}' WHERE id = $pedido_id"); 
 
 // Redireciona o comprador para a página de pagamento
-header('Location: https://pagseguro.uol.com.br/v2/checkout/payment.html?code='.$xml->code);
+header('Location: https://ws.pagseguro.uol.com.br/v2/checkout/payment.html?code='.$xml->code);
