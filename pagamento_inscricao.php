@@ -10,10 +10,16 @@ $data['token'] = '1a82b6b2-366e-4b0a-928e-1ee0c2cd2c623fcd8cd64eed975a9a8469b97e
 $data['currency'] = 'BRL';
 
 $data['itemId1'] = "1";
-$data['itemDescription1'] = "Descrição do item/produto";
-$data['itemAmount1'] = '199.90';
+$data['itemDescription1'] = "Inscrição Infantil";
+$data['itemAmount1'] = '12.50';
 $data['itemQuantity1'] = '1';
 $data['itemWeight1'] = '0';
+
+$data['itemId2'] = "1";
+$data['itemDescription2'] = "Inscrição Adulto";
+$data['itemAmount2'] = '25.00';
+$data['itemQuantity2'] = '1';
+$data['itemWeight2'] = '0';
 
 $data['reference'] = "EFAS2023"; //aqui vai o código que será usado para receber os retornos das notificações
 $data['senderName'] = "EDSON GALDINO";
@@ -52,15 +58,13 @@ curl_close($curl);
 
 $xml = simplexml_load_string($xml);
 
-var_dump($xml);
-
 if(count($xml->error) > 0){
   echo "XML ERRO";
   exit();
 }
 
 // Utilize sua lógica para atualizar o pedido com o código da transação, para ser atualizado depois
-$db->query("UPDATE pedido SET token = '{$xml->code}' WHERE id = $pedido_id"); 
+//$db->query("UPDATE pedido SET token = '{$xml->code}' WHERE id = $pedido_id"); 
 
 // Redireciona o comprador para a página de pagamento
 header('Location: https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html?code='.$xml->code);
