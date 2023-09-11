@@ -67,7 +67,7 @@ $resultado_consulta_inscricao = mysqli_fetch_assoc($query_consulta_inscricao);
         </div>
 
 		<div class="alert alert-info" role="alert">
-			<strong>À partir do dia 05/10 o pagamento só poderá ser feito no dia do evento! Agradecemos pela sua inscrição antecipada.</strong>
+			<strong>À partir do dia 22/10 o pagamento só poderá ser feito no dia do evento! Agradecemos pela sua inscrição antecipada.</strong>
 		</div>
 
 		
@@ -83,7 +83,7 @@ $resultado_consulta_inscricao = mysqli_fetch_assoc($query_consulta_inscricao);
 
 			<form method="post" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
 				<!-- Campos obrigatórios -->  
-				<input name="receiverEmail" type="hidden" value="secretaria@euripedesbarsanulfo.org.br">  
+				<input name="receiverEmail" type="hidden" value="aosamapostolo@gmail.com">  
 				<input name="currency" type="hidden" value="BRL">  
 		
 				<!-- Itens do pagamento (ao menos um item é obrigatório) -->  
@@ -100,7 +100,7 @@ $resultado_consulta_inscricao = mysqli_fetch_assoc($query_consulta_inscricao);
 				<input name="itemWeight2" type="hidden" value="750"> -->
 		
 				<!-- Código de referência do pagamento no seu sistema (opcional) -->  
-				<input name="reference" type="hidden" value="EFAS2019 - <?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?>">  		
+				<input name="reference" type="hidden" value="EFAS2023 - <?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?>">  		
 						
 				<div class="col-md-12 linha-confirma">
 					<div class="col-md-1"><?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?></div>
@@ -110,7 +110,7 @@ $resultado_consulta_inscricao = mysqli_fetch_assoc($query_consulta_inscricao);
 					<div class="col-md-2">R$ <?php echo converte_valor_real($resultado_consulta_inscricao["valor_inscricao_evento"]);?></div>
 				</div>
 
-				<!--<div class="col-md-12 pagar-inscricao margin-15"><input alt="Pague com PagSeguro" class="pagseguro" name="submit"  type="image" src="/images/pagseguro.png"/></div>-->
+				<div class="col-md-12 pagar-inscricao margin-15"><input alt="Pague com PagSeguro" class="pagseguro" name="submit"  type="image" src="/images/pagseguro.png"/></div>
 
 			</form>
 		</div>
