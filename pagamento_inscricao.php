@@ -50,7 +50,9 @@ if($xml == 'Unauthorized'){
 
 curl_close($curl);
 
-$xml= simplexml_load_string($xml);
+$xml = simplexml_load_string($xml);
+
+var_dump($xml);
 
 if(count($xml->error) > 0){
   echo "XML ERRO";
