@@ -7,7 +7,7 @@ $sql_consulta_cursos_criancas = "SELECT curso.codigo_curso, curso.nome_curso, in
 									JOIN curso ON (evento_curso.codigo_curso = curso.codigo_curso)
 									JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 									JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
-								 WHERE (curso.codigo_tema_curso = '1' OR curso.codigo_tema_curso = '2') AND evento_curso.codigo_evento = '9' ORDER BY curso.codigo_tema_curso ASC";
+								 WHERE (curso.codigo_tema_curso = '1' OR curso.codigo_tema_curso = '2') AND evento_curso.codigo_evento = '10' ORDER BY curso.codigo_tema_curso ASC";
 $query_consulta_cursos_criancas = mysql_query($sql_consulta_cursos_criancas) or mascara_erro_mysql($sql_consulta_cursos_criancas);
 
 // consulta tema específico 12 e 13 anos
@@ -16,7 +16,7 @@ $sql_consulta_tema_especifico_jovem = "SELECT curso.codigo_curso, curso.nome_cur
 											JOIN curso ON (evento_curso.codigo_curso = curso.codigo_curso)
 											JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 											JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
-										 WHERE curso.codigo_tema_curso = '3' AND evento_curso.codigo_evento = '9' ORDER BY curso.codigo_tema_curso ASC";
+										 WHERE curso.codigo_tema_curso = '3' AND evento_curso.codigo_evento = '10' ORDER BY curso.codigo_tema_curso ASC";
 $query_consulta_tema_especifico_jovem = mysql_query($sql_consulta_tema_especifico_jovem) or mascara_erro_mysql($sql_consulta_tema_especifico_jovem);
 
 // consulta tema atual 12 e 13 anos
@@ -25,7 +25,7 @@ $sql_consulta_tema_atual_jovem = "SELECT curso.codigo_curso, curso.nome_curso, i
 											JOIN curso ON (evento_curso.codigo_curso = curso.codigo_curso)
 											JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 											JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
-										 WHERE curso.codigo_tema_curso = '5' AND evento_curso.codigo_evento = '9' ORDER BY curso.codigo_tema_curso ASC";
+										 WHERE curso.codigo_tema_curso = '5' AND evento_curso.codigo_evento = '10' ORDER BY curso.codigo_tema_curso ASC";
 $query_consulta_tema_atual_jovem = mysql_query($sql_consulta_tema_atual_jovem) or mascara_erro_mysql($sql_consulta_tema_atual_jovem);
 
 
@@ -35,7 +35,7 @@ $sql_consulta_tema_especifico_adulto = "SELECT curso.codigo_curso, curso.nome_cu
 											JOIN curso ON (evento_curso.codigo_curso = curso.codigo_curso)
 											JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 											JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
-										 WHERE curso.codigo_tema_curso = '4' AND evento_curso.codigo_evento = '9' ORDER BY curso.codigo_tema_curso ASC";
+										 WHERE curso.codigo_tema_curso = '4' AND evento_curso.codigo_evento = '10' ORDER BY curso.codigo_tema_curso ASC";
 $query_consulta_tema_especifico_adulto = mysql_query($sql_consulta_tema_especifico_adulto) or mascara_erro_mysql($sql_consulta_tema_especifico_adulto);
 
 // consulta tema atual 12 e 13 anos e adulto
@@ -44,7 +44,7 @@ $sql_consulta_tema_atual_adulto = "SELECT curso.codigo_curso, curso.nome_curso, 
 											JOIN curso ON (evento_curso.codigo_curso = curso.codigo_curso)
 											JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 											JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
-										 WHERE curso.codigo_tema_curso = '6' AND evento_curso.codigo_evento = '9' ORDER BY curso.codigo_tema_curso ASC";
+										 WHERE curso.codigo_tema_curso = '6' AND evento_curso.codigo_evento = '10' ORDER BY curso.codigo_tema_curso ASC";
 $query_consulta_tema_atual_adulto = mysql_query($sql_consulta_tema_atual_adulto) or mascara_erro_mysql($sql_consulta_tema_atual_adulto);
 
 ?>

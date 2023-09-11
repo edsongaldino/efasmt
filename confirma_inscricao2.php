@@ -92,7 +92,7 @@ if(isset($_GET['acao'])){
     <div class="container">
 
 		<div class="alert alert-info margin-15" role="alert">
-			<strong>À partir do dia 05/10 o pagamento só poderá ser feito no dia do evento! Agradecemos pela sua inscrição antecipada.</strong>
+			<strong>À partir do dia 22/10 o pagamento só poderá ser feito no dia do evento! Agradecemos pela sua inscrição antecipada.</strong>
 		</div>
 
 		<div class="box-consultar-inscricao">
@@ -125,7 +125,7 @@ if(isset($_GET['acao'])){
 
 			<form method="post" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
 				<!-- Campos obrigatórios -->  
-				<input name="receiverEmail" type="hidden" value="secretaria@euripedesbarsanulfo.org.br">  
+				<input name="receiverEmail" type="hidden" value="aosamapostolo@gmail.com">  
 				<input name="currency" type="hidden" value="BRL">  
 				
 				<?php if(count($_SESSION['carrinho']) > 0):?>
@@ -159,7 +159,7 @@ if(isset($_GET['acao'])){
 				<input name="itemWeight2" type="hidden" value="750"> -->
 		
 				<!-- Código de referência do pagamento no seu sistema (opcional) -->  
-				<input name="reference" type="hidden" value="EFAS2021">  		
+				<input name="reference" type="hidden" value="EFAS2023">  		
 						
 				<div class="col-md-12 linha-confirma">
 					<div class="col-md-1"><?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?></div>
@@ -175,7 +175,7 @@ if(isset($_GET['acao'])){
 				
 
 				
-				<!--<div class="col-md-12 pagar-inscricao margin-15"><input alt="Pague com PagSeguro" class="pagseguro" name="submit"  type="image" src="/images/pagseguro.png"/></div>-->
+				<div class="col-md-12 pagar-inscricao margin-15"><input alt="Pague com PagSeguro" class="pagseguro" name="submit"  type="image" src="/images/pagseguro.png"/></div>
 				
 
 			</form>
