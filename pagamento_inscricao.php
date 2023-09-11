@@ -1,6 +1,7 @@
 <?php
 // Documentação disponível em: 
 // https://dev.pagseguro.uol.com.br/documentacao/pagamentos/pagamento-padrao
+ini_set('display_errors', 1);
 
 // URL DE SANDBOX
 $url = 'https://ws.sandbox.pagseguro.uol.com.br';
