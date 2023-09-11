@@ -67,4 +67,4 @@ if(count($xml->error) > 0){
 //$db->query("UPDATE pedido SET token = '{$xml->code}' WHERE id = $pedido_id"); 
 
 // Redireciona o comprador para a página de pagamento
-header('Location: https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html?code='.$xml->code);
+header('Location: https://pagseguro.uol.com.br/v2/checkout/payment.html?code='.$xml->code);
