@@ -1,10 +1,9 @@
 <?php
 // Documentação disponível em: 
 // https://dev.pagseguro.uol.com.br/documentacao/pagamentos/pagamento-padrao
-ini_set('display_errors', 1);
 
 // URL DE SANDBOX
-$url = 'https://ws.sandbox.pagseguro.uol.com.br';
+$url = 'https://ws.pagseguro.uol.com.br/v2/checkout';
 
 $data['email'] = 'aosamapostolo@gmail.com';
 $data['token'] = '1a82b6b2-366e-4b0a-928e-1ee0c2cd2c623fcd8cd64eed975a9a8469b97e40075eba49-536c-4f38-8d58-7ea376940b76';
@@ -23,7 +22,7 @@ $data['itemQuantity2'] = 1;
 $data['itemWeight2'] = 0;
 
 
-$data['reference'] = 2546; //aqui vai o código que será usado para receber os retornos das notificações
+$data['reference'] = $id_produto; //aqui vai o código que será usado para receber os retornos das notificações
 $data['senderName'] = "Nome do comprador";
 // $data['senderAreaCode'] = "";
 // $data['senderPhone'] = "";
