@@ -11,9 +11,9 @@ $data['currency'] = 'BRL';
 
 $data['itemId1'] = "1";
 $data['itemDescription1'] = "Descrição do item/produto";
-$data['itemAmount1'] = 199.90;
-$data['itemQuantity1'] = 1;
-$data['itemWeight1'] = 0;
+$data['itemAmount1'] = '199.90';
+$data['itemQuantity1'] = '1';
+$data['itemWeight1'] = '0';
 
 $data['reference'] = "EFAS2023"; //aqui vai o código que será usado para receber os retornos das notificações
 $data['senderName'] = "EDSON GALDINO";
