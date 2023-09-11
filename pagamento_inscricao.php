@@ -15,18 +15,11 @@ $data['itemAmount1'] = 199.90;
 $data['itemQuantity1'] = 1;
 $data['itemWeight1'] = 0;
 
-$data['itemId2'] = "2";
-$data['itemDescription2'] = "Descrição do item/produto";
-$data['itemAmount2'] = 25.90;
-$data['itemQuantity2'] = 1;
-$data['itemWeight2'] = 0;
-
-
-$data['reference'] = $id_produto; //aqui vai o código que será usado para receber os retornos das notificações
-$data['senderName'] = "Nome do comprador";
+$data['reference'] = "EFAS2023"; //aqui vai o código que será usado para receber os retornos das notificações
+$data['senderName'] = "EDSON GALDINO";
 // $data['senderAreaCode'] = "";
 // $data['senderPhone'] = "";
-$data['senderEmail'] = "comprador@gmail.com";
+$data['senderEmail'] = "edsongaldino@outlook.com";
 // $data['shippingType'] = "";
 // $data['shippingAddressStreet'] = "";
 // $data['shippingAddressNumber'] = "";
