@@ -23,7 +23,7 @@ $data['itemQuantity2'] = 1;
 $data['itemWeight2'] = 0;
 
 
-$data['reference'] = $id_produto; //aqui vai o código que será usado para receber os retornos das notificações
+$data['reference'] = 2546; //aqui vai o código que será usado para receber os retornos das notificações
 $data['senderName'] = "Nome do comprador";
 // $data['senderAreaCode'] = "";
 // $data['senderPhone'] = "";
