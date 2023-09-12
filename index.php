@@ -61,10 +61,10 @@
 				<p>O EFAS - Encontro Fraterno Auta de Souza é um evento espírita que proporciona aos seus participantes a troca de experiências, estudo da Doutrina Espírta e trabalho no campo do bem. O EFAS oportuniza às varias cidades que o sediam, uma chuva de luz e bênçãos incentivando os trabalhadores espíritas, em suas tarefas, a implantação de várias atividades assistenciais e doutrinárias.<br/> <b>Venha participar conosco deste evento de luz!</b></p>
 				</br>
 				<h3>Realização</h3>
-				<p>Sociedade Espírita Eurípedes Barsanulfo | Grupo Fraterno Auta de Souza (Cuiabá / Várzea Grande)</p>
+				<p>Associacao Obras Sociais Apostolo Mateus | Grupo Fraterno Auta de Souza (Cuiabá / Várzea Grande)</p>
 				<h3>Local</h3>
-				<p>Escola Estadual Prof. Fernando Leite De Campos</p>
-				<p>Av. Alzira Santana, 347 - Nova Várzea Grande, Várzea Grande - MT, 78135-750</p>
+				<p>Escola Estadual Profª. Elizabeth Maria Bastos Mineiro</p>
+				<p>Rua 25, Sn - Jardim Eldorado, Várzea Grande - MT, 78135-140</p>
 			</div>
 			<div class="col-md-5 top-col">
 				<div class="col1">

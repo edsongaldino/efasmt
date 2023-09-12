@@ -22,7 +22,7 @@
     <div class="container">
 	
         <div class="contact-top ">
-            <h3>INSCRIÇÕES ABERTAS ATÉ 05 DE OUTUBRO. APÓS ESSA DATA, SOMENTE PRESENCIAL</h3>
+            <h3>INSCRIÇÕES ABERTAS ATÉ 22 DE OUTUBRO. APÓS ESSA DATA, SOMENTE PRESENCIAL</h3>
         </div>
 
 		
@@ -54,13 +54,10 @@
 
 		
         <div class="info-inscricao">
-            As inscrições pela internet estarão abertas até o dia 05/10/2022. Faça sua inscrição antecipada e evite filas e aglomerações!<br/>
-            O pagamento deverá ser feito via PAGSEGURO - UOL, após o pagamento envie o comprovante para <b>secretaria@euripedesbarsanulfo.org.br</b>, juntamente com o número de sua inscrição.<br/><br/>
+            As inscrições pela internet estarão abertas até o dia 22/10/2023. Faça sua inscrição antecipada e evite filas e aglomerações!<br/>
+            O pagamento deverá ser feito via PAGSEGURO - UOL, após o pagamento envie o comprovante para <b>aosamapostolo@gmail.com</b>, juntamente com o número de sua inscrição.<br/><br/>
             Escolha uma das opções abaixo para realizar sua inscrição:
         </div>
-        
-
-
          
 		<div class="content-mid box-inscricao">
 
