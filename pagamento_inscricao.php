@@ -62,7 +62,6 @@ var_dump($xml);
 
 if(count($xml->error) > 0){
   echo "XML ERRO";
-  exit();
 }
 
 // Utilize sua lógica para atualizar o pedido com o código da transação, para ser atualizado depois
