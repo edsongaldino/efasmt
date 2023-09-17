@@ -4,7 +4,7 @@
 		<html xmlns="http://www.w3.org/1999/xhtml">
         <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>'.utf8_decode("Confirmação de Inscrição - EFAS 2021").'</title>
+        <title>'.mb_convert_encoding("Confirmação de Inscrição - EFAS 2021", 'UTF-8').'</title>
         </head>
 
         <body style="margin:0">
@@ -25,7 +25,7 @@
                     <img src="https://secretaria.efasmt.com.br/images/border_red.jpg" style="padding-top:10px">
                     <h3 style="width:430px; text-align:left; font-weight:normal; font-size:18px"> 
 
-                        Ol&aacute;, '.utf8_decode($nome_participante).'! <br> <br>
+                        Ol&aacute;, '.mb_convert_encoding($nome_participante, 'UTF-8').'! <br> <br>
 
                         Voc&ecirc; fez sua inscri&ccedil;&atilde;o para participar do <strong>ENCONTRO FRATERNO AUTA DE SOUZA</strong> que ser&aacute; realizado entre os dias 30 e 31 de Outubro de 2021 na Associação Wantuil de Freitas Cuiabá-MT<br/>
                         Caso ainda n&atilde;o tenha feito o pagamento, clique no link abaixo:
