@@ -122,14 +122,14 @@ $query_consulta_institutos = mysqli_query($conexao,$sql_consulta_institutos) or 
 								<select name="codigo_instituto" id="codigo_instituto" class="span3" placeholder="Instituto">
 									<option value="">Filtrar pela Instituto</option>
 									<?php while($resultado_consulta_instituto = mysqli_fetch_assoc($query_consulta_institutos)) {?>
-									<option value="<?php echo $resultado_consulta_instituto["codigo_instituto"];?>"><?php echo utf8_encode($resultado_consulta_instituto["nome_instituto"]);?></option>
+									<option value="<?php echo $resultado_consulta_instituto["codigo_instituto"];?>"><?php echo $resultado_consulta_instituto["nome_instituto"];?></option>
 									<?php }?>
 								</select>
 
                 <select name="codigo_tema_curso" id="codigo_tema_curso" class="span3" placeholder="Tema">
 									<option value="">Filtrar por Tema</option>
 									<?php while($resultado_consulta_situacao = mysqli_fetch_assoc($query_consulta_tema)) {?>
-									<option value="<?php echo $resultado_consulta_situacao["codigo_tema_curso"];?>"><?php echo utf8_encode($resultado_consulta_situacao["descricao_tema_curso"]);?></option>
+									<option value="<?php echo $resultado_consulta_situacao["codigo_tema_curso"];?>"><?php echo $resultado_consulta_situacao["descricao_tema_curso"];?></option>
 									<?php }?>
 								</select>
 								
@@ -163,7 +163,7 @@ $query_consulta_institutos = mysqli_query($conexao,$sql_consulta_institutos) or 
                 <tbody>
                   <?php while($resultado_consulta_cursos = mysqli_fetch_assoc($query_consulta)) {?>
                   <tr>
-                  	<td> <?php echo $resultado_consulta_cursos["referencia"];?> </td>
+                  	<td> <?php echo $resultado_consulta_cursos["codigo_curso"];?> </td>
                     <td> <?php echo $resultado_consulta_cursos["nome_curso"];?> </td>
                     <td> <?php echo $resultado_consulta_cursos["descricao_tema_curso"];?> </td>
                     <td> <?php echo $resultado_consulta_cursos["nome_instituto"];?> </td>
