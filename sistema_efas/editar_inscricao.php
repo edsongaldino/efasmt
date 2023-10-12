@@ -122,7 +122,7 @@ if(campo_form_decodifica($_POST['acao']) == "alterar_participante_crianca") {
 	
 	}
 	
-	if($_SESSION["codigo_tipo_usuario_acesso"]=='1'){
+	if($_SESSION["codigo_tipo_usuario_acesso"]=='1' || $_SESSION["codigo_tipo_usuario_acesso"]=='5'){
 	// altera situação
 	$sql_altera_situacao = "UPDATE inscricao_evento SET codigo_situacao_inscricao = '".$situacao_inscricao."', valor_inscricao_evento = '".$valor_inscricao."' WHERE codigo_inscricao_evento = '".$codigo_inscricao_evento."'";
 	$query_altera_situacao = mysqli_query($conexao,$sql_altera_situacao) or mascara_erro_mysql($sql_altera_situacao,"index.php");
@@ -182,7 +182,7 @@ if(campo_form_decodifica($_POST['acao']) == "alterar_participante_adulto") {
 	
 	}
 
-	if($_SESSION["codigo_tipo_usuario_acesso"]=='1'){
+	if($_SESSION["codigo_tipo_usuario_acesso"]=='1' || $_SESSION["codigo_tipo_usuario_acesso"]=='5'){
 	// altera situação
 	$sql_altera_situacao = "UPDATE inscricao_evento SET codigo_situacao_inscricao = '".$situacao_inscricao."', valor_inscricao_evento = '".$valor_inscricao."' WHERE codigo_inscricao_evento = '".$codigo_inscricao_evento."'";
 	$query_altera_situacao = mysqli_query($conexao,$sql_altera_situacao) or mascara_erro_mysql($sql_altera_situacao,"index.php");
@@ -242,7 +242,7 @@ if(campo_form_decodifica($_POST['acao']) == "alterar_participante_trabalhador") 
 	
 	}
 
-	if($_SESSION["codigo_tipo_usuario_acesso"]=='1'){
+	if($_SESSION["codigo_tipo_usuario_acesso"]=='1' || $_SESSION["codigo_tipo_usuario_acesso"]=='5'){
 	// altera situação
 	$sql_altera_situacao = "UPDATE inscricao_evento SET codigo_situacao_inscricao = '".$situacao_inscricao."', valor_inscricao_evento = '".$valor_inscricao."' WHERE codigo_inscricao_evento = '".$codigo_inscricao_evento."'";
 	$query_altera_situacao = mysqli_query($conexao,$sql_altera_situacao) or mascara_erro_mysql($sql_altera_situacao,"index.php");
