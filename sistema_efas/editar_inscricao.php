@@ -130,12 +130,12 @@ if(campo_form_decodifica($_POST['acao']) == "alterar_participante_crianca") {
 	
 	if($query_altera_participante && $query_altera_dados_complementares && $query_deleta_curso_participante && $query_altera_curso_participante){
 		mysqli_query($conexao,"COMMIT");	
-		fecha_mysql();
+		fecha_mysql($conexao);
 		redireciona("participantes.php?me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição alterada com sucesso."));
 		
 	} else {
 		mysqli_query($conexao,"ROLLBACK");	
-		fecha_mysql();
+		fecha_mysql($conexao);
 		redireciona("participantes.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e a inscrição não foi alterada. Tente novamente!"));
 	}
 }
@@ -190,12 +190,12 @@ if(campo_form_decodifica($_POST['acao']) == "alterar_participante_adulto") {
 	
 	if($query_altera_participante && $query_altera_telefone_participante && $query_altera_email_participante && $query_altera_curso_participante){
 		mysqli_query($conexao,"COMMIT");
-		fecha_mysql();
+		fecha_mysql($conexao);
 		redireciona("participantes.php?me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição atualizada com sucesso!"));
 		
 	} else {	
 		mysqli_query($conexao,"ROLLBACK");
-		fecha_mysql();
+		fecha_mysql($conexao);
 		redireciona("participantes.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e a inscrição não foi alterada. Tente novamente!"));
 	}
 }
@@ -251,12 +251,12 @@ if(campo_form_decodifica($_POST['acao']) == "alterar_participante_trabalhador") 
 
 	if($query_altera_participante && $query_altera_telefone_participante && $query_altera_email_participante && $query_altera_participante_comissao){
 		mysqli_query($conexao,"COMMIT");
-		fecha_mysql();
+		fecha_mysql($conexao);
 		redireciona("participantes.php?me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição alterada com sucesso!"));
 		
 	} else {	
 		mysqli_query($conexao,"ROLLBACK");
-		fecha_mysql();
+		fecha_mysql($conexao);
 		redireciona("participantes.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e a inscrição não foi alterada. Tente novamente!"));
 	}
 }
