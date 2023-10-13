@@ -427,7 +427,7 @@ $query_consulta_cidade5 = mysqli_query($conexao,$sql_consulta_cidade) or mascara
 										</div> <!-- /control-group -->
                                         
 										
-										<?php if($_SESSION["codigo_tipo_usuario_acesso"]=='1'){?>
+										<?php if($_SESSION["codigo_tipo_usuario_acesso"]=='1' || $_SESSION["codigo_tipo_usuario_acesso"]=='5'){?>	
 
 										<br />
                                         <div class="divisor">Dados da Inscrição</div>
@@ -545,7 +545,7 @@ $query_consulta_cidade5 = mysqli_query($conexao,$sql_consulta_cidade) or mascara
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
                                         							
-										<?php if($_SESSION["codigo_tipo_usuario_acesso"]=='1'){?>	
+										<?php if($_SESSION["codigo_tipo_usuario_acesso"]=='1' || $_SESSION["codigo_tipo_usuario_acesso"]=='5'){?>	
 										<br />
                                         <div class="divisor">Dados da Inscrição</div>
                                         <br />
