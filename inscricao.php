@@ -25,12 +25,11 @@
             <h3>INSCRIÇÕES ABERTAS ATÉ 22 DE OUTUBRO. APÓS ESSA DATA, SOMENTE PRESENCIAL</h3>
         </div>
 
-		
+		<!--
 		 <div class="info-inscricao">
             Já fez sua inscrição mas ainda não pagou? Clique abaixo para fazer o pagamento:
         </div>
 		
-		<!--
 		<div class="info-inscricao">
 			Novas inscrições poderão ser feitas no dia do evento pelo valor de 10,00 (Adulto) e 5,00 (Criança)
         </div>
@@ -38,6 +37,7 @@
        
 
 		<!--content-mid-->
+		<!--
 		<div class="content-mid box-inscricao">
 			<div class="col-md-3 mid">
 				<a href="consultar_inscricao.php">
@@ -51,6 +51,7 @@
 			
 			<div class="clearfix"> </div>
 		</div>
+		-->
 
 		
         <div class="info-inscricao">
