@@ -7,7 +7,7 @@ function valida_cpf($cpf) {
     }
  
     // Elimina possivel mascara
-    $cpf = ereg_replace('[^0-9]', '', $cpf);
+    $cpf = preg_replace('[^0-9]', '', $cpf);
     $cpf = str_pad($cpf, 11, '0', STR_PAD_LEFT);
      
     // Verifica se o numero de digitos informados é igual a 11 
@@ -30,7 +30,7 @@ function valida_cpf($cpf) {
      // Calcula os digitos verificadores para verificar se o
      // CPF é válido
      } else {   
-         
+        /* 
         for ($t = 9; $t < 11; $t++) {
              
             for ($d = 0, $c = 0; $c < $t; $c++) {
@@ -41,6 +41,7 @@ function valida_cpf($cpf) {
                 return false;
             }
         }
+        */
  
         return true;
     }
