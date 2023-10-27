@@ -132,4 +132,5 @@ $resultado_consulta_inscricao = mysqli_fetch_assoc($query_consulta_inscricao);
 </div>
 <!--//footer-->
 </body>
+<?php fecha_mysql($conexao);?>
 </html>

@@ -47,7 +47,7 @@ if($resultado_consulta_dados_cracha["nome_comissao_trabalho"]){
 	$cracha.= '<div class="dados_participante">';
 	$cracha.= '<div class="nome_participante_cracha">'.$resultado_consulta_dados_cracha["nome_participante_cracha"].'</div>';
 	$cracha.= '<div class="nome_participante">'.$resultado_consulta_dados_cracha["nome_participante"].'</div>';
-	$cracha.= '<div class="nome_responsavel">'.$resultado_consulta_dados_cracha["nome_responsavel"]." - ".masc_tel($resultado_consulta_dados_cracha["telefone_responsavel"]).'</div>';
+	$cracha.= '<div class="nome_responsavel">'.$resultado_consulta_dados_cracha["nome_responsavel"]." - ".masc_tel(limpa_campo($resultado_consulta_dados_cracha["telefone_responsavel"])).'</div>';
 	while($resultado_consulta_curso = mysqli_fetch_assoc($query_consulta_curso)){
 	$cracha.= '<div class="nome_curso_crianca">'.utf8_encode($resultado_consulta_curso["nome_tema_curso"])." - <strong>".utf8_encode($resultado_consulta_curso["nome_curso"]).'</strong></div>';
 	}

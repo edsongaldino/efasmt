@@ -1,5 +1,5 @@
 <?php
-# este conteúdo é gerado automaticamente pelo execução do arquivo funcao_php_auto.php
+# este conteï¿½do ï¿½ gerado automaticamente pelo execuï¿½ï¿½o do arquivo funcao_php_auto.php
 
 include("funcao_php/mascara_cpf.php");
 include("funcao_php/valida_cnpj.php");
