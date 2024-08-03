@@ -1,20 +1,15 @@
-on: 
-  push:
-    branches:
-      - main
-name: 🚀 Deploy website on push
+name: Deploy via ftp
+on: push
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.1.0
+    - name: FTP Deploy Locaweb
+      uses: locaweb/ftp-deploy@1.0.0
       with:
-        server: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
-        password: ${{ secrets.PASSWORD }}
-        server-dir: /secretaria/
+        host: ${{ secrets.HOST }} 
+        user: ${{ secrets.USER }}
+        password: ${{ secrets.PASS }}
