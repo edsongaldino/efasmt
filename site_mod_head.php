@@ -1,8 +1,8 @@
 <title>Encontro Fraterno Auta de Souza - Inscrição Online</title>
-<base href="<?php echo baseUrl(); ?>/" />
+<base href="<?php echo baseUrl(); ?>" />
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -10,7 +10,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Encontro fraterno auta de souza, concafras, espiritismo, auta de souza" />
-
 
 <meta name='author' content='Datapix tecnologia - www.datapix.com.br - (65) 3927-5480'/>
 <meta http-equiv="pragma" content="no-cache" />

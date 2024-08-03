@@ -57,15 +57,14 @@ $sql_consulta_inscricoes = "SELECT
 									JOIN evento ON (inscricao_evento.codigo_evento = evento.codigo_evento)
 									JOIN situacao_inscricao ON (situacao_inscricao.codigo_situacao_inscricao = inscricao_evento.codigo_situacao_inscricao)
 									JOIN participante ON (inscricao_evento.codigo_participante = participante.codigo_participante)
-                  LEFT JOIN email_participante ON (participante.codigo_participante = email_participante.codigo_participante)
 								  WHERE inscricao_evento.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."'".$sql_where_consulta." 
                   ORDER BY participante.nome_participante ASC";
-$query_consulta_inscricoes = mysqli_query($conexao,$sql_consulta_inscricoes) or mascara_erro_mysql($sql_consulta_inscricoes);
+$query_consulta_inscricoes = mysqli_query($conexao,$sql_consulta_inscricoes);
 $total_inscricoes = mysqli_num_rows($query_consulta_inscricoes);
 
 // consulta situacaos
 $sql_consulta_situacao_inscricao = "SELECT codigo_situacao_inscricao, descricao_situacao_inscricao FROM situacao_inscricao";
-$query_consulta_situacao_inscricao = mysqli_query($conexao,$sql_consulta_situacao_inscricao) or mascara_erro_mysql($sql_consulta_situacao_inscricao);
+$query_consulta_situacao_inscricao = mysqli_query($conexao,$sql_consulta_situacao_inscricao);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -120,7 +119,7 @@ $query_consulta_situacao_inscricao = mysqli_query($conexao,$sql_consulta_situaca
 								<select name="situacao" id="situacao" class="span2" placeholder="Situação">
 									<option value="">Filtrar pela situação</option>
 									<?php while($resultado_consulta_situacao = mysqli_fetch_assoc($query_consulta_situacao_inscricao)) {?>
-									<option value="<?php echo $resultado_consulta_situacao["codigo_situacao_inscricao"];?>"><?php echo utf8_encode($resultado_consulta_situacao["descricao_situacao_inscricao"]);?></option>
+									<option value="<?php echo $resultado_consulta_situacao["codigo_situacao_inscricao"];?>"><?php echo $resultado_consulta_situacao["descricao_situacao_inscricao"];?></option>
 									<?php }?>
 								</select>
 								
@@ -172,9 +171,9 @@ $query_consulta_situacao_inscricao = mysqli_query($conexao,$sql_consulta_situaca
                     <?php }?>
 
                     <td> <?php echo $resultado_consulta_inscricoes["codigo_inscricao_evento"];?></td>
-                    <td> <?php echo $resultado_consulta_inscricoes["nome_participante"];?></td>
+                    <td> <?php echo mb_convert_encoding($resultado_consulta_inscricoes["nome_participante"],'ISO-8859-1','UTF-8');?></td>
                     <td> <?php echo calcula_idade($resultado_consulta_inscricoes["data_nascimento_participante"]);?></td>
-                    <td> <?php echo utf8_encode($resultado_consulta_inscricoes["nome_evento"]);?></td>
+                    <td> <?php echo $resultado_consulta_inscricoes["nome_evento"];?></td>
                     <td> <?php echo converte_data_portugues($resultado_consulta_inscricoes["data_inscricao_evento"]);?> </td>
                     <td> R$ <?php echo converte_valor_real($resultado_consulta_inscricoes["valor_inscricao_evento"]);?> </td>
 

@@ -36,9 +36,10 @@ for ($i = 0; $i < $num; $i++) {
 <html>
 <head>
     <?php include "site_mod_head.php";?>
-    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/digitalBush/jquery.maskedinput/1.4.0/dist/jquery.maskedinput.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/code.jquery.com_ui_1.10.3_themes_smoothness_jquery-ui.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/code.jquery.com_ui_1.10.3_jquery-ui.js"></script>
+    <script type="text/javascript" src="js/rawgit.com_digitalBush_jquery.maskedinput_1.4.0_dist_jquery.maskedinput.js"></script>
     <script language="javascript" type="text/javascript">
         //instancia a pesquisa rapida
         $(document).ready(function() {
@@ -73,7 +74,7 @@ for ($i = 0; $i < $num; $i++) {
     });
 
     jQuery(function ($) {
-        $("#data").mask("99/99/9999", {
+        $(".data").mask("99/99/9999", {
             completed: function () {
                 console.log('complete')
                 var value = $(this).val().split('/');
@@ -186,7 +187,8 @@ for ($i = 0; $i < $num; $i++) {
                             <span>E-mail :</span>
                             <input type="text" name="email_participante" id="email_participante" class="text" value=" required">
                         </div>
-
+                        
+                        <!--
                         <div class="col-md-1 in-contact">
                             <span>UF :</span>
                             <select name="estado_participante" id="estado_participante" onchange="buscar_cidades()" required>
@@ -199,10 +201,11 @@ for ($i = 0; $i < $num; $i++) {
 
                         <div class="col-md-3 in-contact" id="load_cidades">
                             <span>Cidade :</span>
-                            <select name="cidade_participante" id="cidade_participante" required>
+                            <select name="cidade_participante" id="cidade_participante" >
                             <option value="">Selecione o estado</option>
                             </select>
                         </div>
+                        -->
 
                         <div class="col-md-4 in-contact">
                             <span>Centro Espírita:</span>

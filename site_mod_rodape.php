@@ -7,3 +7,4 @@
     <li><a href="inscricao.php" >Inscrição </a></li>
     <div class="clearfix"> </div>
 </ul>
+

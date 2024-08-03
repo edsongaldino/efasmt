@@ -12,21 +12,23 @@
 			<div class="header-top">
 				<?php include "site_mod_topo.php";?>
 			</div>
+
 			<div class="banner-main">
                 <?php include "site_mod_banner.php";?>
 	        </div>
+
 			</div>
 </div>
 <!--//header-->
 <!--content-->
 <div class="contact">
     <div class="container">
-	
+	<!--
         <div class="contact-top ">
             <h3>INSCRIÇÕES ABERTAS ATÉ 22 DE OUTUBRO. APÓS ESSA DATA, SOMENTE PRESENCIAL</h3>
         </div>
 
-		<!--
+		
 		 <div class="info-inscricao">
             Já fez sua inscrição mas ainda não pagou? Clique abaixo para fazer o pagamento:
         </div>
@@ -56,9 +58,9 @@
 
 		
         <div class="info-inscricao">
-            As inscrições pela internet estarão abertas até o dia 22/10/2023. Faça sua inscrição antecipada e evite filas e aglomerações!<br/>
+            <!--As inscrições pela internet estarão abertas até o dia 22/10/2023. Faça sua inscrição antecipada e evite filas e aglomerações!<br/>
             O pagamento deverá ser feito via PAGSEGURO - UOL, após o pagamento envie o comprovante para <b>aosamapostolo@gmail.com</b>, juntamente com o número de sua inscrição.<br/><br/>
-            Escolha uma das opções abaixo para realizar sua inscrição:
+-->Escolha uma das opções abaixo para realizar sua inscrição:
         </div>
          
 		<div class="content-mid box-inscricao">

@@ -14,7 +14,7 @@ if($_POST['acao']){
 		$nome_participante							= protege_campo($_POST['nome_participante']);
 		$nome_participante_cracha					= protege_campo($_POST['nome_participante_cracha']);
 		$data_nascimento_participante 				= protege_campo(converte_data_ingles($_POST['data_nascimento_participante']));
-		$cidade_participante 						= protege_campo($_POST['cidade_participante']);
+		$cidade_participante 						= 4282;
 		$centro_espirita_participante 				= protege_campo($_POST['centro_espirita_participante']);
 		
 		// dados responsável
@@ -70,7 +70,7 @@ if($_POST['acao']){
 		$nome_participante							= protege_campo($_POST['nome_participante']);
 		$nome_participante_cracha					= protege_campo($_POST['nome_participante_cracha']);
 		$data_nascimento_participante 				= protege_campo(converte_data_ingles($_POST['data_nascimento_participante']));
-		$cidade_participante 						= protege_campo($_POST['cidade_participante']);
+		$cidade_participante 						= 4282;
 		$centro_espirita_participante 				= protege_campo($_POST['centro_espirita_participante']);
 		
 		$telefone_participante						= protege_campo(limpa_campo($_POST['telefone_participante']));
@@ -115,7 +115,7 @@ if($_POST['acao']){
 			$link_redirect = "https://secretaria.efasmt.com.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
 			require_once("email.php");
 
-			envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
+			//envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
 
 			fecha_mysql($conexao);
 			redireciona("confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));
@@ -133,7 +133,7 @@ if($_POST['acao']){
 		$nome_participante							= protege_campo($_POST['nome_participante']);
 		$nome_participante_cracha					= protege_campo($_POST['nome_participante_cracha']);
 		$data_nascimento_participante 				= protege_campo(converte_data_ingles($_POST['data_nascimento_participante']));
-		$cidade_participante 						= protege_campo($_POST['cidade_participante']);
+		$cidade_participante 						= 4282;
 		$centro_espirita_participante 				= protege_campo($_POST['centro_espirita_participante']);
 		
 		$telefone_participante						= protege_campo(limpa_campo($_POST['telefone_participante']));
@@ -179,7 +179,7 @@ if($_POST['acao']){
 			$link_redirect = "https://secretaria.efasmt.com.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
 			require_once("email.php");
 
-			envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
+			//envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
 
 			fecha_mysql($conexao);
 			redireciona("confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));
@@ -197,7 +197,7 @@ if($_POST['acao']){
 		$nome_participante							= protege_campo($_POST['nome_participante']);
 		$nome_participante_cracha					= protege_campo($_POST['nome_participante_cracha']);
 		$data_nascimento_participante 				= protege_campo(converte_data_ingles($_POST['data_nascimento_participante']));
-		$cidade_participante 						= protege_campo($_POST['cidade_participante']);
+		$cidade_participante 						= 4282;
 		$centro_espirita_participante 				= protege_campo($_POST['centro_espirita_participante']);
 		
 		$telefone_participante						= protege_campo(limpa_campo($_POST['telefone_participante']));
@@ -242,7 +242,7 @@ if($_POST['acao']){
 			$link_redirect = "https://secretaria.efasmt.com.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
 			require_once("email.php");
 
-			envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
+			//envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
 
 			fecha_mysql($conexao);
 			redireciona("confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));

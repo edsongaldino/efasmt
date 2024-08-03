@@ -1,6 +1,6 @@
 <?php require_once("sistema_mod_include.php"); ?>
 <style>
-.dados_cracha{width:10cm; height:3cm; float:left; margin-top:9cm; margin-left:-0.7cm; }
+.dados_cracha{width:10cm; height:3cm; float:left; margin-top:9cm; margin-left:-0.5cm; }
 .dados_cracha .qrcode{width:3cm; height:3cm; float:left; background-color:#333; margin:0px 0 0 0px;}
 .dados_cracha .dados_participante{width:10cm; height:3cm; float:left; position: absolute; }
 .dados_cracha .dados_participante .nome_participante_cracha{font-size:30px; text-transform:uppercase; line-height:30px; margin-top:10px; text-align:center;  font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;}
@@ -70,21 +70,21 @@ if($resultado_consulta_dados_cracha["nome_comissao_trabalho"]){
 	
 	//$cracha.= '<div class="qrcode">'.QRcode::png($resultado_consulta_dados_cracha["nome_participante"]).'</div>';
 	$cracha.= '<div class="dados_participante">';
-	$cracha.= '<div class="nome_participante_cracha">'.$resultado_consulta_dados_cracha["nome_participante_cracha"].'</div>';
-	$cracha.= '<div class="nome_participante">'.$resultado_consulta_dados_cracha["nome_participante"].'</div>';
+	$cracha.= '<div class="nome_participante_cracha">'.mb_convert_encoding($resultado_consulta_dados_cracha["nome_participante_cracha"],'ISO-8859-1','UTF-8').'</div>';
+	$cracha.= '<div class="nome_participante">'.mb_convert_encoding($resultado_consulta_dados_cracha["nome_participante"],'ISO-8859-1','UTF-8').'</div>';
 	$cracha.= '<div class="trabalhador_comissao">'."TRABALHADOR".'</div>';
-	$cracha.= '<div class="nome_comissao">'.utf8_encode($resultado_consulta_dados_cracha["nome_comissao_trabalho"]).'</div>';
+	$cracha.= '<div class="nome_comissao">'.$resultado_consulta_dados_cracha["nome_comissao_trabalho"].'</div>';
 	$cracha.= '</div>';
 
 }elseif($resultado_consulta_dados_cracha["tipo_inscricao"] == "C"){
 		
 	//$cracha.= '<div class="qrcode">'.QRcode::png($resultado_consulta_dados_cracha["nome_participante"]).'</div>';	
 	$cracha.= '<div class="dados_participante">';
-	$cracha.= '<div class="nome_participante_cracha">'.$resultado_consulta_dados_cracha["nome_participante_cracha"].'</div>';
-	$cracha.= '<div class="nome_participante">'.$resultado_consulta_dados_cracha["nome_participante"].'</div>';
-	$cracha.= '<div class="nome_responsavel">'.$resultado_consulta_dados_cracha["nome_responsavel"]." - ".masc_tel($resultado_consulta_dados_cracha["telefone_responsavel"]).'</div>';
+	$cracha.= '<div class="nome_participante_cracha">'.mb_convert_encoding($resultado_consulta_dados_cracha["nome_participante_cracha"],'ISO-8859-1','UTF-8').'</div>';
+	$cracha.= '<div class="nome_participante">'.mb_convert_encoding($resultado_consulta_dados_cracha["nome_participante"],'ISO-8859-1','UTF-8').'</div>';
+	$cracha.= '<div class="nome_responsavel">'.mb_convert_encoding($resultado_consulta_dados_cracha["nome_responsavel"],'ISO-8859-1','UTF-8')." - ".masc_tel(limpa_campo($resultado_consulta_dados_cracha["telefone_responsavel"])).'</div>';
 	while($resultado_consulta_curso = mysqli_fetch_assoc($query_consulta_curso)){
-	$cracha.= '<div class="nome_curso_crianca">'.utf8_encode($resultado_consulta_curso["nome_tema_curso"])." - <strong>".utf8_encode($resultado_consulta_curso["nome_curso"]).'</strong></div>';
+	$cracha.= '<div class="nome_curso_crianca">'.$resultado_consulta_curso["nome_tema_curso"]." - <strong>".$resultado_consulta_curso["nome_curso"].'</strong></div>';
 	}
 	$cracha.= '</div>';
 
@@ -92,10 +92,10 @@ if($resultado_consulta_dados_cracha["nome_comissao_trabalho"]){
 	
 	//$cracha.= '<div class="qrcode">'.QRcode::png($resultado_consulta_dados_cracha["nome_participante"]).'</div>';	
 	$cracha.= '<div class="dados_participante">';
-	$cracha.= '<div class="nome_participante_cracha">'.$resultado_consulta_dados_cracha["nome_participante_cracha"].'</div>';
-	$cracha.= '<div class="nome_participante">'.$resultado_consulta_dados_cracha["nome_participante"].'</div>';
+	$cracha.= '<div class="nome_participante_cracha">'.mb_convert_encoding($resultado_consulta_dados_cracha["nome_participante_cracha"],'ISO-8859-1','UTF-8').'</div>';
+	$cracha.= '<div class="nome_participante">'.mb_convert_encoding($resultado_consulta_dados_cracha["nome_participante"],'ISO-8859-1','UTF-8').'</div>';
 	while($resultado_consulta_curso = mysqli_fetch_assoc($query_consulta_curso)){
-	$cracha.= '<div class="nome_curso">'.utf8_encode($resultado_consulta_curso["nome_tema_curso"])." - ".utf8_encode($resultado_consulta_curso["nome_curso"]).'</div>';
+	$cracha.= '<div class="nome_curso">'.$resultado_consulta_curso["nome_tema_curso"]." - ".$resultado_consulta_curso["nome_curso"].'</div>';
 	}
 	$cracha.= '</div>';
 	
