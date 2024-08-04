@@ -1,17 +1,17 @@
 <?php
 
 // informa��es do banco de dados
-define("BD_HOST","localhost");
+/*define("BD_HOST","localhost");
 define("BD_USUARIO","root");
 define("BD_SENHA","");
 define("BD_BANCO","efasmt");
+*/
 
-/*
 define("BD_HOST","efasmt.mysql.dbaas.com.br");
 define("BD_USUARIO","efasmt");
 define("BD_SENHA","Web@259864");
 define("BD_BANCO","efasmt");
-*/
+
 
 // informa��es do pa�nel
 define("TITULO_OFF","Sistema de Inscrições - EFAS");

@@ -1,7 +1,7 @@
 <?php include("sistema_mod_include.php"); ?>
 <?php
 $mensagem = campo_form_decodifica($_GET["mm"]);
-conecta_mysql();
+$conexao = conecta_mysql();
 // consulta inscrições de trabalhadores
 $sql_consulta_trabalhadores = "SELECT 
 								inscricao_evento.codigo_situacao_inscricao, inscricao_evento.valor_inscricao_evento, inscricao_evento.data_inscricao_evento, 
@@ -16,7 +16,7 @@ $sql_consulta_trabalhadores = "SELECT
 								JOIN comissao_trabalho_participante ON (participante.codigo_participante = comissao_trabalho_participante.codigo_participante)
 								JOIN comissao_trabalho ON (comissao_trabalho_participante.codigo_comissao_trabalho = comissao_trabalho.codigo_comissao_trabalho)
 							  WHERE inscricao_evento.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."' ORDER BY inscricao_evento.data_inscricao_evento ASC";
-$query_consulta_trabalhadores = mysql_query($sql_consulta_trabalhadores) or mascara_erro_mysql($sql_consulta_trabalhadores);
+$query_consulta_trabalhadores = mysqli_query($conexao,$sql_consulta_trabalhadores) or mascara_erro_mysql($sql_consulta_trabalhadores);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +62,7 @@ $query_consulta_trabalhadores = mysql_query($sql_consulta_trabalhadores) or masc
                 </thead>
                 <tbody>
                 
-                  <?php while($resultado_consulta_trabalhadores = mysql_fetch_assoc($query_consulta_trabalhadores)) {?>
+                  <?php while($resultado_consulta_trabalhadores = mysqli_fetch_assoc($query_consulta_trabalhadores)) {?>
                   <tr>
                     <td> <?php echo utf8_encode($resultado_consulta_trabalhadores["nome_participante"]);?></td>
                     <td> <?php echo calcula_idade($resultado_consulta_trabalhadores["data_nascimento_participante"]);?></td>
@@ -86,7 +86,7 @@ $query_consulta_trabalhadores = mysql_query($sql_consulta_trabalhadores) or masc
   <!-- /extra-inner --> 
 </div>
 <?php
-mysql_free_result($query_consulta_trabalhadores);
+mysqli_free_result($query_consulta_trabalhadores);
 fecha_mysql();
 ?>
 <!-- /extra -->

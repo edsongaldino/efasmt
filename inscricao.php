@@ -23,9 +23,9 @@
 <!--content-->
 <div class="contact">
     <div class="container">
-	<!--
+	
         <div class="contact-top ">
-            <h3>INSCRIÇÕES ABERTAS ATÉ 22 DE OUTUBRO. APÓS ESSA DATA, SOMENTE PRESENCIAL</h3>
+            <h3>INSCRIÇÕES ABERTAS ATÉ 03 DE SETEMBRO. APÓS ESSA DATA, SOMENTE PRESENCIAL</h3>
         </div>
 
 		
@@ -36,11 +36,11 @@
 		<div class="info-inscricao">
 			Novas inscrições poderão ser feitas no dia do evento pelo valor de 10,00 (Adulto) e 5,00 (Criança)
         </div>
-		-->
+		
        
 
 		<!--content-mid-->
-		<!--
+		
 		<div class="content-mid box-inscricao">
 			<div class="col-md-3 mid">
 				<a href="consultar_inscricao.php">
@@ -54,13 +54,13 @@
 			
 			<div class="clearfix"> </div>
 		</div>
-		-->
+		
 
 		
         <div class="info-inscricao">
-            <!--As inscrições pela internet estarão abertas até o dia 22/10/2023. Faça sua inscrição antecipada e evite filas e aglomerações!<br/>
-            O pagamento deverá ser feito via PAGSEGURO - UOL, após o pagamento envie o comprovante para <b>aosamapostolo@gmail.com</b>, juntamente com o número de sua inscrição.<br/><br/>
--->Escolha uma das opções abaixo para realizar sua inscrição:
+            As inscrições pela internet estarão abertas até o dia 03/09/2024. Faça sua inscrição antecipada e evite filas e aglomerações!<br/>
+            O pagamento deverá ser feito via PAGSEGURO - UOL, após o pagamento envie o comprovante para <b>secretaria@efasmt.com.br</b>, juntamente com o número de sua inscrição.<br/><br/>
+			Escolha uma das opções abaixo para realizar sua inscrição:
         </div>
          
 		<div class="content-mid box-inscricao">
@@ -107,12 +107,7 @@
 
 			<div class="clearfix"> </div>
 		</div>
-		
-		
-		
-		
-
-        
+ 
     </div>
 </div>
 <!--//content-->
