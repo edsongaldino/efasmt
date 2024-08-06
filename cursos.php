@@ -1,5 +1,7 @@
 <?php include "sistema_mod_include.php";?>
 <?php
+$publico = $_GET["publico"];
+
 $conexao = conecta_mysql();
 // consulta cursos 0 à 11 anos
 $sql_consulta_cursos_criancas = "SELECT curso.codigo_curso, curso.nome_curso, instituto.nome_instituto, evento.nome_evento, tema_curso.descricao_tema_curso, evento_curso.quantidade_vagas, evento_curso.referencia FROM evento_curso 
@@ -69,11 +71,13 @@ $query_consulta_tema_atual_adulto = mysqli_query($conexao, $sql_consulta_tema_at
 <!--//header-->
 <!--content-->
 
-    <div class="container_cursos">
-        <h3>Cursos - EFAS 2021 Associação Espírita Wantuil de Freitas | Cuiabá - MT</h3>
+    <div class="container cursos">
+        <h3>Cursos - EFAS 2024 | Várzea Grande - MT</h3>
+
             <div class="row">
 
-                <div class="col-md-6">
+                <?php if($publico == "criancas"){?>
+                <div class="col-md-12">
                     <div class="grid-categories">
                         <div class="cate-top">
                         <h4>Temas Específicos para crianças - (0 à 11 anos)</h4>
@@ -85,21 +89,10 @@ $query_consulta_tema_atual_adulto = mysqli_query($conexao, $sql_consulta_tema_at
                         </div>              
                     </div>
                 </div>
-                
-                <div class="col-md-6">
-                    <div class="grid-categories">
-                        <div class="cate-top">
-                        <h4 class="adulto">Temas Atuais Adultos (Jovens acima de 14 anos)</h4>
-                        <ul class="popular">
-                            <?php while($resultado_consulta_atual_adulto = mysqli_fetch_assoc($query_consulta_tema_atual_adulto)) {?>
-                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"> </i><?php echo $resultado_consulta_atual_adulto["referencia"];?> - <?php echo utf8_encode($resultado_consulta_atual_adulto["nome_curso"]);?> </a></li>
-                            <?php }?>
-                        </ul>
-                        </div>              
-                </div>
-                
+                <?php }?>
 
-                <div class="col-md-6">
+                <?php if($publico == "jovens"){?>
+                <div class="col-md-12">
                     <div class="grid-categories">
                         <div class="cate-top">
                         <h4 class="jovem">Temas Específicos para jovens (12 e 13 anos)</h4>
@@ -111,11 +104,8 @@ $query_consulta_tema_atual_adulto = mysqli_query($conexao, $sql_consulta_tema_at
                         </div>              
                     </div>
                 </div>
-                
-            </div>
 
-           
-            <div class="col-md-6">
+                <div class="col-md-12">
                 <div class="grid-categories">
                     <div class="cate-top">
                         <h4 class="jovem">Temas Atuais para jovens (12 e 13 anos)</h4>
@@ -126,22 +116,40 @@ $query_consulta_tema_atual_adulto = mysqli_query($conexao, $sql_consulta_tema_at
                         </ul>
                     </div>              
                 </div>
-            </div>
-           
+                </div>
 
-             <div class="col-md-6">
-                <div class="grid-categories">
-                    <div class="cate-top">
-                        <h4 class="adulto">Temas Específicos Adultos (Jovens acima de 14 anos)</h4>
+
+                <?php }?>
+
+                <?php if($publico == "adultos"){?>
+
+                <div class="col-md-12">
+                    <div class="grid-categories">
+                        <div class="cate-top">
+                            <h4 class="adulto">Temas Específicos Adultos (Jovens acima de 14 anos)</h4>
+                            <ul class="popular">
+                                <?php while($resultado_consulta_especifico_adulto = mysqli_fetch_assoc($query_consulta_tema_especifico_adulto)) {?>
+                                <li><a href="#"><i class="glyphicon glyphicon-chevron-right"> </i><?php echo $resultado_consulta_especifico_adulto["referencia"];?> - <?php echo utf8_encode($resultado_consulta_especifico_adulto["nome_curso"]);?> </a></li>
+                                <?php }?>
+                            </ul>
+                        </div>              
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="grid-categories">
+                        <div class="cate-top">
+                        <h4 class="adulto">Temas Atuais Adultos (Jovens acima de 14 anos)</h4>
                         <ul class="popular">
-                            <?php while($resultado_consulta_especifico_adulto = mysqli_fetch_assoc($query_consulta_tema_especifico_adulto)) {?>
-                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"> </i><?php echo $resultado_consulta_especifico_adulto["referencia"];?> - <?php echo utf8_encode($resultado_consulta_especifico_adulto["nome_curso"]);?> </a></li>
+                            <?php while($resultado_consulta_atual_adulto = mysqli_fetch_assoc($query_consulta_tema_atual_adulto)) {?>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"> </i><?php echo $resultado_consulta_atual_adulto["referencia"];?> - <?php echo utf8_encode($resultado_consulta_atual_adulto["nome_curso"]);?> </a></li>
                             <?php }?>
                         </ul>
-                    </div>              
-                </div>
-            </div>
-
+                        </div>              
+                    </div>
+                </div>  
+                <?php }?>
+                
             <div class="clearfix"> </div>
         </div>
 </div>

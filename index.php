@@ -25,7 +25,7 @@
 		
 		<div class="content-mid">
 			<div class="col-md-4 mid">
-				<a href="cursos.php"><img src="images/1.jpg" alt="" class="img-responsive">
+				<a href="cursos.php?publico=criancas"><img src="images/1.jpg" alt="" class="img-responsive">
 				<div class="mid1">
 					<h4>Cursos para Crianças</h4>
 					<i class="glyphicon glyphicon-circle-arrow-right"></i>
@@ -34,7 +34,7 @@
 				</a>
 			</div>
 			<div class="col-md-4 mid">
-				<a href="cursos.php"><img src="images/2.jpg" alt="" class="img-responsive">
+				<a href="cursos.php?publico=jovens"><img src="images/2.jpg" alt="" class="img-responsive">
 				<div class="mid1">
 					<h4>Cursos para Jovens</h4>
 					<i class="glyphicon glyphicon-circle-arrow-right"></i>
@@ -43,7 +43,7 @@
 				</a>
 			</div>
 			<div class="col-md-4 mid">
-				<a href="cursos.php"><img src="images/4.jpg" alt="" class="img-responsive">
+				<a href="cursos.php?publico=adultos"><img src="images/4.jpg" alt="" class="img-responsive">
 				<div class="mid1">
 					<h4>Cursos para Adultos</h4>
 					<i class="glyphicon glyphicon-circle-arrow-right"></i>
