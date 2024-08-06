@@ -22,7 +22,7 @@
 <div class="content container">
 	
 		
-		<!--content-mid
+		
 		<div class="content-mid">
 			<div class="col-md-4 mid">
 				<a href="cursos.php"><img src="images/1.jpg" alt="" class="img-responsive">
@@ -53,7 +53,7 @@
 			</div>
 			<div class="clearfix"> </div>
 		</div>
-		<!--content-mid "-->
+		
 
 		<!--content-top-->
 		<div class="content-top">
