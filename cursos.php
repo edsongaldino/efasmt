@@ -72,7 +72,8 @@ $query_consulta_tema_atual_adulto = mysqli_query($conexao, $sql_consulta_tema_at
 <!--content-->
 
     <div class="container cursos">
-        <h3>Cursos - EFAS 2024 | Várzea Grande - MT</h3>
+        
+            <h3 class="titulo">Cursos - EFAS 2024 | Várzea Grande - MT</h3>
 
             <div class="row">
 

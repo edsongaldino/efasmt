@@ -655,6 +655,7 @@ ul.popular,.cate-cate{
 }
 ul.popular li{
 	list-style: none;
+  font-size: 18px;
 }
 ul.popular li  i{
 	margin: 0em 18px;
@@ -1575,3 +1576,7 @@ img.pagseguro {
   padding: 15px !important;
 }
 
+h3.titulo{
+  text-align: center !important;
+  margin: 15px 0 !important;
+}
