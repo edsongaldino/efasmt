@@ -130,7 +130,7 @@ $query_consulta_tema_atual_adulto = mysqli_query($conexao, $sql_consulta_tema_at
                             <h4 class="adulto">Temas Específicos Adultos (Jovens acima de 14 anos)</h4>
                             <ul class="popular">
                                 <?php while($resultado_consulta_especifico_adulto = mysqli_fetch_assoc($query_consulta_tema_especifico_adulto)) {?>
-                                <li><a href="#"><i class="glyphicon glyphicon-chevron-right"> </i><?php echo $resultado_consulta_especifico_adulto["referencia"];?> - <?php echo utf8_encode($resultado_consulta_especifico_adulto["nome_curso"]);?> </a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-chevron-right"> </i><?php echo $resultado_consulta_especifico_adulto["referencia"];?> - <?php echo utf8_encode($resultado_consulta_especifico_adulto["nome_curso"]);?> (<?php echo utf8_encode($resultado_consulta_especifico_adulto["nome_instituto"]);?>) </a></li>
                                 <?php }?>
                             </ul>
                         </div>              
@@ -143,7 +143,7 @@ $query_consulta_tema_atual_adulto = mysqli_query($conexao, $sql_consulta_tema_at
                         <h4 class="adulto">Temas Atuais Adultos (Jovens acima de 14 anos)</h4>
                         <ul class="popular">
                             <?php while($resultado_consulta_atual_adulto = mysqli_fetch_assoc($query_consulta_tema_atual_adulto)) {?>
-                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"> </i><?php echo $resultado_consulta_atual_adulto["referencia"];?> - <?php echo utf8_encode($resultado_consulta_atual_adulto["nome_curso"]);?> </a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"> </i><?php echo $resultado_consulta_atual_adulto["referencia"];?> - <?php echo utf8_encode($resultado_consulta_atual_adulto["nome_curso"]);?> (<?php echo utf8_encode($resultado_consulta_atual_adulto["nome_instituto"]);?>) </a></li>
                             <?php }?>
                         </ul>
                         </div>              
