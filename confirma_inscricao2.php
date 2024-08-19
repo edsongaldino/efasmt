@@ -178,13 +178,13 @@ if(isset($_GET['acao'])){
 
 				
 				<!--<div class="col-md-12 pagar-inscricao margin-15"><input alt="Pague com PagSeguro" class="pagseguro" name="submit"  type="image" src="/images/pagseguro.png"/></div>-->
-				<!--
+				
 				<?php if($resultado_consulta_inscricao["tipo_inscricao"] == 'C'): ?>
-					<div class="col-md-12 pagar-inscricao margin-15"><a href="https://pag.ae/7ZLsiW5r6" ><img alt="Pague com PagSeguro" class="pagseguro" src="/images/pagseguro.png"/></a></div>
+					<?php include "botao_pagamento_crianca.php";?>
 				<?php else: ?>
-					<div class="col-md-12 pagar-inscricao margin-15"><a href="https://pag.ae/7ZLpmCwVt" ><img alt="Pague com PagSeguro" class="pagseguro" src="/images/pagseguro.png"/></a></div>
+					<?php include "botao_pagamento_adulto.php";?>
 				<?php endif; ?>
-				-->
+				
 				
 
 			</form>

@@ -1,1 +1,1 @@
-<!-- INICIO DO BOTAO PAGSEGURO --><a href="https://pag.ae/7XANkW9r4/button" target="_blank" title="Pagar com PagSeguro"><img src="//assets.pagseguro.com.br/ps-integration-assets/botoes/pagamentos/205x30-pagar.gif" alt="Pague com PagSeguro - é rápido, grátis e seguro!" /></a><!-- FIM DO BOTAO PAGSEGURO -->
+<div class="col-md-12 pagar-inscricao margin-15"><a href="https://mpago.la/1pyPDfs" target="_blank" title="Pagar com Mercado Pago"><img src="/images/mercadopago.png" width="200" alt="Pague com Mercado Pago!!" /></a></div>
