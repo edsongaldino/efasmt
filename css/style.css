@@ -1566,8 +1566,8 @@ h3.typo1 {
 }
 
 .pagar-inscricao{
-    margin: 15px 0;
-    text-align: center;
+    margin: 15px 0 !important;
+    text-align: center !important;
 }
 
 img.pagseguro {
