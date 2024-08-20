@@ -67,7 +67,7 @@ $resultado_consulta_inscricao = mysqli_fetch_assoc($query_consulta_inscricao);
         </div>
 
 		<div class="alert alert-info" role="alert">
-			<strong>À partir do dia 22/10 o pagamento só poderá ser feito no dia do evento! Agradecemos pela sua inscrição antecipada.</strong>
+			<strong>À partir do dia 05/SET o pagamento só poderá ser feito no dia do evento! Agradecemos pela sua inscrição antecipada.</strong>
 		</div>
 
 		
