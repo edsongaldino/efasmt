@@ -168,8 +168,8 @@ if(isset($_GET['acao'])){
 					<div class="col-md-2"><?php echo converte_data_portugues($resultado_consulta_inscricao["data_inscricao_evento"]);?></div>
 					<div class="col-md-4"><?php echo $resultado_consulta_inscricao["nome_participante"];?></div>
 					<div class="col-md-2"><?php echo $resultado_consulta_inscricao["descricao_situacao_inscricao"];?></div>
-					<div class="col-md-1">R$ <?php echo converte_valor_real($resultado_consulta_inscricao["valor_inscricao_evento"]);?></div>
-					<div class="col-md-1 remover-inscricao"><a href="confirma_inscricao2.php?acao=del&id=<?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?>">Remover</a></div>
+					<div class="col-md-2">R$ <?php echo converte_valor_real($resultado_consulta_inscricao["valor_inscricao_evento"]);?></div>
+					<div class="col-md-1"></div>
 				</div>
 				<?php endforeach;?>
 				<?php endif;?>
@@ -177,13 +177,15 @@ if(isset($_GET['acao'])){
 				
 
 				
-				<!--<div class="col-md-12 pagar-inscricao margin-15"><input alt="Pague com PagSeguro" class="pagseguro" name="submit"  type="image" src="/images/pagseguro.png"/></div>-->
+				<div class="col-md-12 pagar-inscricao margin-15">
+					<?php if($resultado_consulta_inscricao["tipo_inscricao"] == 'C'): ?>
+						<?php include "botao_pagamento_crianca.php";?>
+					<?php else: ?>
+						<?php include "botao_pagamento_adulto.php";?>
+					<?php endif; ?>
+				</div>
 				
-				<?php if($resultado_consulta_inscricao["tipo_inscricao"] == 'C'): ?>
-					<?php include "botao_pagamento_crianca.php";?>
-				<?php else: ?>
-					<?php include "botao_pagamento_adulto.php";?>
-				<?php endif; ?>
+				
 				
 				
 

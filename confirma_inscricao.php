@@ -105,18 +105,18 @@ $resultado_consulta_inscricao = mysqli_fetch_assoc($query_consulta_inscricao);
 				<div class="col-md-12 linha-confirma">
 					<div class="col-md-1"><?php echo $resultado_consulta_inscricao["codigo_inscricao_evento"];?></div>
 					<div class="col-md-2"><?php echo converte_data_portugues($resultado_consulta_inscricao["data_inscricao_evento"]);?></div>
-					<div class="col-md-4"><?php echo $resultado_consulta_inscricao["nome_participante"];?></div>
+					<div class="col-md-5"><?php echo $resultado_consulta_inscricao["nome_participante"];?></div>
 					<div class="col-md-2"><?php echo $resultado_consulta_inscricao["descricao_situacao_inscricao"];?></div>
 					<div class="col-md-2">R$ <?php echo converte_valor_real($resultado_consulta_inscricao["valor_inscricao_evento"]);?></div>
 				</div>
 
-				<!--<div class="col-md-12 pagar-inscricao margin-15"><input alt="Pague com PagSeguro" class="pagseguro" name="submit"  type="image" src="/images/pagseguro.png"/></div>-->
-				
-				<?php if($resultado_consulta_inscricao["tipo_inscricao"] == 'C'): ?>
-					<?php include "botao_pagamento_crianca.php";?>
-				<?php else: ?>
-					<?php include "botao_pagamento_adulto.php";?>
-				<?php endif; ?>
+				<div class="col-md-12 pagar-inscricao margin-15">
+					<?php if($resultado_consulta_inscricao["tipo_inscricao"] == 'C'): ?>
+						<?php include "botao_pagamento_crianca.php";?>
+					<?php else: ?>
+						<?php include "botao_pagamento_adulto.php";?>
+					<?php endif; ?>
+				</div>
 				
 			</form>
 		</div>
