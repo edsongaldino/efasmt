@@ -176,7 +176,7 @@ if(isset($_GET['acao'])){
 
 				
 
-				
+				<!--
 				<div class="col-md-12 pagar-inscricao margin-15">
 					<?php if($resultado_consulta_inscricao["tipo_inscricao"] == 'C'): ?>
 						<?php include "botao_pagamento_crianca.php";?>
@@ -184,6 +184,7 @@ if(isset($_GET['acao'])){
 						<?php include "botao_pagamento_adulto.php";?>
 					<?php endif; ?>
 				</div>
+				-->
 				
 				
 				
@@ -191,8 +192,6 @@ if(isset($_GET['acao'])){
 
 			</form>
 	</div>
-        
-
 
 </div>
 <!--//content-->

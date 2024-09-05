@@ -110,6 +110,7 @@ $resultado_consulta_inscricao = mysqli_fetch_assoc($query_consulta_inscricao);
 					<div class="col-md-2">R$ <?php echo converte_valor_real($resultado_consulta_inscricao["valor_inscricao_evento"]);?></div>
 				</div>
 
+				<!--
 				<div class="col-md-12 pagar-inscricao margin-15">
 					<?php if($resultado_consulta_inscricao["tipo_inscricao"] == 'C'): ?>
 						<?php include "botao_pagamento_crianca.php";?>
@@ -117,6 +118,7 @@ $resultado_consulta_inscricao = mysqli_fetch_assoc($query_consulta_inscricao);
 						<?php include "botao_pagamento_adulto.php";?>
 					<?php endif; ?>
 				</div>
+				-->
 				
 			</form>
 		</div>
