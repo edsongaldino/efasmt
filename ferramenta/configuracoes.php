@@ -12,7 +12,6 @@ define("BD_USUARIO","efasmt");
 define("BD_SENHA","Web@259864");
 define("BD_BANCO","efasmt");
 
-
 // informa��es do pa�nel
 define("TITULO_OFF","Sistema de Inscrições - EFAS");
 define("CAMINHO_CONTEUDO","conteudos");

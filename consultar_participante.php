@@ -53,5 +53,4 @@ if( isset($_GET['nome']) )
 function filter( $var ){
   return $var;//a implementação desta, fica a cargo do leitor
 }
-
 ?>
