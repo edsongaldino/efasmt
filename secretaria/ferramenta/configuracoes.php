@@ -28,7 +28,7 @@ define("ADMIN_NOME","O Centro Esp�rita");
 define("ADMIN_EMAIL","edson@agenciaatrativa.com.br");
 define("ADMIN_SITE","http://www.ocentroespirita.com/");
 
-// informa��es do fuso hor�rio
+// informações do fuso hor�rio
 date_default_timezone_set('America/Cuiaba');
 
 ?>

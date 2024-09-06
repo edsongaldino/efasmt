@@ -144,7 +144,6 @@ $query_consulta_institutos = mysqli_query($conexao,$sql_consulta_institutos);
 						<!-- /widget-busca -->
 						<div class="total">Sua consulta retornou <span class="total_consulta"><?php echo $total_consulta;?></span> <?php if($total_consulta > 1){echo " registros";}else{echo " registro";}?></div>
 
-
             <!-- /widget-header -->
             <div class="widget-content">
               <table class="table table-striped table-bordered">
