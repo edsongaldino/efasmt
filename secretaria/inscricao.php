@@ -9,8 +9,8 @@ $sql_consulta_participante = "SELECT participante.codigo_cidade, participante.no
 								FROM participante 
 								JOIN telefone_participante ON (participante.codigo_participante = telefone_participante.codigo_participante)
 								WHERE participante.codigo_participante = '".$_SESSION["codigo_participante"]."' LIMIT 1";
-$query_consulta_participante = mysql_query($sql_consulta_participante) or mascara_erro_mysql($sql_consulta_participante);	
-$resultado_consulta_participante = mysql_fetch_assoc($query_consulta_participante);
+$query_consulta_participante = mysqli_query($conexao, $sql_consulta_participante) or mascara_erro_mysql($sql_consulta_participante);	
+$resultado_consulta_participante = mysqli_fetch_assoc($query_consulta_participante);
 }
 
 
@@ -21,7 +21,7 @@ $sql_consulta_cursos_criancas = "SELECT curso.codigo_curso, curso.nome_curso, in
 									JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 									JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
 								 WHERE (curso.codigo_tema_curso = '1' OR curso.codigo_tema_curso = '2') AND evento_curso.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."' ORDER BY curso.codigo_tema_curso ASC";
-$query_consulta_cursos_criancas = mysql_query($sql_consulta_cursos_criancas) or mascara_erro_mysql($sql_consulta_cursos_criancas);
+$query_consulta_cursos_criancas = mysqli_query($conexao, $sql_consulta_cursos_criancas) or mascara_erro_mysql($sql_consulta_cursos_criancas);
 
 // consulta tema específico 12 e 13 anos e adulto
 $sql_consulta_tema_especifico_adulto = "SELECT curso.codigo_curso, curso.nome_curso, instituto.nome_instituto, evento.nome_evento, tema_curso.descricao_tema_curso, evento_curso.quantidade_vagas, evento_curso.referencia FROM evento_curso 
@@ -30,7 +30,7 @@ $sql_consulta_tema_especifico_adulto = "SELECT curso.codigo_curso, curso.nome_cu
 											JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 											JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
 										 WHERE (curso.codigo_tema_curso = '4') AND evento_curso.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."' ORDER BY curso.codigo_tema_curso ASC";
-$query_consulta_tema_especifico_adulto = mysql_query($sql_consulta_tema_especifico_adulto) or mascara_erro_mysql($sql_consulta_tema_especifico_adulto);
+$query_consulta_tema_especifico_adulto = mysqli_query($conexao, $sql_consulta_tema_especifico_adulto) or mascara_erro_mysql($sql_consulta_tema_especifico_adulto);
 
 // consulta tema atual 12 e 13 anos e adulto
 $sql_consulta_tema_atual_adulto = "SELECT curso.codigo_curso, curso.nome_curso, instituto.nome_instituto, evento.nome_evento, tema_curso.descricao_tema_curso, evento_curso.quantidade_vagas, evento_curso.referencia FROM evento_curso 
@@ -39,7 +39,7 @@ $sql_consulta_tema_atual_adulto = "SELECT curso.codigo_curso, curso.nome_curso, 
 											JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 											JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
 										 WHERE (curso.codigo_tema_curso = '5' OR curso.codigo_tema_curso = '6') AND evento_curso.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."' ORDER BY curso.codigo_tema_curso ASC";
-$query_consulta_tema_atual_adulto = mysql_query($sql_consulta_tema_atual_adulto) or mascara_erro_mysql($sql_consulta_tema_atual_adulto);
+$query_consulta_tema_atual_adulto = mysqli_query($conexao, $sql_consulta_tema_atual_adulto) or mascara_erro_mysql($sql_consulta_tema_atual_adulto);
 
 // consulta tema específico 12 e 13 anos e adulto
 $sql_consulta_tema_especifico_jovem= "SELECT curso.codigo_curso, curso.nome_curso, instituto.nome_instituto, evento.nome_evento, tema_curso.descricao_tema_curso, evento_curso.quantidade_vagas, evento_curso.referencia FROM evento_curso 
@@ -48,7 +48,7 @@ $sql_consulta_tema_especifico_jovem= "SELECT curso.codigo_curso, curso.nome_curs
 											JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 											JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
 										 WHERE curso.codigo_tema_curso = '3' AND evento_curso.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."' ORDER BY curso.codigo_tema_curso ASC";
-$query_consulta_tema_especifico_jovem = mysql_query($sql_consulta_tema_especifico_jovem) or mascara_erro_mysql($sql_consulta_tema_especifico_jovem);
+$query_consulta_tema_especifico_jovem = mysqli_query($conexao, $sql_consulta_tema_especifico_jovem) or mascara_erro_mysql($sql_consulta_tema_especifico_jovem);
 
 // consulta tema atual 12 e 13 anos e adulto
 $sql_consulta_tema_atual_jovem = "SELECT curso.codigo_curso, curso.nome_curso, instituto.nome_instituto, evento.nome_evento, tema_curso.descricao_tema_curso, evento_curso.quantidade_vagas, evento_curso.referencia FROM evento_curso 
@@ -57,12 +57,12 @@ $sql_consulta_tema_atual_jovem = "SELECT curso.codigo_curso, curso.nome_curso, i
 											JOIN instituto ON (curso.codigo_instituto = instituto.codigo_instituto)
 											JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso)
 										 WHERE curso.codigo_tema_curso = '5' AND evento_curso.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."' ORDER BY curso.codigo_tema_curso ASC";
-$query_consulta_tema_atual_jovem = mysql_query($sql_consulta_tema_atual_jovem) or mascara_erro_mysql($sql_consulta_tema_atual_jovem);
+$query_consulta_tema_atual_jovem = mysqli_query($conexao, $sql_consulta_tema_atual_jovem) or mascara_erro_mysql($sql_consulta_tema_atual_jovem);
 
 
 // consulta comissoes de trabalho
 $sql_consulta_comissoes_trabalho = "SELECT comissao_trabalho.codigo_comissao_trabalho, comissao_trabalho.nome_comissao_trabalho FROM comissao_trabalho ORDER BY comissao_trabalho.nome_comissao_trabalho ASC";
-$query_consulta_comissoes_trabalho = mysql_query($sql_consulta_comissoes_trabalho) or mascara_erro_mysql($sql_consulta_comissoes_trabalho);
+$query_consulta_comissoes_trabalho = mysqli_query($conexao, $sql_consulta_comissoes_trabalho) or mascara_erro_mysql($sql_consulta_comissoes_trabalho);
 
 
 $mensagem = campo_form_decodifica($_GET["mm"]);
@@ -83,44 +83,44 @@ if(campo_form_decodifica($_POST['acao']) == "gravar_participante_crianca") {
 	
 	conecta_mysql();
 	
-	mysql_query("BEGIN");
+	mysqli_query($conexao, "BEGIN");
 	
 	// inclui participante
 	$sql_inclui_participante = "INSERT INTO participante (codigo_cidade, data_nascimento_participante, nome_participante, nome_participante_cracha, centro_espirita_participante) VALUES ('".$cidade_participante."', '".$data_nascimento_participante."','".$nome_participante."','".$nome_participante_cracha."','".$centro_espirita_participante."')";
-	$query_inclui_participante = mysql_query($sql_inclui_participante) or mascara_erro_mysql($sql_inclui_participante,"index.php");
-	$codigo_participante = mysql_insert_id();
+	$query_inclui_participante = mysqli_query($conexao, $sql_inclui_participante) or mascara_erro_mysql($sql_inclui_participante,"index.php");
+	$codigo_participante = mysqli_insert_id($conexao);
 	
 	// inclui dados complementares
 	$sql_inclui_dados_complementares = "INSERT INTO dados_complementares (codigo_participante, nome_responsavel, telefone_responsavel, observacoes_crianca) VALUES ('".$codigo_participante."', '".$nome_responsavel."','".$telefone_responsavel."','".$observacoes_crianca."')";
-	$query_inclui_dados_complementares = mysql_query($sql_inclui_dados_complementares) or mascara_erro_mysql($sql_inclui_dados_complementares,"index.php");
+	$query_inclui_dados_complementares = mysqli_query($conexao, $sql_inclui_dados_complementares) or mascara_erro_mysql($sql_inclui_dados_complementares,"index.php");
 	
 	$data_atual = date("Y-m-d");
 	// inclui participante ao evento
 	$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('".$_SESSION["codigo_evento_acesso"]."', '".$codigo_participante."', '1', '12,50', '".$data_atual."', 'C')";
-	$query_inclui_usuario_participante = mysql_query($sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
-	$codigo_inscricao_evento = mysql_insert_id();
+	$query_inclui_usuario_participante = mysqli_query($conexao, $sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
+	$codigo_inscricao_evento = mysqli_insert_id($conexao);
 	
 	// vincula o usuário à ibscrição
 	$sql_inclui_usuario_inscricao_evento = "INSERT INTO usuario_inscricao_evento (codigo_usuario, codigo_inscricao_evento) VALUES ('".$_SESSION["codigo_usuario_acesso"]."', '".$codigo_inscricao_evento."')";
-	$query_inclui_usuario_inscricao_evento = mysql_query($sql_inclui_usuario_inscricao_evento) or mascara_erro_mysql($sql_inclui_usuario_inscricao_evento,"index.php");
+	$query_inclui_usuario_inscricao_evento = mysqli_query($conexao, $sql_inclui_usuario_inscricao_evento) or mascara_erro_mysql($sql_inclui_usuario_inscricao_evento,"index.php");
 	
 	
 	// inclui curso participante
 	for($i=0;$i<count($_POST['curso_crianca']);$i++){
 		
 	$sql_inclui_curso_participante = "INSERT INTO participante_evento_curso (codigo_participante, codigo_evento, codigo_curso) VALUES ('".$codigo_participante."','".$_SESSION["codigo_evento_acesso"]."', '".protege_campo($_POST['curso_crianca'][$i])."')";
-	$query_inclui_curso_participante = mysql_query($sql_inclui_curso_participante) or mascara_erro_mysql($sql_inclui_curso_participante,"index.php");
+	$query_inclui_curso_participante = mysqli_query($conexao, $sql_inclui_curso_participante) or mascara_erro_mysql($sql_inclui_curso_participante,"index.php");
 	
 	}
 	
 
 	if($query_inclui_participante && $query_inclui_usuario_participante && $query_inclui_usuario_inscricao_evento && $query_inclui_curso_participante){
-		mysql_query("COMMIT");	
+		mysqli_query($conexao, "COMMIT");	
 		fecha_mysql();
 		redireciona("participantes.php?codigo_participante=".campo_form_codifica($codigo_participante)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));
 		
 	} else {
-		mysql_query("ROLLBACK");	
+		mysqli_query($conexao, "ROLLBACK");	
 		fecha_mysql();
 		redireciona("inscricao.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e a inscrição não foi realizada. Tente novamente!"));
 	}
@@ -141,30 +141,30 @@ if(campo_form_decodifica($_POST['acao']) == "gravar_participante_adulto") {
 	
 	conecta_mysql();
 	
-	mysql_query("BEGIN");
+	mysqli_query($conexao, "BEGIN");
 	
 	// inclui participante
 	$sql_inclui_participante = "INSERT INTO participante (codigo_cidade, data_nascimento_participante, nome_participante, nome_participante_cracha, centro_espirita_participante) VALUES ('".$cidade_participante."', '".$data_nascimento_participante."','".$nome_participante."','".$nome_participante_cracha."','".$centro_espirita_participante."')";
-	$query_inclui_participante = mysql_query($sql_inclui_participante) or mascara_erro_mysql($sql_inclui_participante,"index.php");
-	$codigo_participante = mysql_insert_id();
+	$query_inclui_participante = mysqli_query($conexao, $sql_inclui_participante) or mascara_erro_mysql($sql_inclui_participante,"index.php");
+	$codigo_participante = mysqli_insert_id($conexao);
 	
 	if($telefone_participante):
 	// inclui telefone
 	$sql_inclui_telefone_participante = "INSERT INTO telefone_participante (codigo_participante, numero_telefone_participante) VALUES ('".$codigo_participante."', '".$telefone_participante."')";
-	$query_inclui_telefone_participante = mysql_query($sql_inclui_telefone_participante) or mascara_erro_mysql($sql_inclui_telefone_participante,"index.php");
+	$query_inclui_telefone_participante = mysqli_query($conexao, $sql_inclui_telefone_participante) or mascara_erro_mysql($sql_inclui_telefone_participante,"index.php");
 	endif;
 
 	if($email_participante):
 	// inclui email
 	$sql_inclui_email_participante = "INSERT INTO email_participante (codigo_participante, descricao_email_participante) VALUES ('".$codigo_participante."', '".$email_participante."')";
-	$query_inclui_email_participante = mysql_query($sql_inclui_email_participante) or mascara_erro_mysql($sql_inclui_email_participante,"index.php");
+	$query_inclui_email_participante = mysqli_query($conexao, $sql_inclui_email_participante) or mascara_erro_mysql($sql_inclui_email_participante,"index.php");
 	endif;	
 
 	// inclui curso participante
 	for($i=0;$i<count($_POST['curso_participante']);$i++){
 		
 	$sql_inclui_curso_participante = "INSERT INTO participante_evento_curso (codigo_participante, codigo_evento, codigo_curso) VALUES ('".$codigo_participante."','".$_SESSION["codigo_evento_acesso"]."', '".protege_campo($_POST['curso_participante'][$i])."')";
-	$query_inclui_curso_participante = mysql_query($sql_inclui_curso_participante) or mascara_erro_mysql($sql_inclui_curso_participante,"index.php");
+	$query_inclui_curso_participante = mysqli_query($conexao, $sql_inclui_curso_participante) or mascara_erro_mysql($sql_inclui_curso_participante,"index.php");
 	
 	}
 	
@@ -172,20 +172,20 @@ if(campo_form_decodifica($_POST['acao']) == "gravar_participante_adulto") {
 	
 	// inclui participante ao evento
 	$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('".$_SESSION["codigo_evento_acesso"]."', '".$codigo_participante."', '1', '25,00', '".$data_atual."', 'A')";
-	$query_inclui_usuario_participante = mysql_query($sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
-	$codigo_inscricao_evento = mysql_insert_id();
+	$query_inclui_usuario_participante = mysqli_query($conexao, $sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
+	$codigo_inscricao_evento = mysqli_insert_id($conexao);
 	
 	// vincula o usuário à ibscrição
 	$sql_inclui_usuario_inscricao_evento = "INSERT INTO usuario_inscricao_evento (codigo_usuario, codigo_inscricao_evento) VALUES ('".$_SESSION["codigo_usuario_acesso"]."', '".$codigo_inscricao_evento."')";
-	$query_inclui_usuario_inscricao_evento = mysql_query($sql_inclui_usuario_inscricao_evento) or mascara_erro_mysql($sql_inclui_usuario_inscricao_evento,"index.php");
+	$query_inclui_usuario_inscricao_evento = mysqli_query($conexao, $sql_inclui_usuario_inscricao_evento) or mascara_erro_mysql($sql_inclui_usuario_inscricao_evento,"index.php");
 	
 	if($query_inclui_participante && $query_inclui_curso_participante && $query_inclui_usuario_participante && $query_inclui_usuario_inscricao_evento){
-		mysql_query("COMMIT");
+		mysqli_query($conexao, "COMMIT");
 		fecha_mysql();
 		redireciona("participantes.php?codigo_participante=".campo_form_codifica($codigo_participante)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));
 		
 	} else {	
-		mysql_query("ROLLBACK");
+		mysqli_query($conexao, "ROLLBACK");
 		fecha_mysql();
 		redireciona("inscricao.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e a inscrição não foi realizada. Tente novamente!"));
 	}
@@ -206,30 +206,30 @@ if(campo_form_decodifica($_POST['acao']) == "gravar_participante_jovem") {
 	
 	conecta_mysql();
 	
-	mysql_query("BEGIN");
+	mysqli_query($conexao, "BEGIN");
 	
 	// inclui participante
 	$sql_inclui_participante = "INSERT INTO participante (codigo_cidade, data_nascimento_participante, nome_participante, nome_participante_cracha, centro_espirita_participante) VALUES ('".$cidade_participante."', '".$data_nascimento_participante."','".$nome_participante."','".$nome_participante_cracha."','".$centro_espirita_participante."')";
-	$query_inclui_participante = mysql_query($sql_inclui_participante) or mascara_erro_mysql($sql_inclui_participante,"index.php");
-	$codigo_participante = mysql_insert_id();
+	$query_inclui_participante = mysqli_query($conexao, $sql_inclui_participante) or mascara_erro_mysql($sql_inclui_participante,"index.php");
+	$codigo_participante = mysqli_insert_id($conexao);
 	
 	if($telefone_participante):
 	// inclui telefone
 	$sql_inclui_telefone_participante = "INSERT INTO telefone_participante (codigo_participante, numero_telefone_participante) VALUES ('".$codigo_participante."', '".$telefone_participante."')";
-	$query_inclui_telefone_participante = mysql_query($sql_inclui_telefone_participante) or mascara_erro_mysql($sql_inclui_telefone_participante,"index.php");
+	$query_inclui_telefone_participante = mysqli_query($conexao, $sql_inclui_telefone_participante) or mascara_erro_mysql($sql_inclui_telefone_participante,"index.php");
 	endif;
 
 	if($email_participante):
 	// inclui email
 	$sql_inclui_email_participante = "INSERT INTO email_participante (codigo_participante, descricao_email_participante) VALUES ('".$codigo_participante."', '".$email_participante."')";
-	$query_inclui_email_participante = mysql_query($sql_inclui_email_participante) or mascara_erro_mysql($sql_inclui_email_participante,"index.php");
+	$query_inclui_email_participante = mysqli_query($conexao, $sql_inclui_email_participante) or mascara_erro_mysql($sql_inclui_email_participante,"index.php");
 	endif;
 
 	// inclui curso participante
 	for($i=0;$i<count($_POST['curso_participante']);$i++){
 		
 	$sql_inclui_curso_participante = "INSERT INTO participante_evento_curso (codigo_participante, codigo_evento, codigo_curso) VALUES ('".$codigo_participante."','".$_SESSION["codigo_evento_acesso"]."', '".protege_campo($_POST['curso_participante'][$i])."')";
-	$query_inclui_curso_participante = mysql_query($sql_inclui_curso_participante) or mascara_erro_mysql($sql_inclui_curso_participante,"index.php");
+	$query_inclui_curso_participante = mysqli_query($conexao, $sql_inclui_curso_participante) or mascara_erro_mysql($sql_inclui_curso_participante,"index.php");
 	
 	}
 	
@@ -237,20 +237,20 @@ if(campo_form_decodifica($_POST['acao']) == "gravar_participante_jovem") {
 	
 	// inclui participante ao evento
 	$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('".$_SESSION["codigo_evento_acesso"]."', '".$codigo_participante."', '1', '25,00', '".$data_atual."', 'J')";
-	$query_inclui_usuario_participante = mysql_query($sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
-	$codigo_inscricao_evento = mysql_insert_id();
+	$query_inclui_usuario_participante = mysqli_query($conexao, $sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
+	$codigo_inscricao_evento = mysqli_insert_id($conexao);
 	
 	// vincula o usuário à ibscrição
 	$sql_inclui_usuario_inscricao_evento = "INSERT INTO usuario_inscricao_evento (codigo_usuario, codigo_inscricao_evento) VALUES ('".$_SESSION["codigo_usuario_acesso"]."', '".$codigo_inscricao_evento."')";
-	$query_inclui_usuario_inscricao_evento = mysql_query($sql_inclui_usuario_inscricao_evento) or mascara_erro_mysql($sql_inclui_usuario_inscricao_evento,"index.php");
+	$query_inclui_usuario_inscricao_evento = mysqli_query($conexao, $sql_inclui_usuario_inscricao_evento) or mascara_erro_mysql($sql_inclui_usuario_inscricao_evento,"index.php");
 	
 	if($query_inclui_participante && $query_inclui_curso_participante && $query_inclui_usuario_participante && $query_inclui_usuario_inscricao_evento){
-		mysql_query("COMMIT");
+		mysqli_query($conexao, "COMMIT");
 		fecha_mysql();
 		redireciona("participantes.php?codigo_participante=".campo_form_codifica($codigo_participante)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));
 		
 	} else {	
-		mysql_query("ROLLBACK");
+		mysqli_query($conexao, "ROLLBACK");
 		fecha_mysql();
 		redireciona("inscricao.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e a inscrição não foi realizada. Tente novamente!"));
 	}
@@ -272,30 +272,30 @@ if(campo_form_decodifica($_POST['acao']) == "gravar_participante_trabalhador") {
 	conecta_mysql();
 	
 	
-	mysql_query("BEGIN");
+	mysqli_query($conexao, "BEGIN");
 	
 	// inclui participante
 	$sql_inclui_participante = "INSERT INTO participante (codigo_cidade, data_nascimento_participante, nome_participante, nome_participante_cracha, centro_espirita_participante) VALUES ('".$cidade_participante."', '".$data_nascimento_participante."','".$nome_participante."', '".$nome_participante_cracha."','".$centro_espirita_participante."')";
-	$query_inclui_participante = mysql_query($sql_inclui_participante) or mascara_erro_mysql($sql_inclui_participante,"index.php");
-	$codigo_participante = mysql_insert_id();
+	$query_inclui_participante = mysqli_query($conexao, $sql_inclui_participante) or mascara_erro_mysql($sql_inclui_participante,"index.php");
+	$codigo_participante = mysqli_insert_id($conexao);
 	
 	if($telefone_participante):
 	// inclui telefone
 	$sql_inclui_telefone_participante = "INSERT INTO telefone_participante (codigo_participante, numero_telefone_participante) VALUES ('".$codigo_participante."', '".$telefone_participante."')";
-	$query_inclui_telefone_participante = mysql_query($sql_inclui_telefone_participante) or mascara_erro_mysql($sql_inclui_telefone_participante,"index.php");
+	$query_inclui_telefone_participante = mysqli_query($conexao, $sql_inclui_telefone_participante) or mascara_erro_mysql($sql_inclui_telefone_participante,"index.php");
 	endif;
 
 	if($email_participante):
 	// inclui email
 	$sql_inclui_email_participante = "INSERT INTO email_participante (codigo_participante, descricao_email_participante) VALUES ('".$codigo_participante."', '".$email_participante."')";
-	$query_inclui_email_participante = mysql_query($sql_inclui_email_participante) or mascara_erro_mysql($sql_inclui_email_participante,"index.php");
+	$query_inclui_email_participante = mysqli_query($conexao, $sql_inclui_email_participante) or mascara_erro_mysql($sql_inclui_email_participante,"index.php");
 	endif;
 
 	// inclui participante à comissao
 	for($i=0;$i<count($_POST['comissao_trabalho']);$i++){
 		
 	$sql_inclui_participante_comissao = "INSERT INTO comissao_trabalho_participante (codigo_comissao_trabalho, codigo_participante) VALUES ('".protege_campo($_POST['comissao_trabalho'][$i])."', '".$codigo_participante."')";
-	$query_inclui_participante_comissao = mysql_query($sql_inclui_participante_comissao) or mascara_erro_mysql($sql_inclui_participante_comissao,"index.php");
+	$query_inclui_participante_comissao = mysqli_query($conexao, $sql_inclui_participante_comissao) or mascara_erro_mysql($sql_inclui_participante_comissao,"index.php");
 	
 	}
 
@@ -303,20 +303,20 @@ if(campo_form_decodifica($_POST['acao']) == "gravar_participante_trabalhador") {
 		
 	// inclui participante ao evento
 	$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('".$_SESSION["codigo_evento_acesso"]."', '".$codigo_participante."', '1', '25,00', '".$data_atual."', 'T')";
-	$query_inclui_usuario_participante = mysql_query($sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
-	$codigo_inscricao_evento = mysql_insert_id();
+	$query_inclui_usuario_participante = mysqli_query($conexao, $sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
+	$codigo_inscricao_evento = mysqli_insert_id($conexao);
 	
 	// vincula o usuário à ibscrição
 	$sql_inclui_usuario_inscricao_evento = "INSERT INTO usuario_inscricao_evento (codigo_usuario, codigo_inscricao_evento) VALUES ('".$_SESSION["codigo_usuario_acesso"]."', '".$codigo_inscricao_evento."')";
-	$query_inclui_usuario_inscricao_evento = mysql_query($sql_inclui_usuario_inscricao_evento) or mascara_erro_mysql($sql_inclui_usuario_inscricao_evento,"index.php");
+	$query_inclui_usuario_inscricao_evento = mysqli_query($conexao, $sql_inclui_usuario_inscricao_evento) or mascara_erro_mysql($sql_inclui_usuario_inscricao_evento,"index.php");
 
 	if($query_inclui_participante && $query_inclui_usuario_participante && $query_inclui_usuario_inscricao_evento){
-		mysql_query("COMMIT");
+		mysqli_query($conexao, "COMMIT");
 		fecha_mysql();
 		redireciona("participantes.php?codigo_participante=".campo_form_codifica($codigo_participante)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));
 		
 	} else {	
-		mysql_query("ROLLBACK");
+		mysqli_query($conexao, "ROLLBACK");
 		fecha_mysql();
 		redireciona("inscricao.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e a inscrição não foi realizada. Tente novamente!"));
 	}
@@ -334,32 +334,32 @@ if(campo_form_decodifica($_POST['acao']) == "gravar_participante_visitante") {
 		conecta_mysql();
 		
 		
-		mysql_query("BEGIN");
+		mysqli_query($conexao, "BEGIN");
 		
 		// inclui participante
 		$sql_inclui_participante = "INSERT INTO participante (codigo_cidade, nome_participante, nome_participante_cracha) VALUES ('".$cidade_participante."', '".$nome_participante."', '".$nome_participante_cracha."')";
-		$query_inclui_participante = mysql_query($sql_inclui_participante) or mascara_erro_mysql($sql_inclui_participante,"index.php");
-		$codigo_participante = mysql_insert_id();
+		$query_inclui_participante = mysqli_query($conexao, $sql_inclui_participante) or mascara_erro_mysql($sql_inclui_participante,"index.php");
+		$codigo_participante = mysqli_insert_id($conexao);
 		
 		$data_atual = date("Y-m-d");
 		
 		// inclui participante ao evento
 		$sql_inclui_usuario_participante = "INSERT INTO inscricao_evento (codigo_evento, codigo_participante, codigo_situacao_inscricao, valor_inscricao_evento, data_inscricao_evento, tipo_inscricao) VALUES ('".$_SESSION["codigo_evento_acesso"]."', '".$codigo_participante."', '1', '25,00', '".$data_atual."', 'T')";
-		$query_inclui_usuario_participante = mysql_query($sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
-		$codigo_inscricao_evento = mysql_insert_id();
+		$query_inclui_usuario_participante = mysqli_query($conexao, $sql_inclui_usuario_participante) or mascara_erro_mysql($sql_inclui_usuario_participante,"index.php");
+		$codigo_inscricao_evento = mysqli_insert_id($conexao);
 		
 		// vincula o usuário à ibscrição
 		$sql_inclui_usuario_inscricao_evento = "INSERT INTO usuario_inscricao_evento (codigo_usuario, codigo_inscricao_evento) VALUES ('".$_SESSION["codigo_usuario_acesso"]."', '".$codigo_inscricao_evento."')";
-		$query_inclui_usuario_inscricao_evento = mysql_query($sql_inclui_usuario_inscricao_evento) or mascara_erro_mysql($sql_inclui_usuario_inscricao_evento,"index.php");
+		$query_inclui_usuario_inscricao_evento = mysqli_query($conexao, $sql_inclui_usuario_inscricao_evento) or mascara_erro_mysql($sql_inclui_usuario_inscricao_evento,"index.php");
 		
 		
 		if($query_inclui_participante && $query_inclui_usuario_participante && $query_inclui_usuario_inscricao_evento){
-			mysql_query("COMMIT");
+			mysqli_query($conexao, "COMMIT");
 			fecha_mysql();
 			redireciona("participantes.php?codigo_participante=".campo_form_codifica($codigo_participante)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));
 			
 		} else {	
-			mysql_query("ROLLBACK");
+			mysqli_query($conexao, "ROLLBACK");
 			fecha_mysql();
 			redireciona("inscricao.php?me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Ocorreram erros e a inscrição não foi realizada. Tente novamente!"));
 		}
@@ -368,11 +368,11 @@ if(campo_form_decodifica($_POST['acao']) == "gravar_participante_visitante") {
 // consulta
 $sql_consulta_cidade = "SELECT codigo_cidade, nome_cidade FROM cidade ORDER BY cidade.nome_cidade ASC ";
 
-$query_consulta_cidade1 = mysql_query($sql_consulta_cidade) or mascara_erro_mysql($sql_consulta_cidade);
-$query_consulta_cidade2 = mysql_query($sql_consulta_cidade) or mascara_erro_mysql($sql_consulta_cidade);
-$query_consulta_cidade3 = mysql_query($sql_consulta_cidade) or mascara_erro_mysql($sql_consulta_cidade);
-$query_consulta_cidade4 = mysql_query($sql_consulta_cidade) or mascara_erro_mysql($sql_consulta_cidade);
-$query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysql($sql_consulta_cidade);
+$query_consulta_cidade1 = mysqli_query($conexao, $sql_consulta_cidade) or mascara_erro_mysql($sql_consulta_cidade);
+$query_consulta_cidade2 = mysqli_query($conexao, $sql_consulta_cidade) or mascara_erro_mysql($sql_consulta_cidade);
+$query_consulta_cidade3 = mysqli_query($conexao, $sql_consulta_cidade) or mascara_erro_mysql($sql_consulta_cidade);
+$query_consulta_cidade4 = mysqli_query($conexao, $sql_consulta_cidade) or mascara_erro_mysql($sql_consulta_cidade);
+$query_consulta_cidade5 = mysqli_query($conexao, $sql_consulta_cidade) or mascara_erro_mysql($sql_consulta_cidade);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -520,7 +520,7 @@ $query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysq
 											<label class="control-label" for="lastname">Cidade</label>
 											<div class="controls">
 											<select id="cidade_participante" name="cidade_participante" class="span4 form-inscricao-select">
-												<?php while($cidade = mysql_fetch_assoc($query_consulta_cidade1)) {?>
+												<?php while($cidade = mysqli_fetch_assoc($query_consulta_cidade1)) {?>
 													<option value="<?php echo $cidade["codigo_cidade"];?>" <?php if($resultado_consulta_participante["codigo_cidade"] == $cidade["codigo_cidade"]){echo "selected";}?>><?php echo $cidade["nome_cidade"];?></option>
 												<?php }?>
 												</select>
@@ -576,7 +576,7 @@ $query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysq
 											<label class="control-label" for="curso_crianca">Escolha o Tema Específico da Criança:</label>
 											<div class="controls">
                                                 <select id="curso_crianca[]" name="curso_crianca[]" class="span4 form-inscricao-select">
-                                                  <?php while($resultado_consulta_cursos_criancas = mysql_fetch_assoc($query_consulta_cursos_criancas)) {?>
+                                                  <?php while($resultado_consulta_cursos_criancas = mysqli_fetch_assoc($query_consulta_cursos_criancas)) {?>
                                                   <option value="<?php echo $resultado_consulta_cursos_criancas["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_cursos_criancas["codigo_curso"]) >= $resultado_consulta_cursos_criancas["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><?php echo $resultado_consulta_cursos_criancas["referencia"];?> - <?php echo utf8_encode($resultado_consulta_cursos_criancas["nome_curso"]).$mensagem;?></option>
                                                   <?php $mensagem = '';}?>
                                                 </select>
@@ -622,7 +622,7 @@ $query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysq
 											<div class="controls">
 
 												<select id="cidade_participante" name="cidade_participante" class="span4 form-inscricao-select">
-												<?php while($cidade = mysql_fetch_assoc($query_consulta_cidade2)) {?>
+												<?php while($cidade = mysqli_fetch_assoc($query_consulta_cidade2)) {?>
 													<option value="<?php echo $cidade["codigo_cidade"];?>" <?php if($resultado_consulta_participante["codigo_cidade"] == $cidade["codigo_cidade"]){echo "selected";}?>><?php echo $cidade["nome_cidade"];?></option>
 												<?php }?>
 												</select>
@@ -667,7 +667,7 @@ $query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysq
 											<label class="control-label" for="curso_participante[]">Tema Atual:</label>
 											<div class="controls">
                                                 <select id="curso_participante[]" name="curso_participante[]" class="span6 form-inscricao-select">
-                                                  <?php while($resultado_consulta_tema_atual_jovem = mysql_fetch_assoc($query_consulta_tema_atual_jovem)) {?>
+                                                  <?php while($resultado_consulta_tema_atual_jovem = mysqli_fetch_assoc($query_consulta_tema_atual_jovem)) {?>
                            	                     	<option value="<?php echo $resultado_consulta_tema_atual_jovem["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_tema_atual_jovem["codigo_curso"]) >= $resultado_consulta_tema_atual_jovem["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><?php echo $resultado_consulta_tema_atual_jovem["referencia"];?> - <strong><?php echo utf8_encode($resultado_consulta_tema_atual_jovem["nome_curso"]).$mensagem;?></strong></option>
                                                   <?php $mensagem = '';}?>
                                                 </select>
@@ -678,7 +678,7 @@ $query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysq
 											<label class="control-label" for="curso_participante[]">Tema Específico:</label>
 											<div class="controls">
                                                 <select id="curso_participante[]" name="curso_participante[]" class="span6 form-inscricao-select">
-                                                  <?php while($resultado_consulta_tema_especifico_jovem = mysql_fetch_assoc($query_consulta_tema_especifico_jovem)) {?>
+                                                  <?php while($resultado_consulta_tema_especifico_jovem = mysqli_fetch_assoc($query_consulta_tema_especifico_jovem)) {?>
                                                   <option value="<?php echo $resultado_consulta_tema_especifico_jovem["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_tema_especifico_jovem["codigo_curso"]) >= $resultado_consulta_tema_especifico_jovem["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><?php echo $resultado_consulta_tema_especifico_jovem["referencia"];?> - <strong><?php echo utf8_encode($resultado_consulta_tema_especifico_jovem["nome_curso"]).$mensagem;?></strong></option>
                                                   <?php $mensagem = '';}?>
                                                 </select>
@@ -721,7 +721,7 @@ $query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysq
 											<label class="control-label" for="lastname">Cidade</label>
 											<div class="controls">
 											<select id="cidade_participante" name="cidade_participante" class="span4 form-inscricao-select">
-												<?php while($cidade = mysql_fetch_assoc($query_consulta_cidade3)) {?>
+												<?php while($cidade = mysqli_fetch_assoc($query_consulta_cidade3)) {?>
 													<option value="<?php echo $cidade["codigo_cidade"];?>" <?php if($resultado_consulta_participante["codigo_cidade"] == $cidade["codigo_cidade"]){echo "selected";}?>><?php echo $cidade["nome_cidade"];?></option>
 												<?php }?>
 												</select>
@@ -765,7 +765,7 @@ $query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysq
 											<label class="control-label" for="curso_participante[]">Tema Atual:</label>
 											<div class="controls">
                                                 <select id="curso_participante[]" name="curso_participante[]" class="span6 form-inscricao-select">
-                                                  <?php while($resultado_consulta_tema_atual_adulto = mysql_fetch_assoc($query_consulta_tema_atual_adulto)) {?>
+                                                  <?php while($resultado_consulta_tema_atual_adulto = mysqli_fetch_assoc($query_consulta_tema_atual_adulto)) {?>
                            	                     	<option value="<?php echo $resultado_consulta_tema_atual_adulto["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_tema_atual_adulto["codigo_curso"]) >= $resultado_consulta_tema_atual_adulto["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><?php echo $resultado_consulta_tema_atual_adulto["referencia"];?> - <strong><?php echo utf8_encode($resultado_consulta_tema_atual_adulto["nome_curso"]).$mensagem;?></strong></option>
                                                   <?php $mensagem = '';}?>
                                                 </select>
@@ -776,7 +776,7 @@ $query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysq
 											<label class="control-label" for="curso_participante[]">Tema Específico:</label>
 											<div class="controls">
                                                 <select id="curso_participante[]" name="curso_participante[]" class="span6 form-inscricao-select">
-                                                  <?php while($resultado_consulta_tema_especifico_adulto = mysql_fetch_assoc($query_consulta_tema_especifico_adulto)) {?>
+                                                  <?php while($resultado_consulta_tema_especifico_adulto = mysqli_fetch_assoc($query_consulta_tema_especifico_adulto)) {?>
                                                   <option value="<?php echo $resultado_consulta_tema_especifico_adulto["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_tema_especifico_adulto["codigo_curso"]) >= $resultado_consulta_tema_especifico_adulto["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><?php echo $resultado_consulta_tema_especifico_adulto["referencia"];?> - <strong><?php echo utf8_encode($resultado_consulta_tema_especifico_adulto["nome_curso"]).$mensagem;?></strong></option>
                                                   <?php $mensagem = '';}?>
                                                 </select>
@@ -819,7 +819,7 @@ $query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysq
 											<label class="control-label" for="lastname">Cidade</label>
 											<div class="controls">
 											<select id="cidade_participante" name="cidade_participante" class="span4 form-inscricao-select">
-												<?php while($cidade = mysql_fetch_assoc($query_consulta_cidade4)) {?>
+												<?php while($cidade = mysqli_fetch_assoc($query_consulta_cidade4)) {?>
 													<option value="<?php echo $cidade["codigo_cidade"];?>" <?php if($resultado_consulta_participante["codigo_cidade"] == $cidade["codigo_cidade"]){echo "selected";}?>><?php echo $cidade["nome_cidade"];?></option>
 												<?php }?>
 												</select>
@@ -863,7 +863,7 @@ $query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysq
 											<label class="control-label" for="comissao_trabalho[]">Comissão de trabalho:</label>
 											<div class="controls">
                                                 <select id="comissao_trabalho[]" name="comissao_trabalho[]" class="span6 form-inscricao-select" required>
-                                                  <?php while($resultado_consulta_comissoes_trabalho = mysql_fetch_assoc($query_consulta_comissoes_trabalho)) {?>
+                                                  <?php while($resultado_consulta_comissoes_trabalho = mysqli_fetch_assoc($query_consulta_comissoes_trabalho)) {?>
                                                   <option value="<?php echo $resultado_consulta_comissoes_trabalho["codigo_comissao_trabalho"];?>"><?php echo utf8_encode($resultado_consulta_comissoes_trabalho["nome_comissao_trabalho"]);?></option>
                                                   <?php }?>
                                                 </select>
@@ -906,7 +906,7 @@ $query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysq
 											<label class="control-label" for="lastname">Cidade</label>
 											<div class="controls">
 											<select id="cidade_participante" name="cidade_participante" class="span4 form-inscricao-select">
-												<?php while($cidade = mysql_fetch_assoc($query_consulta_cidade5)) {?>
+												<?php while($cidade = mysqli_fetch_assoc($query_consulta_cidade5)) {?>
 													<option value="<?php echo $cidade["codigo_cidade"];?>" <?php if($resultado_consulta_participante["codigo_cidade"] == $cidade["codigo_cidade"]){echo "selected";}?>><?php echo $cidade["nome_cidade"];?></option>
 												<?php }?>
 												</select>
@@ -950,7 +950,7 @@ $query_consulta_cidade5 = mysql_query($sql_consulta_cidade) or mascara_erro_mysq
 </div>
 <!-- /extra -->
 <?php
-mysql_free_result($query_consulta_cursos_criancas);
+mysqli_free_result($query_consulta_cursos_criancas);
 
 fecha_mysql();
 ?>

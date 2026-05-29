@@ -55,4 +55,5 @@ include("funcao_php/calcula_idade.php");
 include("funcao_php/calcula_total_inscritos.php");
 include("funcao_php/verifica_inscricao_trabalhador.php");
 include("funcao_php/calcula_total_inscritos_curso.php");
+include("funcao_php/gerar_pagamento_mp.php");
 ?>

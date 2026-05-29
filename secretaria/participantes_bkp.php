@@ -49,12 +49,12 @@ $sql_consulta_inscricoes = "SELECT
 									JOIN participante ON (inscricao_evento.codigo_participante = participante.codigo_participante)
 								  WHERE inscricao_evento.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."'".$sql_where_consulta." 
                   ORDER BY participante.nome_participante ASC";
-$query_consulta_inscricoes = mysql_query($sql_consulta_inscricoes) or mascara_erro_mysql($sql_consulta_inscricoes);
-$total_inscricoes = mysql_num_rows($query_consulta_inscricoes);
+$query_consulta_inscricoes = mysqli_query($conexao, $sql_consulta_inscricoes) or mascara_erro_mysql($sql_consulta_inscricoes);
+$total_inscricoes = mysqli_num_rows($query_consulta_inscricoes);
 
 // consulta situacaos
 $sql_consulta_situacao_inscricao = "SELECT codigo_situacao_inscricao, descricao_situacao_inscricao FROM situacao_inscricao";
-$query_consulta_situacao_inscricao = mysql_query($sql_consulta_situacao_inscricao) or mascara_erro_mysql($sql_consulta_situacao_inscricao);
+$query_consulta_situacao_inscricao = mysqli_query($conexao, $sql_consulta_situacao_inscricao) or mascara_erro_mysql($sql_consulta_situacao_inscricao);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +63,8 @@ $query_consulta_situacao_inscricao = mysql_query($sql_consulta_situacao_inscrica
 <script type="text/javascript">
 // Confirma exclusao
 	function confirma_acao(msg,url){
+	global $conexao;
+
 		if(confirm(msg)) {
 			open(url,"_self");
 		}
@@ -106,7 +108,7 @@ $query_consulta_situacao_inscricao = mysql_query($sql_consulta_situacao_inscrica
 
 								<select name="situacao" id="situacao" class="span3" placeholder="Situação">
 									<option value="">Filtrar pela situação</option>
-									<?php while($resultado_consulta_situacao = mysql_fetch_assoc($query_consulta_situacao_inscricao)) {?>
+									<?php while($resultado_consulta_situacao = mysqli_fetch_assoc($query_consulta_situacao_inscricao)) {?>
 									<option value="<?php echo $resultado_consulta_situacao["codigo_situacao_inscricao"];?>"><?php echo utf8_encode($resultado_consulta_situacao["descricao_situacao_inscricao"]);?></option>
 									<?php }?>
 								</select>
@@ -148,7 +150,7 @@ $query_consulta_situacao_inscricao = mysql_query($sql_consulta_situacao_inscrica
                 </thead>
                 <tbody>
                 
-                  <?php while($resultado_consulta_inscricoes = mysql_fetch_assoc($query_consulta_inscricoes)) {?>
+                  <?php while($resultado_consulta_inscricoes = mysqli_fetch_assoc($query_consulta_inscricoes)) {?>
                   <tr>
                     <td> <?php echo $resultado_consulta_inscricoes["codigo_participante"];?></td>
                     <td> <?php echo $resultado_consulta_inscricoes["nome_participante"];?></td>
@@ -186,7 +188,7 @@ $query_consulta_situacao_inscricao = mysql_query($sql_consulta_situacao_inscrica
   <!-- /extra-inner --> 
 </div>
 <?php
-mysql_free_result($query_consulta_inscricoes);
+mysqli_free_result($query_consulta_inscricoes);
 
 fecha_mysql();
 ?>

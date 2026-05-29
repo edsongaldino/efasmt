@@ -20,15 +20,15 @@ function envia_email($destino, $nome_participante, $assunto, $corpo_mensagem)
 	
 		//Define o remetente
 		// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=    
-		$mail->SetFrom('secretaria@efasmt.com.br', 'Secretaria - EFAS'); //Seu e-mail
-		$mail->AddReplyTo('secretaria@efasmt.com.br', 'Secretaria - EFAS'); //Seu e-mail
+		$mail->SetFrom('secretaria@euripedesbarsanulfo.org.br', 'Secretaria - EFAS'); //Seu e-mail
+		$mail->AddReplyTo('secretaria@euripedesbarsanulfo.org.br', 'Secretaria - EFAS'); //Seu e-mail
 		$mail->Subject = $assunto;//Assunto do e-mail
 	
 	
 		//Define os destinatário(s)
 		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 		$mail->AddAddress($destino, $nome_participante);
-		$mail->AddCC('secretaria@efasmt.com.br', 'Secretaria - EFAS'); // Copia
+		$mail->AddCC('secretaria@euripedesbarsanulfo.org.br', 'Secretaria - EFAS'); // Copia
 		//Campos abaixo são opcionais 
 		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 		//$mail->AddCC('destinarario@dominio.com.br', 'Destinatario'); // Copia

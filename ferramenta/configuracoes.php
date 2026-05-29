@@ -4,7 +4,7 @@
 define("BD_HOST","localhost");
 define("BD_USUARIO","root");
 define("BD_SENHA","");
-define("BD_BANCO","efasmt");
+define("BD_BANCO","efas2024");
 
 /*
 define("BD_HOST","efasmt.mysql.dbaas.com.br");
@@ -20,7 +20,11 @@ define("SERVIDOR_RAIZ","/");
 define("SITE_RAIZ","");
 define("SUBPASTA_RAIZ","/public_html");
 define("KEY_SESSAO",$_SERVER['HTTP_HOST'].BD_USUARIO."fdsa65f4sd699q8745sdf987fsd85652734857349eh39rf6dsa8f48f494w84sdf84sd".$_SERVER['REMOTE_ADDR']);
-define("DOMINIO","http://".$_SERVER['HTTP_HOST']);
+// Mercado Pago Token de Acesso (Access Token)
+// Substitua pelo seu Token de Acesso de Produção (APP_USR-...) ou Teste (TEST-...)
+define("MP_ACCESS_TOKEN", "APP_USR-8247152463674198-052809-5026b928bef509e8e0210a2520cdda14-3433468810");
+
+define("DOMINIO", (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST']);
 
 // informa��es de aviso ao administrador do sistema
 define("ADMIN_RAZAO","O Centro Espírita");

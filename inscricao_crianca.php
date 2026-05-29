@@ -10,7 +10,7 @@ $sql_consulta_cursos_criancas = "SELECT curso.codigo_curso, curso.nome_curso, in
 								 WHERE (curso.codigo_tema_curso = '1' OR curso.codigo_tema_curso = '2') AND evento_curso.codigo_evento = '11' ORDER BY curso.nome_curso ASC";
 $query_consulta_cursos_criancas = mysqli_query($conexao, $sql_consulta_cursos_criancas) or mascara_erro_mysql($sql_consulta_cursos_criancas);
 
-$mensagem = campo_form_decodifica($_GET["mm"]);
+$mensagem = campo_form_decodifica($_GET["mm"] ?? "");
 
 // consulta estados
 $sql_consulta_estado = "SELECT codigo_estado, uf_estado, nome_estado FROM estado ORDER BY nome_estado ASC";
@@ -63,7 +63,7 @@ for ($i = 0; $i < $num; $i++) {
     });
 
     jQuery(function ($) {
-        $("#data").mask("99/99/9999", {
+        $("#data-nascimento").mask("99/99/9999", {
             completed: function () {
                 console.log('complete')
                 var value = $(this).val().split('/');
@@ -163,7 +163,7 @@ for ($i = 0; $i < $num; $i++) {
                         </div>
 
                         <div class="col-md-2 in-contact">
-                            <span>Data de Nascimento :</span>
+                            <span>Data Nasc.</span>
                             <input type="text" name="data_nascimento_participante" id="data-nascimento" placeholder="00/00/0000" maxlength="10"  value="" required>
                         </div>
 <!--
@@ -220,7 +220,7 @@ for ($i = 0; $i < $num; $i++) {
                             <select id="curso_crianca[]" name="curso_crianca[]">
                                 <option value="">Selecione o Tema Específico</option>
                                 <?php while($resultado_consulta_cursos_criancas = mysqli_fetch_assoc($query_consulta_cursos_criancas)) {?>
-                                <option value="<?php echo $resultado_consulta_cursos_criancas["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_cursos_criancas["codigo_curso"]) >= $resultado_consulta_cursos_criancas["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><?php echo utf8_encode($resultado_consulta_cursos_criancas["nome_curso"]).$mensagem;?></option>
+                                <option value="<?php echo $resultado_consulta_cursos_criancas["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_cursos_criancas["codigo_curso"]) >= $resultado_consulta_cursos_criancas["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><?php echo $resultado_consulta_cursos_criancas["nome_curso"].$mensagem;?></option>
                                 <?php $mensagem = '';}?>
                             </select>
                         </div>

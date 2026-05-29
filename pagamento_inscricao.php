@@ -36,7 +36,7 @@ $data['senderEmail'] = "edsongaldino@outlook.com";
 // $data['shippingAddressState'] = "";
 // $data['shippingAddressCountry'] = "";
 
-$data['redirectURL'] = 'https://secretaria.efasmt.com.br/pedido-finalizado';
+$data['redirectURL'] = 'https://secretaria.efas.euripedesbarsanulfo.org.br/pedido-finalizado';
 
 $data = http_build_query($data);
 

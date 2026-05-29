@@ -1,8 +1,8 @@
 <?php require_once("sistema_mod_include.php"); ?>
 <style>
-.dados_cracha{width:10cm; height:3cm; float:left; margin-top:9cm; margin-left:-0.5cm; }
+.dados_cracha{width:10cm; height:3cm; float:left;margin-top: 6.5cm;margin-left: -0.5cm; }
 .dados_cracha .qrcode{width:3cm; height:3cm; float:left; background-color:#333; margin:0px 0 0 0px;}
-.dados_cracha .dados_participante{width:10cm; height:3cm; float:left; position: absolute; }
+.dados_cracha .dados_participante{width:8cm; height:3cm; margin:auto; }
 .dados_cracha .dados_participante .nome_participante_cracha{font-size:30px; text-transform:uppercase; line-height:30px; margin-top:10px; text-align:center;  font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;}
 .dados_cracha .dados_participante .nome_participante{font-size:12px; line-height:20px; text-transform:uppercase; text-align:center;  font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;}
 .dados_cracha .dados_participante .nome_curso{font-size:11px; text-align:center; line-height:20px; font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;}
@@ -63,7 +63,7 @@ $sql_consulta_curso = "SELECT
 							FROM participante_evento_curso
 							JOIN curso ON (participante_evento_curso.codigo_curso = curso.codigo_curso)
 							JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso) 
-						WHERE participante_evento_curso.codigo_participante = '".$codigo_participante."' AND participante_evento_curso.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."' ORDER BY curso.codigo_tema_curso DESC";
+						WHERE participante_evento_curso.codigo_participante = '".$codigo_participante."' AND participante_evento_curso.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."' ORDER BY curso.codigo_tema_curso ASC";
 $query_consulta_curso = mysqli_query($conexao,$sql_consulta_curso) or mascara_erro_mysql($sql_consulta_curso);	
 
 if($resultado_consulta_dados_cracha["nome_comissao_trabalho"]){

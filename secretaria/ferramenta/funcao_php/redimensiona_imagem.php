@@ -1,5 +1,7 @@
 <?php
 function redimensiona_imagem($width_img,$height_img,$nome_arquivo,$novo_nome,$diretorio,$diretorio_destino,$forca_proporcao) {
+	global $conexao;
+
 	// pega tamanho da foto
 	$tamanho = getimagesize($diretorio.$nome_arquivo);
 	
@@ -20,7 +22,7 @@ function redimensiona_imagem($width_img,$height_img,$nome_arquivo,$novo_nome,$di
 		$width = $tamanho[0]/$height_ajuste;		
 	}
 
-	// verifica se é pra força a proporção (ou seja, a imagem ficar toda dentro do tamanho definido)
+	// verifica se Ã© pra forÃ§a a proporÃ§Ã£o (ou seja, a imagem ficar toda dentro do tamanho definido)
 	if($forca_proporcao == "S") {
 		// verifica novamente pra ver se esta tudo ok
 		if($width > $width_img) {
@@ -56,14 +58,14 @@ function redimensiona_imagem($width_img,$height_img,$nome_arquivo,$novo_nome,$di
 	fwrite($arquivo_temp_handle, $imagem_final);
 	fclose($arquivo_temp_handle);
 	
-	// coletando informações sobre o FTP
+	// coletando informaÃ§Ãµes sobre o FTP
 	$sql_sistema_informacao = "SELECT login_ftp_sistema, endereco_ftp_sistema, senha_ftp_sistema FROM sistema_informacao LIMIT 1";
-	$query_sistema_informacao = mysql_query($sql_sistema_informacao) or mascara_erro_mysql($sql_sistema_informacao, "consultar.php");
-	$resultado_sistema_informacao = mysql_fetch_assoc($query_sistema_informacao);
+	$query_sistema_informacao = mysqli_query($conexao, $sql_sistema_informacao) or mascara_erro_mysql($sql_sistema_informacao, "consultar.php");
+	$resultado_sistema_informacao = mysqli_fetch_assoc($query_sistema_informacao);
 	
-	mysql_free_result($query_sistema_informacao);
+	mysqli_free_result($query_sistema_informacao);
 	
-	// abre uma conexão FTP e salva o arquivo
+	// abre uma conexÃ£o FTP e salva o arquivo
 	$ftp_conexao = ftp_connect($resultado_sistema_informacao['endereco_ftp_sistema']);
 	$ftp_login = ftp_login($ftp_conexao, $resultado_sistema_informacao['login_ftp_sistema'], campo_form_decodifica($resultado_sistema_informacao['senha_ftp_sistema']));
 	$ftp_upload_arquivo = ftp_put($ftp_conexao,$diretorio_destino.$novo_nome,$arquivo_temp,FTP_BINARY);

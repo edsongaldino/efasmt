@@ -5,7 +5,7 @@
 	$pesquisa_rapida = trim(utf8_decode($_GET['term']));
 	$pesquisa_rapida = str_replace("\'"," ",$pesquisa_rapida);
 	$pesquisa_rapida = strtolower(strtr($pesquisa_rapida, "áàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ", "aaaaeeiooouucAAAAEEIOOOUUC"));
-	$pesquisa_rapida = mysql_escape_string(trim($pesquisa_rapida));
+	$pesquisa_rapida = mysqli_real_escape_string($conexao, trim($pesquisa_rapida));
 
 	// consulta
 	$pesquisa_rapida_cons = array();
@@ -28,9 +28,9 @@
 	$opcoes_pes_rap = array();
 
 	$sql_opcoes_pes_rap = " SELECT participante.nome_participante FROM participante ".$sql_pesquisa_rapida_cons." GROUP BY participante.nome_participante";
-	$query_opcoes_pes_rap = mysql_query($sql_opcoes_pes_rap);
+	$query_opcoes_pes_rap = mysqli_query($conexao, $sql_opcoes_pes_rap);
 
-	while($executa_opcoes_pes_rap = mysql_fetch_assoc($query_opcoes_pes_rap)) {
+	while($executa_opcoes_pes_rap = mysqli_fetch_assoc($query_opcoes_pes_rap)) {
 		$opcoes_pes_rap[] = '"'.utf8_encode($executa_opcoes_pes_rap['nome_participante']).'"';
 	}
 

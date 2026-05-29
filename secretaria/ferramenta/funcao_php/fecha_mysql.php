@@ -1,5 +1,9 @@
 <?php
-function fecha_mysql($conexao) {
-	mysqli_close($conexao);
+function fecha_mysql($conexao = null) {
+	global $conexao;
+	if ($conexao) {
+		mysqli_close($conexao);
+		$conexao = null;
+	}
 }
 ?>

@@ -60,7 +60,7 @@ JOIN inscricao_evento ON inscricao_evento.codigo_participante = participante_eve
 JOIN situacao_inscricao ON inscricao_evento.codigo_situacao_inscricao = situacao_inscricao.codigo_situacao_inscricao
 JOIN evento ON evento.codigo_evento = participante_evento_curso.codigo_evento
 WHERE participante_evento_curso.codigo_evento = '".$_SESSION["codigo_evento_acesso"]."' AND participante_evento_curso.codigo_curso = '".$codigo_curso."'".$sql_where_consulta." 
-GROUP BY participante.codigo_participante ORDER BY participante.nome_participante ASC";
+ORDER BY participante.nome_participante ASC";
 $query_consulta_inscricoes = mysqli_query($conexao,$sql_consulta_inscricoes) or mascara_erro_mysql($sql_consulta_inscricoes);
 $total_inscricoes = mysqli_num_rows($query_consulta_inscricoes);
 
@@ -173,9 +173,9 @@ $query_consulta_situacao_inscricao = mysqli_query($conexao,$sql_consulta_situaca
                     <?php }?>
 
                     <td> <?php echo $resultado_consulta_inscricoes["codigo_inscricao_evento"];?></td>
-                    <td> <?php echo $resultado_consulta_inscricoes["nome_participante"];?></td>
+                    <td> <?php echo utf8_decode($resultado_consulta_inscricoes["nome_participante"]);?></td>
                     <td> <?php echo calcula_idade($resultado_consulta_inscricoes["data_nascimento_participante"]);?></td>
-                    <td> <?php echo utf8_encode($resultado_consulta_inscricoes["nome_evento"]);?></td>
+                    <td> <?php echo $resultado_consulta_inscricoes["nome_evento"];?></td>
                     <td> <?php echo converte_data_portugues($resultado_consulta_inscricoes["data_inscricao_evento"]);?> </td>
                     <td> R$ <?php echo converte_valor_real($resultado_consulta_inscricoes["valor_inscricao_evento"]);?> </td>
 

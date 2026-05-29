@@ -23,7 +23,7 @@
 <!--content-->
 <div class="contact">
     <div class="container">
-	
+	<!--
         <div class="contact-top ">
             <h3>INSCRIÇÕES ABERTAS ATÉ 05 DE SETEMBRO. APÓS ESSA DATA, SOMENTE PRESENCIAL</h3>
         </div>
@@ -39,7 +39,7 @@
 		
        
 
-		<!--content-mid-->
+		
 		
 		<div class="content-mid box-inscricao">
 			<div class="col-md-3 mid">
@@ -59,15 +59,16 @@
 		
         <div class="info-inscricao">
             As inscrições pela internet estarão abertas até o dia 05/09/2024. Faça sua inscrição antecipada e evite filas e aglomerações!<br/>
-            O pagamento deverá ser feito via PAGSEGURO - UOL, após o pagamento envie o comprovante para <b>secretaria@efasmt.com.br</b>, juntamente com o número de sua inscrição.<br/><br/>
+            O pagamento deverá ser feito via Mercado Pago. Em caso de dúvidas, envie um e-mail para <b>secretaria@euripedesbarsanulfo.org.br</b>, juntamente com o número de sua inscrição.<br/><br/>
 			Escolha uma das opções abaixo para realizar sua inscrição:
         </div>
+		content-mid-->
          
 		<div class="content-mid box-inscricao">
 
 			<div class="col-md-3 mid">
 				<a href="inscricao_crianca.php">
-				<div class="mid1">
+				<div class="mid1 child-btn">
 					<h4>Inscrição para Crianças</h4>
 					<i class="glyphicon glyphicon-circle-arrow-right"></i>
 					<div class="clearfix"> </div>
@@ -77,7 +78,7 @@
 
 			<div class="col-md-3 mid">
 				<a href="inscricao_jovem.php">
-				<div class="mid1">
+				<div class="mid1 youth-btn">
 					<h4>Inscrição para Jovens</h4>
 					<i class="glyphicon glyphicon-circle-arrow-right"></i>
 					<div class="clearfix"> </div>
@@ -87,7 +88,7 @@
 
 			<div class="col-md-3 mid">
 				<a href="inscricao_adulto.php">
-				<div class="mid1">
+				<div class="mid1 adult-btn">
 					<h4>Inscrição para Adultos</h4>
 					<i class="glyphicon glyphicon-circle-arrow-right"></i>
 					<div class="clearfix"> </div>
@@ -97,7 +98,7 @@
 
             <div class="col-md-3 mid">
 				<a href="inscricao_trabalhador.php">
-				<div class="mid1">
+				<div class="mid1 worker-btn">
 					<h4>Inscrição para Trabalhadores</h4>
 					<i class="glyphicon glyphicon-circle-arrow-right"></i>
 					<div class="clearfix"> </div>

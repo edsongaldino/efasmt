@@ -10,7 +10,7 @@ $sql_consulta_usuario_participante = "SELECT
 									FROM usuario_participante 
 									JOIN participante ON (usuario_participante.codigo_participante = participante.codigo_participante)
 								  WHERE usuario_participante.codigo_usuario = '".$_SESSION["codigo_usuario_acesso"]."' ORDER BY participante.nome_participante ASC";
-$query_consulta_usuario_participante = mysql_query($sql_consulta_usuario_participante) or mascara_erro_mysql($sql_consulta_usuario_participante);
+$query_consulta_usuario_participante = mysqli_query($conexao, $sql_consulta_usuario_participante) or mascara_erro_mysql($sql_consulta_usuario_participante);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +57,7 @@ $query_consulta_usuario_participante = mysql_query($sql_consulta_usuario_partici
                 </thead>
                 <tbody>
                 
-                  <?php while($resultado_consulta_usuario_participante = mysql_fetch_assoc($query_consulta_usuario_participante)) {?>
+                  <?php while($resultado_consulta_usuario_participante = mysqli_fetch_assoc($query_consulta_usuario_participante)) {?>
                   <tr>
                     <td> <?php echo $resultado_consulta_usuario_participante["nome_participante"];?></td>
                     <td> <?php echo calcula_idade($resultado_consulta_usuario_participante["data_nascimento_participante"]);?></td>
@@ -78,7 +78,7 @@ $query_consulta_usuario_participante = mysql_query($sql_consulta_usuario_partici
   <!-- /extra-inner --> 
 </div>
 <?php
-mysql_free_result($query_consulta_usuario_participante);
+mysqli_free_result($query_consulta_usuario_participante);
 
 fecha_mysql();
 ?>

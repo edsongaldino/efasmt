@@ -5,6 +5,7 @@
    */
   function retorna( $nome, $db )
   {
+    $nome = mysqli_real_escape_string($db, $nome);
     $sql = "SELECT 
                 participante.nome_participante, participante.nome_participante_cracha, participante.data_nascimento_participante, participante.centro_espirita_participante,
                 email_participante.descricao_email_participante, telefone_participante.numero_telefone_participante
@@ -14,12 +15,12 @@
                 LEFT JOIN telefone_participante ON participante.codigo_participante = telefone_participante.codigo_participante
                 WHERE participante.nome_participante LIKE '%".$nome."%' LIMIT 1";
 
-    $query = $db->query( $sql );
+    $query = mysqli_query($db, $sql);
 
     $arr = Array();
-    if( $query->num_rows )
+    if( $query && mysqli_num_rows($query) )
     {
-      while( $dados = $query->fetch_object() )
+      while( $dados = mysqli_fetch_object($query) )
       {
         $arr['nome_participante_cracha'] = $dados->nome_participante_cracha;
         $arr['data_nascimento_participante'] = converte_data_portugues($dados->data_nascimento_participante);
@@ -37,12 +38,7 @@
 /* só se for enviado o parâmetro, que devolve os dados */
 if( isset($_GET['nome']) )
 {
-  $db = new mysqli('efasmt.com.br', 'efasmtco_sistema', 'efa259864', 'efasmtco_sistema');
-  echo retorna( filter ($_GET['nome'] ), $db );
+  $conexao = conecta_mysql();
+  echo retorna( $_GET['nome'], $conexao );
 }
-
-function filter( $var ){
-  return $var;//a implementação desta, fica a cargo do leitor
-}
-
 ?>

@@ -19,7 +19,7 @@ $sql_consulta_tema_atual_jovem = "SELECT curso.codigo_curso, curso.nome_curso, i
 										 WHERE curso.codigo_tema_curso = '5' AND evento_curso.codigo_evento = '11' ORDER BY curso.nome_curso ASC";
 $query_consulta_tema_atual_jovem = mysqli_query($conexao,$sql_consulta_tema_atual_jovem) or mascara_erro_mysql($sql_consulta_tema_atual_jovem);
 
-$mensagem = campo_form_decodifica($_GET["mm"]);
+$mensagem = campo_form_decodifica($_GET["mm"] ?? "");
 
 // consulta estados
 $sql_consulta_estado = "SELECT codigo_estado, uf_estado, nome_estado FROM estado ORDER BY nome_estado ASC";
@@ -72,7 +72,7 @@ for ($i = 0; $i < $num; $i++) {
     });
 
     jQuery(function ($) {
-        $("#data").mask("99/99/9999", {
+        $("#data-nascimento").mask("99/99/9999", {
             completed: function () {
                 console.log('complete')
                 var value = $(this).val().split('/');
@@ -170,7 +170,7 @@ for ($i = 0; $i < $num; $i++) {
                         </div>
 
                         <div class="col-md-2 in-contact">
-                            <span>Data de Nascimento :</span>
+                            <span>Data Nasc.</span>
                             <input type="text" name="data_nascimento_participante" id="data-nascimento" placeholder="00/00/0000"  maxlength="10" value="" required>
                         </div>
 
@@ -215,7 +215,7 @@ for ($i = 0; $i < $num; $i++) {
                             <select id="curso_participante[]" name="curso_participante[]" required>
                                 <option value="">Selecione o Tema Específico</option>
                                 <?php while($resultado_consulta_tema_especifico_jovem = mysqli_fetch_assoc($query_consulta_tema_especifico_jovem)) {?>
-                                <option value="<?php echo $resultado_consulta_tema_especifico_jovem["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_tema_especifico_jovem["codigo_curso"]) >= $resultado_consulta_tema_especifico_jovem["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><strong><?php echo utf8_encode($resultado_consulta_tema_especifico_jovem["nome_curso"]).$mensagem;?></strong></option>
+                                <option value="<?php echo $resultado_consulta_tema_especifico_jovem["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_tema_especifico_jovem["codigo_curso"]) >= $resultado_consulta_tema_especifico_jovem["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><strong><?php echo $resultado_consulta_tema_especifico_jovem["nome_curso"].$mensagem;?></strong></option>
                                 <?php $mensagem = '';}?>
                             </select>
                         </div>
@@ -226,7 +226,7 @@ for ($i = 0; $i < $num; $i++) {
                             <select id="curso_participante[]" name="curso_participante[]" required>
                                 <option value="">Selecione o Tema Atual</option>
                                 <?php while($resultado_consulta_tema_atual_jovem = mysqli_fetch_assoc($query_consulta_tema_atual_jovem)) {?>
-                                <option value="<?php echo $resultado_consulta_tema_atual_jovem["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_tema_atual_jovem["codigo_curso"]) >= $resultado_consulta_tema_atual_jovem["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><strong><?php echo utf8_encode($resultado_consulta_tema_atual_jovem["nome_curso"]).$mensagem;?></strong></option>
+                                <option value="<?php echo $resultado_consulta_tema_atual_jovem["codigo_curso"];?>" <?php if(calcula_total_inscritos_curso($resultado_consulta_tema_atual_jovem["codigo_curso"]) >= $resultado_consulta_tema_atual_jovem["quantidade_vagas"]){$mensagem = " (LOTADO)";echo "disabled";}?>><strong><?php echo $resultado_consulta_tema_atual_jovem["nome_curso"].$mensagem;?></strong></option>
                                 <?php $mensagem = '';}?>
                             </select>
                         </div>

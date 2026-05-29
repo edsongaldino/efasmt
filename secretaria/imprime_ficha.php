@@ -30,8 +30,8 @@ $sql_consulta_ficha_inscricao = "
 								LEFT JOIN comissao_trabalho ON (comissao_trabalho_participante.codigo_comissao_trabalho = comissao_trabalho.codigo_comissao_trabalho)
 							WHERE inscricao_evento.codigo_evento = 1 AND participante.codigo_participante = '".$codigo_participante."'
 							";
-$query_consulta_ficha_inscricao = mysql_query($sql_consulta_ficha_inscricao) or mascara_erro_mysql($sql_consulta_ficha_inscricao);
-$resultado_consulta_ficha_inscricao = mysql_fetch_assoc($query_consulta_ficha_inscricao);
+$query_consulta_ficha_inscricao = mysqli_query($conexao, $sql_consulta_ficha_inscricao) or mascara_erro_mysql($sql_consulta_ficha_inscricao);
+$resultado_consulta_ficha_inscricao = mysqli_fetch_assoc($query_consulta_ficha_inscricao);
 
 //Seleciona cursos do participante
 $sql_consulta_curso = "SELECT 
@@ -40,7 +40,7 @@ $sql_consulta_curso = "SELECT
 						JOIN curso ON (participante_evento_curso.codigo_curso = curso.codigo_curso)
 						JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso) 
 					WHERE participante_evento_curso.codigo_participante = '".$codigo_participante."' ORDER BY curso.codigo_tema_curso DESC";
-$query_consulta_curso = mysql_query($sql_consulta_curso) or mascara_erro_mysql($sql_consulta_curso);	
+$query_consulta_curso = mysqli_query($conexao, $sql_consulta_curso) or mascara_erro_mysql($sql_consulta_curso);	
 
 
 	

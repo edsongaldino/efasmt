@@ -1,5 +1,7 @@
 <?php
 function notificacao_email_novaresposta($codigo_atendimento) {
+	global $conexao;
+
 	$flag_erro = false;
 	
 	// consulta
@@ -19,8 +21,8 @@ function notificacao_email_novaresposta($codigo_atendimento) {
 					GROUP BY atendimento.codigo_atendimento
 					LIMIT 1
 					";
-	$query_consulta = mysql_query($sql_consulta) or mascara_erro_mysql($sql_consulta);
-	$resultado_consulta = mysql_fetch_assoc($query_consulta);
+	$query_consulta = mysqli_query($conexao, $sql_consulta) or mascara_erro_mysql($sql_consulta);
+	$resultado_consulta = mysqli_fetch_assoc($query_consulta);
 	
 	// log
 	$data_log = date("Y-m-d", time());
@@ -28,7 +30,7 @@ function notificacao_email_novaresposta($codigo_atendimento) {
 	
 	// incluir (log notificacao por e-mail)
 	$sql_incluir_log = "INSERT INTO atendimento_log (codigo_usuario,codigo_log_tipo,codigo_atendimento,data_atendimento_log,hora_atendimento_log,ip_atendimento_log) VALUES (".$resultado_consulta["codigo_colaborador"].",".(12).",".$codigo_atendimento.",'".$data_log."','".$hora_log."','".$_SERVER["REMOTE_ADDR"]."')";
-	$query_incluir_log = mysql_query($sql_incluir_log) or mascara_erro_mysql($sql_incluir_log);
+	$query_incluir_log = mysqli_query($conexao, $sql_incluir_log) or mascara_erro_mysql($sql_incluir_log);
 	
 	if(!$query_incluir_log) {
 		$flag_erro = true;
@@ -53,7 +55,7 @@ function notificacao_email_novaresposta($codigo_atendimento) {
 							  </tr>
 							</table>
 						</div>
-						<div align="center">Este e-mail foi enviado para: '.$resultado_consulta["descricao_cliente_email"].'<br />Caso n„o queira mais receber nossos emails, remova aqui.</div>
+						<div align="center">Este e-mail foi enviado para: '.$resultado_consulta["descricao_cliente_email"].'<br />Caso n√£o queira mais receber nossos emails, remova aqui.</div>
 						</body>
 						</html>		
 						';
@@ -65,10 +67,10 @@ function notificacao_email_novaresposta($codigo_atendimento) {
 			'api_user'  => SENDGRID_USUARIO,
 			'api_key'   => SENDGRID_SENHA,
 			'to'        => utf8_encode($resultado_consulta["descricao_cliente_email"]),
-			'subject'   => utf8_encode("Sua interaÁ„o foi respondida"),
+			'subject'   => utf8_encode("Sua intera√ß√£o foi respondida"),
 			'html'      => utf8_encode($msg_mensagem),
 			'from'      => utf8_encode("contato@lancamentosonline.com.br"),
-			'fromname'	=> utf8_encode("LanÁamentos Online"),
+			'fromname'	=> utf8_encode("Lan√ßamentos Online"),
 			'replyto'	=> utf8_encode("contato@lancamentosonline.com.br"),
 		);	 
 		 

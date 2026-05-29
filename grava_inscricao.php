@@ -14,6 +14,20 @@ if($_POST['acao']){
 		$nome_participante							= protege_campo($_POST['nome_participante']);
 		$nome_participante_cracha					= protege_campo($_POST['nome_participante_cracha']);
 		$data_nascimento_participante 				= protege_campo(converte_data_ingles($_POST['data_nascimento_participante']));
+		
+		// Valida duplicidade
+		$id_duplicado = verifica_inscricao_duplicada($nome_participante, $data_nascimento_participante, 11);
+		if ($id_duplicado) {
+			if (!isset($_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'] = [];
+			}
+			if (!in_array($id_duplicado, $_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'][] = $id_duplicado;
+			}
+			redireciona("confirma_inscricao.php?tipo=".campo_form_codifica(1,true)."&codigo_inscricao_evento=".campo_form_codifica($id_duplicado,true)."&me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Esta pessoa já está inscrita neste evento!"));
+			exit;
+		}
+
 		$cidade_participante 						= 4282;
 		$centro_espirita_participante 				= protege_campo($_POST['centro_espirita_participante']);
 		
@@ -41,16 +55,23 @@ if($_POST['acao']){
 		$codigo_inscricao_evento = mysqli_insert_id($conexao);
 		
 		// inclui curso participante
+		$query_inclui_curso_participante = true;
 		for($i=0;$i<count($_POST['curso_crianca']);$i++){
-			
-		$sql_inclui_curso_participante = "INSERT INTO participante_evento_curso (codigo_participante, codigo_evento, codigo_curso) VALUES ('".$codigo_participante."','11', '".protege_campo($_POST['curso_crianca'][$i])."')";
-		$query_inclui_curso_participante = mysqli_query($conexao,$sql_inclui_curso_participante) or mascara_erro_mysql($sql_inclui_curso_participante,"index.php");
-		
+			$curso_id = protege_campo($_POST['curso_crianca'][$i]);
+			if (empty($curso_id)) continue;
+			$sql_inclui_curso_participante = "INSERT INTO participante_evento_curso (codigo_participante, codigo_evento, codigo_curso) VALUES ('".$codigo_participante."','11', '".$curso_id."')";
+			$query_inclui_curso_participante = mysqli_query($conexao,$sql_inclui_curso_participante) or mascara_erro_mysql($sql_inclui_curso_participante,"index.php");
 		}
 		
 		if($query_inclui_participante && $query_inclui_dados_complementares && $query_inclui_usuario_participante && $query_inclui_curso_participante){
 
 			mysqli_query($conexao,"COMMIT");
+			if (!isset($_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'] = [];
+			}
+			if (!in_array($codigo_inscricao_evento, $_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'][] = $codigo_inscricao_evento;
+			}
 			fecha_mysql($conexao);
 			redireciona("confirma_inscricao.php?tipo=".campo_form_codifica(1,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."&me=".campo_form_codifica(0,true)."&mm=".campo_form_codifica("Inscrição realizada! veja abaixo."));
 			
@@ -70,13 +91,27 @@ if($_POST['acao']){
 		$nome_participante							= protege_campo($_POST['nome_participante']);
 		$nome_participante_cracha					= protege_campo($_POST['nome_participante_cracha']);
 		$data_nascimento_participante 				= protege_campo(converte_data_ingles($_POST['data_nascimento_participante']));
+		
+		// Valida duplicidade
+		$id_duplicado = verifica_inscricao_duplicada($nome_participante, $data_nascimento_participante, 11);
+		if ($id_duplicado) {
+			if (!isset($_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'] = [];
+			}
+			if (!in_array($id_duplicado, $_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'][] = $id_duplicado;
+			}
+			redireciona("confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($id_duplicado,true)."&me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Esta pessoa já está inscrita neste evento!"));
+			exit;
+		}
+
 		$cidade_participante 						= 4282;
 		$centro_espirita_participante 				= protege_campo($_POST['centro_espirita_participante']);
 		
 		$telefone_participante						= protege_campo(limpa_campo($_POST['telefone_participante']));
 		$email_participante							= protege_campo($_POST['email_participante']);
 
-		mysqli_query($conexao,"COMMIT");
+		mysqli_query($conexao,"BEGIN");
 		
 		// inclui participante
 		$sql_inclui_participante = "INSERT INTO participante (codigo_cidade, data_nascimento_participante, nome_participante, nome_participante_cracha, centro_espirita_participante) VALUES ('".$cidade_participante."', '".$data_nascimento_participante."','".$nome_participante."','".$nome_participante_cracha."','".$centro_espirita_participante."')";
@@ -92,11 +127,12 @@ if($_POST['acao']){
 		$query_inclui_email_participante = mysqli_query($conexao,$sql_inclui_email_participante) or mascara_erro_mysql($sql_inclui_email_participante,"index.php");
 		
 		// inclui curso participante
+		$query_inclui_curso_participante = true;
 		for($i=0;$i<count($_POST['curso_participante']);$i++){
-			
-			$sql_inclui_curso_participante = "INSERT INTO participante_evento_curso (codigo_participante, codigo_evento, codigo_curso) VALUES ('".$codigo_participante."','11', '".protege_campo($_POST['curso_participante'][$i])."')";
+			$curso_id = protege_campo($_POST['curso_participante'][$i]);
+			if (empty($curso_id)) continue;
+			$sql_inclui_curso_participante = "INSERT INTO participante_evento_curso (codigo_participante, codigo_evento, codigo_curso) VALUES ('".$codigo_participante."','11', '".$curso_id."')";
 			$query_inclui_curso_participante = mysqli_query($conexao,$sql_inclui_curso_participante) or mascara_erro_mysql($sql_inclui_curso_participante,"index.php");
-		
 		}
 		
 		$data_atual = date("Y-m-d");
@@ -109,10 +145,16 @@ if($_POST['acao']){
 
 		if($query_inclui_participante && $query_inclui_telefone_participante && $query_inclui_email_participante && $query_inclui_curso_participante && $query_inclui_usuario_participante){
 			mysqli_query($conexao,"COMMIT");
+			if (!isset($_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'] = [];
+			}
+			if (!in_array($codigo_inscricao_evento, $_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'][] = $codigo_inscricao_evento;
+			}
 
 			$destino = $email_participante;
 			$assunto = mb_convert_encoding("Inscrição Realizada com Sucesso (EFAS 2022) Várzea Grande",'UTF-8');
-			$link_redirect = "https://secretaria.efasmt.com.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
+			$link_redirect = "https://secretaria.efas.euripedesbarsanulfo.org.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
 			require_once("email.php");
 
 			//envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
@@ -133,13 +175,27 @@ if($_POST['acao']){
 		$nome_participante							= protege_campo($_POST['nome_participante']);
 		$nome_participante_cracha					= protege_campo($_POST['nome_participante_cracha']);
 		$data_nascimento_participante 				= protege_campo(converte_data_ingles($_POST['data_nascimento_participante']));
+		
+		// Valida duplicidade
+		$id_duplicado = verifica_inscricao_duplicada($nome_participante, $data_nascimento_participante, 11);
+		if ($id_duplicado) {
+			if (!isset($_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'] = [];
+			}
+			if (!in_array($id_duplicado, $_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'][] = $id_duplicado;
+			}
+			redireciona("confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($id_duplicado,true)."&me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Esta pessoa já está inscrita neste evento!"));
+			exit;
+		}
+
 		$cidade_participante 						= 4282;
 		$centro_espirita_participante 				= protege_campo($_POST['centro_espirita_participante']);
 		
 		$telefone_participante						= protege_campo(limpa_campo($_POST['telefone_participante']));
 		$email_participante							= protege_campo($_POST['email_participante']);
 			
-		mysqli_query($conexao,"COMMIT");
+		mysqli_query($conexao,"BEGIN");
 		
 		// inclui participante
 		$sql_inclui_participante = "INSERT INTO participante (codigo_cidade, data_nascimento_participante, nome_participante, nome_participante_cracha, centro_espirita_participante) VALUES ('".$cidade_participante."', '".$data_nascimento_participante."','".$nome_participante."','".$nome_participante_cracha."','".$centro_espirita_participante."')";
@@ -155,11 +211,12 @@ if($_POST['acao']){
 		$query_inclui_email_participante = mysqli_query($conexao,$sql_inclui_email_participante) or mascara_erro_mysql($sql_inclui_email_participante,"index.php");
 		
 		// inclui curso participante
+		$query_inclui_curso_participante = true;
 		for($i=0;$i<count($_POST['curso_participante']);$i++){
-			
-		$sql_inclui_curso_participante = "INSERT INTO participante_evento_curso (codigo_participante, codigo_evento, codigo_curso) VALUES ('".$codigo_participante."','11', '".protege_campo($_POST['curso_participante'][$i])."')";
-		$query_inclui_curso_participante = mysqli_query($conexao,$sql_inclui_curso_participante) or mascara_erro_mysql($sql_inclui_curso_participante,"index.php");
-		
+			$curso_id = protege_campo($_POST['curso_participante'][$i]);
+			if (empty($curso_id)) continue;
+			$sql_inclui_curso_participante = "INSERT INTO participante_evento_curso (codigo_participante, codigo_evento, codigo_curso) VALUES ('".$codigo_participante."','11', '".$curso_id."')";
+			$query_inclui_curso_participante = mysqli_query($conexao,$sql_inclui_curso_participante) or mascara_erro_mysql($sql_inclui_curso_participante,"index.php");
 		}
 		
 		$data_atual = date("Y-m-d");
@@ -173,10 +230,16 @@ if($_POST['acao']){
 		if($query_inclui_participante && $query_inclui_telefone_participante && $query_inclui_email_participante && $query_inclui_curso_participante && $query_inclui_usuario_participante){
 
 			mysqli_query($conexao,"COMMIT");
+			if (!isset($_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'] = [];
+			}
+			if (!in_array($codigo_inscricao_evento, $_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'][] = $codigo_inscricao_evento;
+			}
 
 			$destino = $email_participante;
 			$assunto = mb_convert_encoding("inscrição realizada (EFAS 2022)",'UTF-8');
-			$link_redirect = "https://secretaria.efasmt.com.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
+			$link_redirect = "https://secretaria.efas.euripedesbarsanulfo.org.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
 			require_once("email.php");
 
 			//envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);
@@ -197,13 +260,27 @@ if($_POST['acao']){
 		$nome_participante							= protege_campo($_POST['nome_participante']);
 		$nome_participante_cracha					= protege_campo($_POST['nome_participante_cracha']);
 		$data_nascimento_participante 				= protege_campo(converte_data_ingles($_POST['data_nascimento_participante']));
+		
+		// Valida duplicidade
+		$id_duplicado = verifica_inscricao_duplicada($nome_participante, $data_nascimento_participante, 11);
+		if ($id_duplicado) {
+			if (!isset($_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'] = [];
+			}
+			if (!in_array($id_duplicado, $_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'][] = $id_duplicado;
+			}
+			redireciona("confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($id_duplicado,true)."&me=".campo_form_codifica(1,true)."&mm=".campo_form_codifica("Esta pessoa já está inscrita neste evento!"));
+			exit;
+		}
+
 		$cidade_participante 						= 4282;
 		$centro_espirita_participante 				= protege_campo($_POST['centro_espirita_participante']);
 		
 		$telefone_participante						= protege_campo(limpa_campo($_POST['telefone_participante']));
 		$email_participante							= protege_campo($_POST['email_participante']);
 		
-		mysqli_query($conexao,"COMMIT");
+		mysqli_query($conexao,"BEGIN");
 		
 		// inclui participante
 		$sql_inclui_participante = "INSERT INTO participante (codigo_cidade, data_nascimento_participante, nome_participante, nome_participante_cracha, centro_espirita_participante) VALUES ('".$cidade_participante."', '".$data_nascimento_participante."','".$nome_participante."', '".$nome_participante_cracha."','".$centro_espirita_participante."')";
@@ -219,11 +296,12 @@ if($_POST['acao']){
 		$query_inclui_email_participante = mysqli_query($conexao,$sql_inclui_email_participante) or mascara_erro_mysql($sql_inclui_email_participante,"index.php");
 		
 		// inclui participante à comissão
+		$query_inclui_participante_comissao = true;
 		for($i=0;$i<count($_POST['comissao_trabalho']);$i++){
-			
-		$sql_inclui_participante_comissao = "INSERT INTO comissao_trabalho_participante (codigo_comissao_trabalho, codigo_participante) VALUES ('".protege_campo($_POST['comissao_trabalho'][$i])."', '".$codigo_participante."')";
-		$query_inclui_participante_comissao = mysqli_query($conexao,$sql_inclui_participante_comissao) or mascara_erro_mysql($sql_inclui_participante_comissao,"index.php");
-		
+			$comissao_id = protege_campo($_POST['comissao_trabalho'][$i]);
+			if (empty($comissao_id)) continue;
+			$sql_inclui_participante_comissao = "INSERT INTO comissao_trabalho_participante (codigo_comissao_trabalho, codigo_participante) VALUES ('".$comissao_id."', '".$codigo_participante."')";
+			$query_inclui_participante_comissao = mysqli_query($conexao,$sql_inclui_participante_comissao) or mascara_erro_mysql($sql_inclui_participante_comissao,"index.php");
 		}
 		
 		$data_atual = date("Y-m-d");
@@ -236,10 +314,16 @@ if($_POST['acao']){
 		
 		if($query_inclui_participante && $query_inclui_telefone_participante && $query_inclui_email_participante && $query_inclui_participante_comissao && $query_inclui_usuario_participante){
 			mysqli_query($conexao,"COMMIT");
+			if (!isset($_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'] = [];
+			}
+			if (!in_array($codigo_inscricao_evento, $_SESSION['carrinho_inscricoes'])) {
+				$_SESSION['carrinho_inscricoes'][] = $codigo_inscricao_evento;
+			}
 
 			$destino = $email_participante;
 			$assunto = mb_convert_encoding("inscrição realizada (EFAS VG 2019)",'UTF-8');
-			$link_redirect = "https://secretaria.efasmt.com.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
+			$link_redirect = "https://secretaria.efas.euripedesbarsanulfo.org.br/confirma_inscricao.php?tipo=".campo_form_codifica(2,true)."&codigo_inscricao_evento=".campo_form_codifica($codigo_inscricao_evento,true)."";
 			require_once("email.php");
 
 			//envia_email($destino, $nome_participante, $assunto, $corpo_mensagem);

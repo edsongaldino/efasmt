@@ -5,7 +5,7 @@ $conexao = conecta_mysql();
 $sql_consulta_comissoes_trabalho = "SELECT comissao_trabalho.codigo_comissao_trabalho, comissao_trabalho.nome_comissao_trabalho FROM comissao_trabalho ORDER BY comissao_trabalho.nome_comissao_trabalho ASC";
 $query_consulta_comissoes_trabalho = mysqli_query($conexao,$sql_consulta_comissoes_trabalho) or mascara_erro_mysql($sql_consulta_comissoes_trabalho);
 
-$mensagem = campo_form_decodifica($_GET["mm"]);
+$mensagem = campo_form_decodifica($_GET["mm"] ?? "");
 
 // consulta estados
 $sql_consulta_estado = "SELECT codigo_estado, uf_estado, nome_estado FROM estado ORDER BY nome_estado ASC";
@@ -58,7 +58,7 @@ for ($i = 0; $i < $num; $i++) {
     });
 
     jQuery(function ($) {
-        $("#data").mask("99/99/9999", {
+        $("#data-nascimento").mask("99/99/9999", {
             completed: function () {
                 console.log('complete')
                 var value = $(this).val().split('/');
@@ -158,7 +158,7 @@ for ($i = 0; $i < $num; $i++) {
                         </div>
 
                         <div class="col-md-2 in-contact">
-                            <span>Data de Nascimento :</span>
+                            <span>Data Nasc.</span>
                             <input type="text" name="data_nascimento_participante" id="data-nascimento" placeholder="00/00/0000" value="" required>
                         </div>
 
@@ -202,7 +202,7 @@ for ($i = 0; $i < $num; $i++) {
                             <select id="comissao_trabalho[]" name="comissao_trabalho[]">
                                 <option value="">Selecione a comissão</option>
                                 <?php while($resultado_consulta_comissoes_trabalho = mysqli_fetch_assoc($query_consulta_comissoes_trabalho)) {?>
-                                <option value="<?php echo $resultado_consulta_comissoes_trabalho["codigo_comissao_trabalho"];?>"><?php echo utf8_encode($resultado_consulta_comissoes_trabalho["nome_comissao_trabalho"]);?></option>
+                                <option value="<?php echo $resultado_consulta_comissoes_trabalho["codigo_comissao_trabalho"];?>"><?php echo $resultado_consulta_comissoes_trabalho["nome_comissao_trabalho"];?></option>
                                 <?php }?>
                             </select>
 

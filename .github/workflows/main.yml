@@ -13,3 +13,4 @@ jobs:
         host: ${{ secrets.HOST }} 
         user: ${{ secrets.USER }}
         password: ${{ secrets.PASSWORD }}
+        remoteDir: "public_html/efas"

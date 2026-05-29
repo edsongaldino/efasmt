@@ -16,8 +16,8 @@ $sql_consulta_dados_cracha = "
 							LEFT JOIN dados_complementares ON (participante.codigo_participante = dados_complementares.codigo_participante)
 							WHERE inscricao_evento.codigo_evento = 2 AND participante.codigo_participante = '".$codigo_participante."'
 							";
-$query_consulta_dados_cracha = mysql_query($sql_consulta_dados_cracha) or mascara_erro_mysql($sql_consulta_dados_cracha);
-$resultado_consulta_dados_cracha = mysql_fetch_assoc($query_consulta_dados_cracha);
+$query_consulta_dados_cracha = mysqli_query($conexao, $sql_consulta_dados_cracha) or mascara_erro_mysql($sql_consulta_dados_cracha);
+$resultado_consulta_dados_cracha = mysqli_fetch_assoc($query_consulta_dados_cracha);
 
 $idade = calcula_idade($resultado_consulta_dados_cracha["data_nascimento_participante"]);
 
@@ -28,7 +28,7 @@ $sql_consulta_curso = "SELECT
 							JOIN curso ON (participante_evento_curso.codigo_curso = curso.codigo_curso)
 							JOIN tema_curso ON (curso.codigo_tema_curso = tema_curso.codigo_tema_curso) 
 						WHERE participante_evento_curso.codigo_participante = '".$codigo_participante."' ORDER BY curso.codigo_tema_curso DESC";
-$query_consulta_curso = mysql_query($sql_consulta_curso) or mascara_erro_mysql($sql_consulta_curso);	
+$query_consulta_curso = mysqli_query($conexao, $sql_consulta_curso) or mascara_erro_mysql($sql_consulta_curso);	
 
 if($resultado_consulta_dados_cracha["nome_comissao_trabalho"]){
 	
@@ -48,7 +48,7 @@ if($resultado_consulta_dados_cracha["nome_comissao_trabalho"]){
 	$cracha.= '<div class="nome_participante_cracha">'.utf8_decode($resultado_consulta_dados_cracha["nome_participante_cracha"]).'</div>';
 	$cracha.= '<div class="nome_participante">'.utf8_decode($resultado_consulta_dados_cracha["nome_participante"]).'</div>';
 	$cracha.= '<div class="nome_responsavel">'.utf8_decode($resultado_consulta_dados_cracha["nome_responsavel"])." - ".$resultado_consulta_dados_cracha["telefone_responsavel"].'</div><br />';
-	while($resultado_consulta_curso = mysql_fetch_assoc($query_consulta_curso)){
+	while($resultado_consulta_curso = mysqli_fetch_assoc($query_consulta_curso)){
 	$cracha.= '<div class="nome_curso">'.$resultado_consulta_curso["nome_tema_curso"]." - <strong>".$resultado_consulta_curso["nome_curso"].'</strong></div>';
 	}
 	$cracha.= '</div>';
@@ -58,7 +58,7 @@ if($resultado_consulta_dados_cracha["nome_comissao_trabalho"]){
 	$cracha.= '<div class="dados_participante">';
 	$cracha.= '<div class="nome_participante_cracha">'.utf8_decode($resultado_consulta_dados_cracha["nome_participante_cracha"]).'</div>';
 	$cracha.= '<div class="nome_participante">'.utf8_decode($resultado_consulta_dados_cracha["nome_participante"]).'</div>';
-	while($resultado_consulta_curso = mysql_fetch_assoc($query_consulta_curso)){
+	while($resultado_consulta_curso = mysqli_fetch_assoc($query_consulta_curso)){
 	$cracha.= '<div class="nome_curso">'.$resultado_consulta_curso["nome_tema_curso"]." - ".$resultado_consulta_curso["nome_curso"].'</div>';
 	}
 	$cracha.= '</div>';
